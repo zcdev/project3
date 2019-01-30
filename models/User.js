@@ -1,46 +1,59 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
+
+// Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
-var bcrypt = require('bcrypt-nodejs');
 
+// Using the Schema constructor, create a new UserSchema object
+// This is similar to a Sequelize model
 var UserSchema = new Schema({
-  username: {
-        type: String,
-        unique: true,
-        required: true
-    },
+  // `username` must be of type String
+  // `username` will trim leading and trailing whitespace before it's saved
+  // `username` is a required field and throws a custom error message if not supplied
+  userName: {
+    type: String,
+    trim: true,
+    required: "Username is Required",
+    unique: true
+  },
+  // `password` must be of type String
+  // `password` will trim leading and trailing whitespace before it's saved
+  // `password` is a required field and throws a custom error message if not supplied
+  // `password` uses a custom validation function to only accept values 6 characters or more
   password: {
-        type: String,
-        required: true
-    }
+    type: String,
+    trim: true,
+    required: "Password is Required",
+    validate: [
+      function(input) {
+        return input.length >= 6;
+      },
+      "Password should be longer."
+    ]
+  },
+  // `email` must be of type String
+  // `email` must be unique
+  // `email` must match the regex pattern below and throws a custom error message if it does not
+  // You can read more about RegEx Patterns here https://www.regexbuddy.com/regex.html
+  email: {
+    type: String,
+    unique: true,
+    match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
+  },
+  authMethod: {
+    type: String
+},
+socialID: {
+    type: String
+},
+  // `date` must be of type Date. The default value is the current date
+  userCreated: {
+    type: Date,
+    default: Date.now
+  }
 });
 
-UserSchema.pre('save', function (next) {
-    var user = this;
-    if (this.isModified('password') || this.isNew) {
-        bcrypt.genSalt(10, function (err, salt) {
-            if (err) {
-                return next(err);
-            }
-            bcrypt.hash(user.password, salt, null, function (err, hash) {
-                if (err) {
-                    return next(err);
-                }
-                user.password = hash;
-                next();
-            });
-        });
-    } else {
-        return next();
-    }
-});
+// This creates our model from the above schema, using mongoose's model method
+var User = mongoose.model("User", UserSchema);
 
-UserSchema.methods.comparePassword = function (passw, cb) {
-    bcrypt.compare(passw, this.password, function (err, isMatch) {
-        if (err) {
-            return cb(err);
-        }
-        cb(null, isMatch);
-    });
-};
-
-module.exports = mongoose.model('User', UserSchema);
+// Export the User model
+module.exports = User;
