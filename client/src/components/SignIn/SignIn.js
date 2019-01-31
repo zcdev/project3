@@ -3,12 +3,11 @@ import "./signin.css";
 import { Input, TextArea, FormBtn } from "../Form";
 
 class SignIn extends Component {
-  // Setting the component's initial state
+
   state = {
     userName: "",
     password: ""
   };
-
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -18,7 +17,6 @@ class SignIn extends Component {
   };
 
   handleFormSubmit = event => {
-
     event.preventDefault();
 
     fetch("/auth/signin", {

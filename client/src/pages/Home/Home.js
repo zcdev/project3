@@ -19,7 +19,6 @@ class Home extends Component {
         })
       })
 
-
     // I dont think we need this
     // ============================================
     // const home = this
@@ -48,8 +47,15 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <h1>Hello, {this.state.userName}</h1>
-        <a href="/"> <button onClick={this.logout}>Sign Out</button></a>
+        <div id="sidebar">
+          <div>
+            <h5>Hello, {this.state.userName}</h5>
+            <a href="/"><button onClick={this.logout}>Sign Out</button></a>
+          </div>
+        </div>
+        <div id="display">
+
+        </div>
       </div>
     )
   }

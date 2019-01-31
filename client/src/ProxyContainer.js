@@ -10,7 +10,7 @@ class ProxyContainer extends Component {
   state = {
     isLoggedIn: false,
     username: "",
-    email: ""
+    // email: ""
   }
 
   componentWillMount() {
@@ -20,7 +20,7 @@ class ProxyContainer extends Component {
         this.setState({
           isLoggedIn: user.data.loggedIn,
           username: user.data.username,
-          email: user.data.email
+          // email: user.data.email
         });
       })
   }
@@ -58,7 +58,6 @@ class ProxyContainer extends Component {
       return (
         <Router>
           <div>
-            {/* <Nav /> */}
             <Switch>
               <Route 
                 path="/"
