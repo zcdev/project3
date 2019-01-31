@@ -6,37 +6,41 @@ const LocalStrategy = require("passport-local");
 const GoogleStrategy = require("passport-google-oauth20");
 const User = require("../models/user.js");
 
-
-router.get("/user", (req, res)=>{
-  if(req.isAuthenticated()){
+// Route to authenticate user after signin/signup
+// =========================================================
+router.get("/user", (req, res) => {
+  if (req.isAuthenticated()) {
     const currentUser = req.session.passport.user;
 
     // call db and find user by currenUser which is user id
-   // get username and email
-   console.log("hellur",currentUser)
-   User.findOne({_id:currentUser})
-   .then(dbUser=>{
-     const user = {
-      loggedIn: true,
-      userName: dbUser.userName,
-      // email: dbUser.email
-     }
-    console.log("25", user)
-     res.json(user);
-   })
-  //  .catch(err => console.log(err));
+    // get username
+    console.log("ID of user attemping login: ", currentUser)
+    User.findOne({ _id: currentUser })
+      .then(dbUser => {
+
+        const user = {
+          loggedIn: true,
+          userName: dbUser.userName,
+          // email: dbUser.email
+        }
+
+        console.log("Logged in user: ", user)
+        res.json(user);
+      })
 
   } else {
-  const user = {
-    loggedIn: false,
-    userName: '',
-    // email: ''
+    const user = {
+      loggedIn: false,
+      userName: '',
+      // email: ''
+    }
+    res.json(user);
   }
-  res.json(user);
-}
 });
 
-//local auth signup
+
+// Route for local signup authentication
+// =========================================================
 router.post("/signup", (req, res, next) => {
   passport.authenticate("local-signup", (err, user, info) => {
     if (err) {
@@ -53,21 +57,21 @@ router.post("/signup", (req, res, next) => {
       if (err) {
         console.log("auth error")
         return next(err);
-      } 
-        res.cookie("userName", req.user.userName);
-        // res.cookie("email", req.body.email)
-        res.cookie("user_id", req.user.id);
-        console.log("confrim")
-        return res.redirect("/");
-      
+      }
+      res.cookie("userName", req.user.userName);
+      // res.cookie("email", req.body.email)
+      res.cookie("user_id", req.user.id);
+      console.log("confrim")
+      return res.redirect("/");
+
 
     })
   })(req, res, next);
 });
 
 
-
-//local auth sign in
+// Route for local signin authentication
+// =========================================================
 router.post("/signin", (req, res, next) => {
 
   passport.authenticate("local-signin", (err, user, info) => {
@@ -90,13 +94,16 @@ router.post("/signin", (req, res, next) => {
       res.cookie("userName", user[0].userName);
       // res.cookie("email", user[0].email)
       res.cookie("user_id", user[0]._id);
-      var userI = {username: user[0].userName /*, email: user[0].email*/}
+      var userI = { username: user[0].userName /*, email: user[0].email*/ }
       //redirect to path containing user id2
       return res.json(userI)
     })
   })(req, res, next);
 });
 
+
+// Route to handle logout
+// =========================================================
 router.get("/logout", function (req, res) {
   console.log("Hello, it's me")
   req.session.destroy(function (err) {
@@ -111,55 +118,5 @@ router.get("/logout", function (req, res) {
     console.log("Hello from the other side.")
   });
 });
-
-//auth with google
-// router.get("/google",
-//   passport.authenticate("google", {
-//     scope: ["profile", "email"]
-//   })
-// );
-
-//auth google callback
-// router.get("/google/callback", passport.authenticate('google'), (req, res) => {
-//   res.cookie("user_id", req.user.dataValues.id);
-//   res.cookie("user_name", req.user.dataValues.userName);
-//   return res.redirect("/");
-// });
-
-//auth with facebook
-// router.get("/facebook",
-//   passport.authenticate("facebook", {
-//     scope: ["public_profile", "email"]
-//   })
-// );
-
-//auth facebook callback
-// router.get("/facebook/callback", passport.authenticate('facebook'), (req, res) => {
-//   res.cookie("user_id", req.user.dataValues.id);
-//   res.cookie("user_name", req.user.dataValues.userName);
-//   return res.redirect("/");
-
-// });
-
-
-// router.get('/meetup',
-//   passport.authenticate('meetup'),
-//   function(req, res){
-//     // The request will be redirected to Meetup for authentication, so this
-//     // function will not be called.
-//     console.log("150")
-//   });
-
-// GET /auth/meetup/callback
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request.  If authentication fails, the user will be redirected back to the
-//   login page.  Otherwise, the primary route function function will be called,
-//   which, in this example, will redirect the user to the home page.
-// router.get('/meetup/callback', 
-//   passport.authenticate('meetup', { failureRedirect: '/landing' }),
-//   function(req, res) {
-//     console.log("meetup161")
-//     res.redirect('/');
-//   });
 
 module.exports = router;
