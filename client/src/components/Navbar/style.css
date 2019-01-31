@@ -1,0 +1,12 @@
+#navbar {
+   position: fixed;
+   z-index: 3;
+   top: 0;
+   left: 0;
+   background-color: gray;
+   width: 20vw;
+}
+
+#navbar a {
+   color: white;
+}
