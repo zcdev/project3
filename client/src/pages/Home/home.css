@@ -6,7 +6,7 @@
    top: 0;
    bottom: 0;
    overflow-y: scroll;
-   width: 25vw;
+   width: 20vw;
    font-weight: 300;
 }
 
@@ -19,5 +19,5 @@
    top: 0;
    bottom: 0;
    overflow-y: scroll;
-   width: 75vw;
+   width: 80vw;
 }
