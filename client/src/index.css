@@ -3,4 +3,5 @@ body, html {
   padding: 0;
   font-family: sans-serif;
   scroll-behavior: smooth;
+  overscroll-behavior: none;
 }

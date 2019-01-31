@@ -1,0 +1,23 @@
+#sidebar {
+   background-color: white;
+   position: fixed;
+   z-index: 2;
+   left: 0;
+   top: 0;
+   bottom: 0;
+   overflow-y: scroll;
+   width: 20vw;
+   font-weight: 300;
+}
+
+#display {
+   background-color: rgb(235, 235, 235);
+   padding: 50px;
+   position: fixed;
+   z-index: 2;
+   right: 0;
+   top: 0;
+   bottom: 0;
+   overflow-y: scroll;
+   width: 80vw;
+}

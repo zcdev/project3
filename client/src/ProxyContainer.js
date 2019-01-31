@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import NoMatch from "./pages/NoMatch";
-import Nav from "./components/Nav";
 import Landing from "./pages/Landing/Landing.js";
 import Home from "./pages/Home/Home.js";
 import API from "./utils/API"
@@ -11,7 +10,7 @@ class ProxyContainer extends Component {
   state = {
     isLoggedIn: false,
     username: "",
-    email: ""
+    // email: ""
   }
 
   componentWillMount() {
@@ -21,7 +20,7 @@ class ProxyContainer extends Component {
         this.setState({
           isLoggedIn: user.data.loggedIn,
           username: user.data.username,
-          email: user.data.email
+          // email: user.data.email
         });
       })
   }
@@ -34,7 +33,6 @@ class ProxyContainer extends Component {
       return (
         <Router>
           <div>
-            <Nav />
             <Switch>
               <Route 
                 exact path="/"
@@ -60,7 +58,6 @@ class ProxyContainer extends Component {
       return (
         <Router>
           <div>
-            {/* <Nav /> */}
             <Switch>
               <Route 
                 path="/"

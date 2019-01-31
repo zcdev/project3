@@ -1,10 +1,6 @@
 import React, { Component } from "react";
-import API from "../../utils/API"
-import { Link, Redirect } from "react-router-dom";
 import "./signup.css"
 import { Input, TextArea, FormBtn } from "../Form";
-import Card from "../Card/Card.js"
-import OAuthButton from "../OAuthButton/OAuthButton.js"
 
 class SignUp extends Component {
   state = {
