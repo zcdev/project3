@@ -1,0 +1,25 @@
+#setup-sidebar {
+   background-color: white;
+   position: fixed;
+   z-index: 2;
+   left: 0;
+   top: 0;
+   bottom: 0;
+   overflow-y: scroll;
+   width: 20vw;
+   font-weight: 300;
+   height: 100vh
+}
+
+#setup-main {
+   background-color: red;
+   padding: 50px;
+   position: fixed;
+   z-index: 2;
+   right: 0;
+   top: 0;
+   bottom: 0;
+   overflow-y: scroll;
+   width: 80vw;
+   height: 100vh;
+}

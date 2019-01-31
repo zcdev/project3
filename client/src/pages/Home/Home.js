@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Navbar from "../../components/Navbar";
+import Campaign from "../Campaign";
+import Encyclopedia from "../Encyclopedia";
+import Setup from "../Setup";
 import API from "../../utils/API"
 import "./home.css"
-import Navbar from "../../components/Navbar";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 class Home extends Component {
@@ -47,60 +50,25 @@ class Home extends Component {
   }
 
   render() {
-
-    const routes = [
-      {
-        path: "/",
-        exact: true,
-        sidebar: () => <div>Home!</div>,
-        main: () => <h2>Home!</h2>
-      },
-      {
-        path: "/campaign",
-        sidebar: () => <div>Campaign sidebar!</div>,
-        main: () => <h2>Campaign home!</h2>
-      },
-      {
-        path: "/encyclopedia",
-        sidebar: () => <div>Encyclopedia sidebar!</div>,
-        main: () => <h2>Encyclopedia home!</h2>
-      },
-      {
-        path: "/setup",
-        sidebar: () => <div>Setup sidebar!</div>,
-        main: () => <h2>Setup home!</h2>
-      }
-    ];
-
     return (
       <Router>
       <div>
-          <div id="sidebar">
-            <div>
-              <h5>Hello, {this.state.userName}</h5>
-              <a href="/"><button onClick={this.logout}>Sign Out</button></a>
-            </div>
-            <Navbar />
-            {routes.map((route, index) => (
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                component={route.sidebar}
-              />
-            ))}
+          <Navbar />
+          <div>
+            <Route
+              path="/campaign"
+              component={Campaign}
+            />
+            <Route
+              path="/encyclopedia"
+              component={Encyclopedia}
+            />
+            <Route
+              path="/setup"
+              component={Setup}
+            />
           </div>
-          <div id="display">
-            {routes.map((route, index) => (
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                component={route.main}
-              />
-            ))}
-          </div>
-      </div>
+        </div>
       </Router>
     )
   }
