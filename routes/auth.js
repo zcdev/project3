@@ -24,6 +24,7 @@ router.get("/user", (req, res)=>{
     console.log("25", user)
      res.json(user);
    })
+  //  .catch(err => console.log(err));
 
   } else {
   const user = {
@@ -87,10 +88,9 @@ router.post("/signin", (req, res, next) => {
       }
 
       res.cookie("userName", user[0].userName);
-      res.cookie("email", user[0].email)
+      // res.cookie("email", user[0].email)
       res.cookie("user_id", user[0]._id);
-      var userI = {username: user[0].userName,
-      email: user[0].email}
+      var userI = {username: user[0].userName /*, email: user[0].email*/}
       //redirect to path containing user id2
       return res.json(userI)
     })
@@ -105,7 +105,7 @@ router.get("/logout", function (req, res) {
     }
     res.clearCookie("user_id");
     res.clearCookie("userName");
-    res.clearCookie("email");
+    // res.clearCookie("email");
     res.clearCookie("connect.sid");
     res.redirect("/");
     console.log("Hello from the other side.")

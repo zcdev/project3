@@ -3,35 +3,41 @@ import API from "../../utils/API"
 import { Link } from "react-router-dom";
 import "./home.css"
 
-
 class Home extends Component {
-  //use constructor so that you can give props
-state = {
-      isLoggedIn: false,
-      userName: "",
-      email: ""
-    }
-  
-    componentWillMount(){
-      API.getUser()
-      .then(user=>{
-        console.log(user)
+
+  state = {
+    isLoggedIn: false,
+    userName: "",
+    // email: ""
+  }
+
+  componentDidMount() {
+    API.getUser()
+      .then(user => {
+        this.setState({
+          userName: user.data.userName
+        })
       })
 
-    const home = this
-    
-      async function setUserInfo() {
-        const cookie = document.cookie.split(";");
-        console.log("cookie", cookie)
-        let userName = cookie[0];
-        userName = userName.split("=");
-        userName = userName[1];
-        console.log("userName:", userName);
-        home.setState({
-          userName: userName
-        })
-      }
-      setUserInfo()
+
+    // I dont think we need this
+    // ============================================
+    // const home = this
+
+    // async function setUserInfo() {
+    //   const cookie = document.cookie.split(";");
+    //   console.log("cookie", cookie)
+    //   let userName = cookie[0];
+    //   userName = userName.split("=");
+    //   userName = userName[1];
+    //   console.log("userName:", userName);
+    //   home.setState({
+    //     userName: userName
+    //   })
+    // }
+    // setUserInfo()
+    // ============================================
+
   }
 
   logout = () => {
