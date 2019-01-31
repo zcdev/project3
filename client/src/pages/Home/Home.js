@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import API from "../../utils/API"
-import { Link } from "react-router-dom";
 import "./home.css"
+import Navbar from "../../components/Navbar";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 
 class Home extends Component {
 
@@ -45,18 +47,61 @@ class Home extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <div id="sidebar">
-          <div>
-            <h5>Hello, {this.state.userName}</h5>
-            <a href="/"><button onClick={this.logout}>Sign Out</button></a>
-          </div>
-        </div>
-        <div id="display">
 
-        </div>
+    const routes = [
+      {
+        path: "/",
+        exact: true,
+        sidebar: () => <div>Home!</div>,
+        main: () => <h2>Home!</h2>
+      },
+      {
+        path: "/campaign",
+        sidebar: () => <div>Campaign sidebar!</div>,
+        main: () => <h2>Campaign home!</h2>
+      },
+      {
+        path: "/encyclopedia",
+        sidebar: () => <div>Encyclopedia sidebar!</div>,
+        main: () => <h2>Encyclopedia home!</h2>
+      },
+      {
+        path: "/setup",
+        sidebar: () => <div>Setup sidebar!</div>,
+        main: () => <h2>Setup home!</h2>
+      }
+    ];
+
+    return (
+      <Router>
+      <div>
+          <div id="sidebar">
+            <div>
+              <h5>Hello, {this.state.userName}</h5>
+              <a href="/"><button onClick={this.logout}>Sign Out</button></a>
+            </div>
+            <Navbar />
+            {routes.map((route, index) => (
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                component={route.sidebar}
+              />
+            ))}
+          </div>
+          <div id="display">
+            {routes.map((route, index) => (
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                component={route.main}
+              />
+            ))}
+          </div>
       </div>
+      </Router>
     )
   }
 }
