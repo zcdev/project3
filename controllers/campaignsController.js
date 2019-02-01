@@ -38,9 +38,8 @@ module.exports = {
   getAllEncounters: function (req, res) {
     db.Campaign
       .findOne({ _id: req.params.id })
-      .then(dbCampaign => {
-        res.json(dbCampaign.encounters)
-      })
+      .populate("encounters")
+      .then(dbCampaign => res.json(dbCampaign.encounters))
       .catch(err => res.status(422).json(err));
   },
   addEncounter: function (req, res) {

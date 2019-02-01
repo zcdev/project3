@@ -17,22 +17,22 @@ class Campaign extends Component {
       //    username: "jacob"
       // }
 
-      const newEncounter = {
-         name: "mySecondEncounter",
-         monsters: [{name: "monster 4"}, {name: "monster 5"}, {name: "monster 6"}]
-      }
+      // const newEncounter = {
+      //    name: "mySecondEncounter",
+      //    monsters: [{name: "monster 4"}, {name: "monster 5"}, {name: "monster 6"}]
+      // }
 
       // API.saveCampaign(newCamp)
       //    .then(res => console.log("YOUR RESPONSE: ", res))
       //    .catch(err => console.log(err));
 
-      API.addEncounterToCampaign("5c53af4354d1412aac87a2b0" , newEncounter)
-         .then(res => console.log("YOUR RESPONSE: ", res))
-         .catch(err => console.log(err));
-
-      // API.getEncountersFromCampaign("5c53af4354d1412aac87a2b0")
-      //    .then(res => console.log("YOUR ENCOUNTERS: ", res))
+      // API.addEncounterToCampaign("5c53af4354d1412aac87a2b0" , newEncounter)
+      //    .then(res => console.log("YOUR RESPONSE: ", res))
       //    .catch(err => console.log(err));
+
+      API.getEncountersFromCampaign("5c53af4354d1412aac87a2b0")
+         .then(res => console.log("YOUR ENCOUNTERS: ", res))
+         .catch(err => console.log(err));
    }
 
    render() {
