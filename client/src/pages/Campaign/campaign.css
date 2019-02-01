@@ -22,3 +22,12 @@
    overflow-y: scroll;
    width: 80vw;
 }
+
+#campaign-nav {
+   display: flex;
+   justify-content: space-evenly;
+}
+
+.campaign-nav-btn {
+   display: inline-block;
+}

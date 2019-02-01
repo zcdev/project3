@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import monsters from "../../dnd-data/monsters.json";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import CampaignMonsters from "../../components/CampaignMonsters";
+import CampaignInfoPanel from "../../components/CampaignInfoPanel";
 import API from '../../utils/API.js';
 import "./campaign.css";
 
 class Campaign extends Component {
    state = {
-
+      infoPanelStatus: "",
+      monsterIndex: ""
    }
 
    componentDidMount() {
@@ -35,14 +38,52 @@ class Campaign extends Component {
          .catch(err => console.log(err));
    }
 
+   getInfoPanelStatus = (status, monsterIndex) => {
+      this.setState({
+         infoPanelStatus: status,
+         monsterIndex: monsterIndex
+      })
+   }
+
    render() {
       return (
          <div id="campaign">
             <div id="campaign-sidebar">
-               Campaign Sidebar!
+               <Router>
+                  <div>
+                     <div id="campaign-nav">
+                        <div className="campaign-nav-btn">
+                           <Link to="/monsters">Monsters</Link>
+                        </div>
+                        <div className="campaign-nav-btn">
+                           <Link to="/encounters">Encounters</Link>
+                        </div>
+                        <div className="campaign-nav-btn">
+                           <Link to="/characters">Characters</Link>
+                        </div>
+                     </div>
+                     <div>
+                        <Route
+                           path="/monsters"
+                           component={() => <CampaignMonsters getInfoPanelStatus={this.getInfoPanelStatus}/>}
+                        />
+                        {/* <Route
+                           path="/encounters"
+                           component={CampaignEncounters}
+                        />
+                        <Route
+                           path="/characters"
+                           component={CampaignCharacters}
+                        /> */}
+                     </div>
+                  </div>
+               </Router>
             </div>
             <div id="campaign-main">
-               Campaign Main!
+               <CampaignInfoPanel
+                  infoPanelStatus={this.state.infoPanelStatus}
+                  monsterIndex={this.state.monsterIndex}
+               />
             </div>
          </div>
       );
