@@ -6,10 +6,12 @@ const campaignSchema = new Schema({
       type: String,
       required: true
    },
-   encounters: {
-      type: Array,
-      default: []
-   },
+   encounters: [
+      {
+         type: Schema.Types.ObjectId,
+         ref: "Encounter"
+      }
+   ],
    players: {
       type: Array,
       default: []
