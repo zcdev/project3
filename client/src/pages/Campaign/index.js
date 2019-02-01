@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import CampaignMonsters from "../../components/CampaignMonsters";
+import CampaignEncounters from "../../components/CampaignEncounters";
 import CampaignInfoPanel from "../../components/CampaignInfoPanel";
 import API from '../../utils/API.js';
 import "./campaign.css";
@@ -8,7 +9,8 @@ import "./campaign.css";
 class Campaign extends Component {
    state = {
       infoPanelStatus: "",
-      monsterIndex: ""
+      monsterIndex: "",
+      encounter: []
    }
 
    componentDidMount() {
@@ -33,15 +35,25 @@ class Campaign extends Component {
       //    .then(res => console.log("YOUR RESPONSE: ", res))
       //    .catch(err => console.log(err));
 
-      API.getEncountersFromCampaign("5c53af4354d1412aac87a2b0")
-         .then(res => console.log("YOUR ENCOUNTERS: ", res))
-         .catch(err => console.log(err));
+      // API.getEncountersFromCampaign("5c53af4354d1412aac87a2b0")
+      //    .then(res => console.log("YOUR ENCOUNTERS: ", res))
+      //    .catch(err => console.log(err));
    }
 
-   getInfoPanelStatus = (status, monsterIndex) => {
+   getMonsterInfo = (status, monsterIndex) => {
       this.setState({
          infoPanelStatus: status,
          monsterIndex: monsterIndex
+      })
+   }
+
+   getEncounterInfo = (status, encounter) => {
+
+      console.log("ENCOUNTER: ", encounter.monsters);
+
+      this.setState({
+         infoPanelStatus: status,
+         encounter: encounter.monsters
       })
    }
 
@@ -65,13 +77,13 @@ class Campaign extends Component {
                      <div>
                         <Route
                            path="/monsters"
-                           component={() => <CampaignMonsters getInfoPanelStatus={this.getInfoPanelStatus}/>}
-                        />
-                        {/* <Route
-                           path="/encounters"
-                           component={CampaignEncounters}
+                           component={() => <CampaignMonsters getMonsterInfo={this.getMonsterInfo}/>}
                         />
                         <Route
+                           path="/encounters"
+                           component={() => <CampaignEncounters getEncounterInfo={this.getEncounterInfo}/>}
+                        />
+                        {/* <Route
                            path="/characters"
                            component={CampaignCharacters}
                         /> */}
@@ -83,6 +95,7 @@ class Campaign extends Component {
                <CampaignInfoPanel
                   infoPanelStatus={this.state.infoPanelStatus}
                   monsterIndex={this.state.monsterIndex}
+                  monsters={this.state.encounter}
                />
             </div>
          </div>

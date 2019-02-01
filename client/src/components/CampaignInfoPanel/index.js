@@ -6,12 +6,29 @@ class CampaignInfoPanel extends Component {
    }
 
    render() {
-      return (
-         <div>
-            {this.props.infoPanelStatus}
-            {this.props.monsterIndex}
-         </div>
-      );
+
+      if (this.props.infoPanelStatus === "monster") {
+         return (
+            <div>
+               {this.props.monsterIndex}
+            </div>
+         );
+      } else if (this.props.infoPanelStatus === "encounter") {
+         return (
+            <div>
+               {this.props.monsters.map(monster => (
+                  <p>{monster.name}</p>
+               ))}
+            </div>
+         );
+      } 
+      else {
+         return (
+            <div>
+               nothing to display yet
+            </div>
+         );
+      }
    }
 }
 

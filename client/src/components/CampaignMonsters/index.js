@@ -49,7 +49,7 @@ class CampaignMonsters extends Component {
                <MonsterListItem
                   name={monster.name}
                   index={monster.index}
-                  getInfoPanelStatus={this.props.getInfoPanelStatus}
+                  getMonsterInfo={this.props.getMonsterInfo}
                   key={i}
                />
             ))}
