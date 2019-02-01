@@ -4,20 +4,23 @@ export default {
 // Campaign API methods
 // ===============================================
 
-  // Gets the campaign with the given id
-  getCampaignsByUser: function(username) {
-    return axios.get("/api/campaigns/" + username);
-  },
-  // Deletes the campaign with the given id
-  deleteCampaign: function(id) {
-    return axios.delete("/api/campaigns/" + id);
-  },
+  // // Gets the campaign with the given id
+  // getCampaignsByUser: function(username) {
+  //   return axios.get("/api/campaigns/" + username);
+  // },
+  // // Deletes the campaign with the given id
+  // deleteCampaign: function(id) {
+  //   return axios.delete("/api/campaigns/" + id);
+  // },
   // Saves a campaign to the database
   saveCampaign: function(campaignData) {
     return axios.post("/api/campaigns", campaignData);
   },
   addEncounterToCampaign: function(id, encounterData) {
     return axios.put("/api/campaigns/" + id + "/encounters", encounterData);
+  },
+  getEncountersFromCampaign: function(id) {
+    return axios.get("/api/campaigns/" + id + "/encounters");
   },
 
 // Authentication methods

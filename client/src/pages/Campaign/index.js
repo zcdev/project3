@@ -28,6 +28,10 @@ class Campaign extends Component {
       // API.addEncounterToCampaign("5c53a287eb45a42555eff70b" , newEncounter)
       //    .then(res => console.log("YOUR RESPONSE: ", res))
       //    .catch(err => console.log(err));
+
+      // API.getEncountersFromCampaign("5c53a287eb45a42555eff70b")
+      //    .then(res => console.log("YOUR ENCOUNTERS: ", res))
+      //    .catch(err => console.log(err));
    }
 
    render() {
