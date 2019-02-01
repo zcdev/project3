@@ -14,6 +14,7 @@ class Campaign extends Component {
    }
 
    componentDidMount() {
+
       // for (var i = 0; i < monsters.length; i++) {
       //    console.log(monsters[i].name);
       // }
@@ -81,7 +82,7 @@ class Campaign extends Component {
                         />
                         <Route
                            path="/encounters"
-                           component={() => <CampaignEncounters getEncounterInfo={this.getEncounterInfo}/>}
+                           component={() => <CampaignEncounters getEncounterInfo={this.getEncounterInfo} campaignId={this.props.campaignId}/>}
                         />
                         {/* <Route
                            path="/characters"

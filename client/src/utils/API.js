@@ -4,10 +4,10 @@ export default {
 // Campaign API methods
 // ===============================================
 
-  // // Gets the campaign with the given id
-  // getCampaignsByUser: function(username) {
-  //   return axios.get("/api/campaigns/" + username);
-  // },
+  // // Gets the campaign with the given username
+  getCampaignByUser: function(username) {
+    return axios.get("/api/campaigns/user/" + username);
+  },
   // // Deletes the campaign with the given id
   // deleteCampaign: function(id) {
   //   return axios.delete("/api/campaigns/" + id);

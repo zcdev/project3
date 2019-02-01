@@ -4,18 +4,20 @@ import EncounterListItem from "./EncounterListItem";
 
 class CampaignEncounters extends Component {
    state = {
-      encounters: []
+      encounters: [],
    }
 
    componentDidMount() {
-      API.getEncountersFromCampaign("5c53af4354d1412aac87a2b0")
-         .then(res => {
-            // console.log(res);
-            this.setState({
-               encounters: res.data
-            })
+
+      API.getEncountersFromCampaign(this.props.campaignId)
+      .then(res => {
+         // console.log(res);
+         this.setState({
+            encounters: res.data
          })
-         .catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
+
    }
 
    render() {

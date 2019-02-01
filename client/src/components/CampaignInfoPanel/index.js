@@ -16,8 +16,8 @@ class CampaignInfoPanel extends Component {
       } else if (this.props.infoPanelStatus === "encounter") {
          return (
             <div>
-               {this.props.monsters.map(monster => (
-                  <p>{monster.name}</p>
+               {this.props.monsters.map( (monster, i) => (
+                  <p key={i}>{monster.name}</p>
                ))}
             </div>
          );

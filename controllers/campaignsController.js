@@ -11,8 +11,8 @@ module.exports = {
   },
   findByUsername: function (req, res) {
     db.Campaign
-      .find({ username: req.params.userName })
-      .then(dbModel => res.json(dbModel))
+      .findOne({ username: req.params.userName })
+      .then(dbCampaign => res.json(dbCampaign))
       .catch(err => res.status(422).json(err));
   },
   create: function (req, res) {

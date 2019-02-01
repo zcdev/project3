@@ -14,8 +14,8 @@ router.route("/:id/encounters")
 // Matches with "/api/campaigns/user/:userName"
 router.route("/user/:userName")
   .get(campaignsController.findByUsername)
-  .put(campaignsController.update)
-  .delete(campaignsController.remove);
+  // .put(campaignsController.update)
+  // .delete(campaignsController.remove);
 
 
 
