@@ -28,9 +28,22 @@ class Home extends Component {
       .then(() => {
         API.getCampaignByUser(this.state.userName)
           .then(dbCampaign => {
-            this.setState({
-              campaignId: dbCampaign.data._id
-            })
+            if (dbCampaign.data === null) {
+              const newCampaign = {
+                username: this.state.userName
+              }
+              API.saveCampaign(newCampaign)
+                .then(dbCampaign => {
+                  console.log("New campaign: ", dbCampaign)
+                  this.setState({
+                    campaignId: dbCampaign.data._id
+                  })
+                })
+            } else {
+              this.setState({
+                campaignId: dbCampaign.data._id
+              })
+            }
           })
           .catch(err => console.log(err));
       });

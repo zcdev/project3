@@ -61,7 +61,7 @@ router.post("/signup", (req, res, next) => {
       res.cookie("userName", req.user.userName);
       // res.cookie("email", req.body.email)
       res.cookie("user_id", req.user.id);
-      console.log("confrim")
+      console.log("confirm")
       return res.redirect("/");
 
 
