@@ -44,9 +44,12 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   addEncounter: function (req, res) {
-    db.Campaign
-      .findOneAndUpdate({ _id: req.params.id }, { $push: { encounters: req.body.encounter } }, { new: true })
-      .then(dbEncounter => res.json(dbEncounter))
+    db.Encounter
+      .create(req.body)
+      .then(dbEncounter => {
+        return db.Campaign.findOneAndUpdate({ _id: req.params.id }, { $push: { encounters: dbEncounter._id } }, { new: true });
+      })
       .catch(err => res.status(422).json(err));
   }
 };
+

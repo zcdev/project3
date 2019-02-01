@@ -17,7 +17,7 @@ export default {
     return axios.post("/api/campaigns", campaignData);
   },
   addEncounterToCampaign: function(id, encounterData) {
-    return axios.put("/api/campaigns/" + id + "/encounters", encounterData);
+    return axios.post("/api/campaigns/" + id + "/encounters", encounterData);
   },
   getEncountersFromCampaign: function(id) {
     return axios.get("/api/campaigns/" + id + "/encounters");

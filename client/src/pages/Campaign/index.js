@@ -18,18 +18,19 @@ class Campaign extends Component {
       // }
 
       // const newEncounter = {
-      //    encounter: monsters[1]
+      //    name: "mySecondEncounter",
+      //    monsters: [{name: "monster 4"}, {name: "monster 5"}, {name: "monster 6"}]
       // }
 
       // API.saveCampaign(newCamp)
       //    .then(res => console.log("YOUR RESPONSE: ", res))
       //    .catch(err => console.log(err));
 
-      // API.addEncounterToCampaign("5c53a287eb45a42555eff70b" , newEncounter)
+      // API.addEncounterToCampaign("5c53a9ca9183a82880bbc5de" , newEncounter)
       //    .then(res => console.log("YOUR RESPONSE: ", res))
       //    .catch(err => console.log(err));
 
-      // API.getEncountersFromCampaign("5c53a287eb45a42555eff70b")
+      // API.getEncountersFromCampaign("5c53a9ca9183a82880bbc5de")
       //    .then(res => console.log("YOUR ENCOUNTERS: ", res))
       //    .catch(err => console.log(err));
    }

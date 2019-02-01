@@ -9,7 +9,7 @@ router.route("/")
 // Matches with "api/campaigns/:id/encounters"
 router.route("/:id/encounters")
   .get(campaignsController.getAllEncounters)
-  .put(campaignsController.addEncounter);
+  .post(campaignsController.addEncounter);
 
 // Matches with "/api/campaigns/user/:userName"
 router.route("/user/:userName")
