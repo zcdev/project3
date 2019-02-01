@@ -12,4 +12,7 @@ router.route("/:userName")
   .put(campaignsController.update)
   .delete(campaignsController.remove);
 
+router.route("/:id/encounters")
+  .put(campaignsController.addEncounter);
+
 module.exports = router;

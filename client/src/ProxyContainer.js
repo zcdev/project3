@@ -3,7 +3,7 @@ import NoMatch from "./pages/NoMatch";
 import Landing from "./pages/Landing/Landing.js";
 import Home from "./pages/Home/Home.js";
 import API from "./utils/API"
-import { BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
 class ProxyContainer extends Component {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./signin.css";
-import { Input, TextArea, FormBtn } from "../Form";
+import { Input, FormBtn } from "../Form";
 
 class SignIn extends Component {
 

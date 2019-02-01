@@ -16,6 +16,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
+    console.log("Controller req.body: ", req.body);
     db.Campaign
       .create(req.body)
       .then(dbModel => res.json(dbModel))
@@ -32,6 +33,12 @@ module.exports = {
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  addEncounter: function(req, res) {
+    db.Campaign
+      .findOneAndUpdate({ _id: req.params.id }, { $push: { encounters: req.body.encounter } }, { new: true })
+      .then(dbEncounter => res.json(dbEncounter))
       .catch(err => res.status(422).json(err));
   }
 };

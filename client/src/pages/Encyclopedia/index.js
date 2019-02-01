@@ -9,10 +9,10 @@ class Encyclopedia extends Component {
    render() {
       return (
          <div id="encyclopedia">
-            <div id="sidebar">
+            <div id="encyclopedia-sidebar">
                Encyclopedia Sidebar!
             </div>
-            <div id="main">
+            <div id="encyclopedia-main">
                Encyclopedia Main!
             </div>
          </div>

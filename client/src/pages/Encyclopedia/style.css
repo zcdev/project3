@@ -1,4 +1,4 @@
-#sidebar {
+#encyclopedia-sidebar {
    background-color: white;
    position: fixed;
    z-index: 2;
@@ -8,9 +8,10 @@
    overflow-y: scroll;
    width: 20vw;
    font-weight: 300;
+   padding-top: 100px;
 }
 
-#main {
+#encyclopedia-main {
    background-color: rgb(235, 235, 235);
    padding: 50px;
    position: fixed;
