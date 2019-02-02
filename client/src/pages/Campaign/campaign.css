@@ -8,6 +8,7 @@
    overflow-y: scroll;
    width: 20vw;
    font-weight: 300;
+   padding-top: 100px;
 }
 
 #campaign-main {
@@ -20,4 +21,13 @@
    bottom: 0;
    overflow-y: scroll;
    width: 80vw;
+}
+
+#campaign-nav {
+   display: flex;
+   justify-content: space-evenly;
+}
+
+.campaign-nav-btn {
+   display: inline-block;
 }

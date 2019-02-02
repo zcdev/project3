@@ -13,16 +13,42 @@ class Home extends Component {
   state = {
     isLoggedIn: false,
     userName: "",
+    campaignId: ""
     // email: ""
   }
 
   componentDidMount() {
     API.getUser()
       .then(user => {
+        console.log(user)
         this.setState({
           userName: user.data.userName
         })
       })
+      .then(() => {
+        API.getCampaignByUser(this.state.userName)
+          .then(dbCampaign => {
+            if (dbCampaign.data === null) {
+              const newCampaign = {
+                username: this.state.userName
+              }
+              API.saveCampaign(newCampaign)
+                .then(dbCampaign => {
+                  console.log("New campaign: ", dbCampaign)
+                  this.setState({
+                    campaignId: dbCampaign.data._id
+                  })
+                })
+            } else {
+              this.setState({
+                campaignId: dbCampaign.data._id
+              })
+            }
+          })
+          .catch(err => console.log(err));
+      });
+
+
 
     // I dont think we need this
     // ============================================
@@ -52,12 +78,12 @@ class Home extends Component {
   render() {
     return (
       <Router>
-      <div>
+        <div>
           <Navbar />
           <div>
             <Route
               path="/campaign"
-              component={Campaign}
+              component={() => <Campaign campaignId={this.state.campaignId}/>}
             />
             <Route
               path="/encyclopedia"
