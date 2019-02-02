@@ -1,13 +1,10 @@
-# Passport and MERN Boilerplate
+# Dandy Encounter
 
-Setting up your project can be one of the most tedious and time consuming aspects of programming. Errors can pop up left and right and you can often feel like you aren't writing any sort of creative code.
+You're a Dungeon Master (DM), and you're guiding a band of misfits through a campaign, when suddenly they're attacked! It's time for an encounter, but it's going to take precious time to look up monster statistics, roll for initiative and determine turn order. 
 
-Using this MERN boilerplate skips that whole process. If you don't know, MERN stand for Mongo, Express, React and Node. If you've made an app with this stack before, you'll know that this process can be trickier than it seems... 
+...Once that's done, you still have to manually tabulate each monster's health, let alone consult each monster's special abilities and information as needed. Playing  a game is about the playing, not accounting!
 
-On top of being a MERN stack boilerplate, this app also include Passport.js authentication. Almost every app has unique users. Creating an app that securely authenticates users can be somewhat of a challenge. We've got you covered their. This boilerplate creates new users, and then maintains their session until they manually log out.
-
-Enjoy!
-
+Dandy will alleviate all your woes - You can create encounters on the fly, allowing you to instantly access every monster in D&D and add them to an encounter. Control hit points and initiative from one simle interface, and focus on your game, not your spreadsheets.
 
 ### Prerequisites
 
@@ -17,11 +14,16 @@ Enjoy!
 
 ## Getting Started
 
-Set up is simple. Clone the repository down, navigate to it, then run `yarn` from the root. 
+Set up is simple. Clone the repository down, navigate to it, then run the following commands:
 
-Once that installation's complete, CD to `/client` and run `yarn` again.
+~~~
+~/dandy$ yarn
+~/dandy$ cd client
+~/dandy$ yarn
+~/dandy$ cd ..
+~/dandy$ yarn start
+~~~
 
-CD back to the root of the directory and then run `yarn start`.
 
 ## Built With
 
@@ -35,14 +37,16 @@ CD back to the root of the directory and then run `yarn start`.
 
 ## Authors
 
-* **Sasha Patsel** 
+* **Jacob Moore** 
+* **Zoe Chang** 
+* **Fernando Mendoza** 
+* **Lyle Farrell** 
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
+_Standing on the shoulders of giants, we were able to build Dandy Encounter._
 
-* Trilogy Ed
-* [Joyce Lam](https://github.com/joyce-lam)
-* [Amber Burroughs](https://github.com/AmberLBurroughs)
+*  [Sasha Patsel](https://github.com/SashaPatsel)  We would not have gotten this project started without the help of Sasha's boilerplate MERN passport stack.
