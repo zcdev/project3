@@ -23,3 +23,13 @@
    width: 80vw;
    height: 100vh;
 }
+
+#cta {
+   width: 50%;
+   float: left;
+}
+
+#render {
+   width: 50%;
+   float: left;
+}

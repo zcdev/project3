@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import "./setup.css";
+import SetupEncounters from "../../components/SetupEncounters"
 
 class Setup extends Component {
    state = {
@@ -17,6 +18,7 @@ class Setup extends Component {
             <div id="setup-main">
                Setup Main!
                {/* Has two routes for SetupEncounters component*/}
+               <SetupEncounters />
             </div>
          </div>
       );
