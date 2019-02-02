@@ -1,37 +1,47 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Navbar from "../../components/Navbar";
+import Campaign from "../Campaign";
+import Encyclopedia from "../Encyclopedia";
+import Setup from "../Setup";
 import API from "../../utils/API"
-import { Link } from "react-router-dom";
 import "./home.css"
 
 
 class Home extends Component {
-  //use constructor so that you can give props
-state = {
-      isLoggedIn: false,
-      userName: "",
-      email: ""
-    }
-  
-    componentWillMount(){
-      API.getUser()
-      .then(user=>{
-        console.log(user)
+
+  state = {
+    isLoggedIn: false,
+    userName: "",
+    // email: ""
+  }
+
+  componentDidMount() {
+    API.getUser()
+      .then(user => {
+        this.setState({
+          userName: user.data.userName
+        })
       })
 
-    const home = this
-    
-      async function setUserInfo() {
-        const cookie = document.cookie.split(";");
-        console.log("cookie", cookie)
-        let userName = cookie[0];
-        userName = userName.split("=");
-        userName = userName[1];
-        console.log("userName:", userName);
-        home.setState({
-          userName: userName
-        })
-      }
-      setUserInfo()
+    // I dont think we need this
+    // ============================================
+    // const home = this
+
+    // async function setUserInfo() {
+    //   const cookie = document.cookie.split(";");
+    //   console.log("cookie", cookie)
+    //   let userName = cookie[0];
+    //   userName = userName.split("=");
+    //   userName = userName[1];
+    //   console.log("userName:", userName);
+    //   home.setState({
+    //     userName: userName
+    //   })
+    // }
+    // setUserInfo()
+    // ============================================
+
   }
 
   logout = () => {
@@ -41,10 +51,25 @@ state = {
 
   render() {
     return (
+      <Router>
       <div>
-        <h1>Hello, {this.state.userName}</h1>
-        <a href="/"> <button onClick={this.logout}>Sign Out</button></a>
-      </div>
+          <Navbar />
+          <div>
+            <Route
+              path="/campaign"
+              component={Campaign}
+            />
+            <Route
+              path="/encyclopedia"
+              component={Encyclopedia}
+            />
+            <Route
+              path="/setup"
+              component={Setup}
+            />
+          </div>
+        </div>
+      </Router>
     )
   }
 }

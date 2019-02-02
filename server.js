@@ -1,3 +1,6 @@
+// Dependencies
+// ==================================================
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -10,41 +13,46 @@ const app = express();
 const passportSetup = require("./config/passport");
 const PORT = process.env.PORT || 3002;
 
+
+// Middleware
+// ==================================================
+
 // // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// Serve up static assets
 
+// Serve up static assets
 // app.use(express.static("client/build"));
 
-
+// Static assets for production
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// Add routes, both API and views
-
+// Cookie parser
 app.use(cookieParser());
 app.use(flash())
-// app.use(expressValidator(middlewareOptions));
+// app.use(expressValidator(middlewareOptions)); - is this needed?
 
+// Express session
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false,
-cookie: {
-  expires: 2592000000,
-  httpOnly: false
-}
+  cookie: {
+    expires: 2592000000,
+    httpOnly: false
+  }
 }));
 
+// Connect to Mongoose
 mongoose.Promise = Promise;
-//change this to your own mongo collection
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/mern");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dm-screen");
 
 // Init passport authentication 
 app.use(passport.initialize());
-// persistent login sessions. Session expires after 6 months, or when deleted by user 
+
+// Persistent login sessions. Session expires after 6 months, or when deleted by user.
 app.use(passport.session());
 
 // enable CORS so that browsers don't block requests.
@@ -53,15 +61,26 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE'); 
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
   next();
 });
 
+
+// Routes
+// ==================================================
+
+// Authentication routes
 const authRoutes = require("./routes/auth");
 app.use("/auth", authRoutes);
 
+// API routes
+const apiRoutes = require("./routes");
+app.use(apiRoutes);
+
 
 // Start the API server
+// ==================================================
+
 app.listen(PORT, function () {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });

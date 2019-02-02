@@ -3,12 +3,11 @@ import "./signin.css";
 import { Input, TextArea, FormBtn } from "../Form";
 
 class SignIn extends Component {
-  // Setting the component's initial state
-state = {
-      userName: "",
-      password: ""
-    };
-  
+
+  state = {
+    userName: "",
+    password: ""
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -18,7 +17,6 @@ state = {
   };
 
   handleFormSubmit = event => {
-  
     event.preventDefault();
 
     fetch("/auth/signin", {
@@ -32,7 +30,7 @@ state = {
       headers: new Headers({
         "Content-Type": "application/json"
       })
-    }).then(response  => {
+    }).then(response => {
       console.log(response)
       //Will redirect to root route no matter what. Successful signin will create cookies. If cookies are detected, root route will redirect to Home, otherwise, to Landing
       window.location.href = "/";
@@ -48,29 +46,32 @@ state = {
 
   render() {
     return (
-      <div className="mern-signin">
+      <div>
         <form>
-          <div className="float-left right space">
-          <Input
-            value={this.state.userName}
-            name="userName"
-            onChange={this.handleInputChange}
-            type="text"
-            placeholder="Username"
-          />
+          <div>
+            <Input
+              className="form-control"
+              value={this.state.userName}
+              name="userName"
+              onChange={this.handleInputChange}
+              type="text"
+              placeholder="Username"
+            />
           </div>
-          <div className="float-left right space">
-          <Input
-            value={this.state.password}
-            name="password"
-            onChange={this.handleInputChange}
-            type="password"
-            placeholder="Password"
-          />
+          <div>
+            <Input
+              className="form-control"
+              value={this.state.password}
+              name="password"
+              onChange={this.handleInputChange}
+              type="password"
+              placeholder="Password"
+            />
           </div>
-          <div className="float-left">
-          <FormBtn onClick={this.handleFormSubmit}> Sign In
-          </FormBtn>
+          <div>
+            <FormBtn onClick={this.handleFormSubmit}>
+              Sign In
+            </FormBtn>
           </div>
         </form>
       </div>
