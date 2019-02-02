@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import EncounterItem from "../EncounterItem";
+import EncounterNew from "../EncounterNew";
 import encounters from "../../EncountersTempData";
 
 class SetupEncounters extends Component {
@@ -11,6 +12,12 @@ class SetupEncounters extends Component {
   handleDisplay = id => {
     this.setState({
       displayItem: encounters.find(encounter => encounter.id === id)
+    });
+  };
+
+  handleNew = () => {
+    this.setState({
+      newItem: true
     });
   };
 
@@ -27,6 +34,7 @@ class SetupEncounters extends Component {
               handleDisplay={this.handleDisplay}
             />
           ))}
+          <button onClick={this.handleNew}>New</button>
         </div>
         <div id="render">
           {this.state.displayItem && (
@@ -36,6 +44,11 @@ class SetupEncounters extends Component {
               name={this.state.displayItem.name}
               image={this.state.displayItem.image}
             />
+          )}
+          {this.state.newItem && (
+            <div>
+              <EncounterNew />
+            </div>
           )}
         </div>
       </div>
