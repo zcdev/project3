@@ -4,7 +4,7 @@ function EncounterListItem(props) {
    return (
       <div
          id={props.encounter._id}
-         // onClick={() => props.getEncounterInfo("encounter", props.encounter)}
+         onClick={() => props.getEncounterInfo("encounter", props.encounter)}
          className={props.id % 2 === 0 ? "encounter-list-item light" : "encounter-list-item dark"}
       >
          <div>

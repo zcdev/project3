@@ -5,7 +5,7 @@ function CombatantItem(props) {
    if (props.combatant.combatantType === "monster") {
       return (
          <div>
-            monster!
+            {props.combatant.name}
          </div>
       );
    }

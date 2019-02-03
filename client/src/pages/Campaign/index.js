@@ -39,8 +39,9 @@ class Campaign extends Component {
       //    .catch(err => console.log(err));
    }
 
-   addMonsterToCombatants = (type, monsterIndex) => {
+   addMonsterToCombatants = (monsterIndex) => {
       const alteredEncounter = this.state.encounter;
+      
       let newMonster = monsters[monsterIndex - 1];
       newMonster.combatantType = "monster";
       
@@ -57,9 +58,15 @@ class Campaign extends Component {
 
       console.log("ENCOUNTER: ", encounter.monsters);
 
+      const alteredEncounter = this.state.encounter;
+      
+      encounter.monsters.forEach(monster => {
+         monster.combatantType = "monster";
+         alteredEncounter.push(monster);
+      })
+
       this.setState({
-         infoPanelStatus: status,
-         encounter: encounter.monsters
+         encounter: alteredEncounter
       })
    }
 
@@ -101,9 +108,10 @@ class Campaign extends Component {
                         /> */}
                   </div>
                   <div id="combatants-display">
-                     {this.state.encounter.map(combatant => (
+                     {this.state.encounter.map( (combatant, i) => (
                         <CombatantItem 
                            combatant={combatant}
+                           key={i}
                         />
                      ))}
                   </div>
