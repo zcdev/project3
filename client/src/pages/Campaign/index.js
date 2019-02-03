@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import CampaignMonsters from "../../components/CampaignMonsters";
-import CampaignEncounters from "../../components/CampaignEncounters";
+import MonsterList from "../../components/CampaignComponents/MainDisplay/MonsterList";
+import EncounterList from "../../components/CampaignComponents/MainDisplay/EncounterList";
 import CampaignInfoPanel from "../../components/CampaignInfoPanel";
-import API from '../../utils/API.js';
 import "./campaign.css";
 
 class Campaign extends Component {
@@ -60,46 +59,47 @@ class Campaign extends Component {
 
    render() {
       return (
-         <div id="campaign">
-            <div id="campaign-sidebar">
-               <Router>
+         <Router>
+            <div id="campaign">
+               <div id="campaign-sidebar">
                   <div>
                      <div id="campaign-nav">
-                        <div className="campaign-nav-btn">
+                        <div className="campaign-nav-btn light">
                            <Link to="/monsters">Monsters</Link>
                         </div>
-                        <div className="campaign-nav-btn">
+                        <div className="campaign-nav-btn dark">
                            <Link to="/encounters">Encounters</Link>
                         </div>
-                        <div className="campaign-nav-btn">
+                        <div className="campaign-nav-btn light">
                            <Link to="/characters">Characters</Link>
                         </div>
                      </div>
                      <div>
-                        <Route
-                           path="/monsters"
-                           component={() => <CampaignMonsters getMonsterInfo={this.getMonsterInfo}/>}
-                        />
-                        <Route
-                           path="/encounters"
-                           component={() => <CampaignEncounters getEncounterInfo={this.getEncounterInfo} campaignId={this.props.campaignId}/>}
-                        />
-                        {/* <Route
+
+                     </div>
+                  </div>
+               </div>
+               <div id="campaign-main">
+                  <div id="info-display">
+                     <Route
+                        path="/monsters"
+                        component={() => <MonsterList getMonsterInfo={this.getMonsterInfo} />}
+                     />
+                     <Route
+                        path="/encounters"
+                        component={() => <EncounterList getEncounterInfo={this.getEncounterInfo} campaignId={this.props.campaignId} />}
+                     />
+                     {/* <Route
                            path="/characters"
                            component={CampaignCharacters}
                         /> */}
-                     </div>
                   </div>
-               </Router>
+                  <div id="combatants-display">
+
+                  </div>
+               </div>
             </div>
-            <div id="campaign-main">
-               <CampaignInfoPanel
-                  infoPanelStatus={this.state.infoPanelStatus}
-                  monsterIndex={this.state.monsterIndex}
-                  monsters={this.state.encounter}
-               />
-            </div>
-         </div>
+         </Router>
       );
    }
 }

@@ -1,0 +1,14 @@
+#campaign-monsters {
+   width: 100%;
+   font-weight: 300;
+}
+
+.dark {
+   background-color: rgb(41, 44, 52);
+   color: white;
+}
+
+.light {
+   background-color: rgb(69, 73, 87);
+   color: white;
+}
