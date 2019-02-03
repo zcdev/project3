@@ -1,11 +1,14 @@
 import React from "react";
 
 function CombatantItem(props) {
-   return (
-      <div>
-         
-      </div>
-   );
+   
+   if (props.combatant.combatantType === "monster") {
+      return (
+         <div>
+            monster!
+         </div>
+      );
+   }
 }
 
 export default CombatantItem;

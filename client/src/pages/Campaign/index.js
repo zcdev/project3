@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import MonsterList from "../../components/CampaignComponents/MainDisplay/MonsterList";
 import EncounterList from "../../components/CampaignComponents/MainDisplay/EncounterList";
+import CombatantItem from "../../components/CampaignComponents/CombatantItem";
 import monsters from "../../dnd-data/monsters.json";
 import "./campaign.css";
 
@@ -40,7 +41,10 @@ class Campaign extends Component {
 
    addMonsterToCombatants = (type, monsterIndex) => {
       const alteredEncounter = this.state.encounter;
-      alteredEncounter.push(monsters[monsterIndex - 1]);
+      let newMonster = monsters[monsterIndex - 1];
+      newMonster.combatantType = "monster";
+      
+      alteredEncounter.push(newMonster);
 
       console.log("ALTERED ENCOUNTER: ", alteredEncounter);
 
@@ -97,7 +101,11 @@ class Campaign extends Component {
                         /> */}
                   </div>
                   <div id="combatants-display">
-
+                     {this.state.encounter.map(combatant => (
+                        <CombatantItem 
+                           combatant={combatant}
+                        />
+                     ))}
                   </div>
                </div>
             </div>
