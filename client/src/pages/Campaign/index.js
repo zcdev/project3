@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import MonsterList from "../../components/CampaignComponents/MainDisplay/MonsterList";
 import EncounterList from "../../components/CampaignComponents/MainDisplay/EncounterList";
-import CampaignInfoPanel from "../../components/CampaignInfoPanel";
 import "./campaign.css";
 
 class Campaign extends Component {

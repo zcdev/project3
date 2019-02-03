@@ -35,7 +35,8 @@ class CampaignMonsters extends Component {
 
       return (
          <div id="campaign-monsters">
-            <div className="p-3">
+            <h4>Monsters</h4>
+            <div id="monster-search">
                <input
                   className="form-control"
                   value={this.state.searchString}

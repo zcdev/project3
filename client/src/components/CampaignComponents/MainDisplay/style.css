@@ -3,6 +3,19 @@
    font-weight: 300;
 }
 
+#campaign-monsters h4 {
+   padding: 10px 0;
+   margin: 0;
+   text-align: center;
+   color: white;
+   background-color: rgb(212,61,66);
+}
+
+#monster-search {
+   padding: 15px;
+   background-color: rgb(41, 44, 52);
+}
+
 .dark {
    background-color: rgb(41, 44, 52);
    color: white;
