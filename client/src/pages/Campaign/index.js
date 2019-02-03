@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import MonsterList from "../../components/CampaignComponents/MainDisplay/MonsterList";
 import EncounterList from "../../components/CampaignComponents/MainDisplay/EncounterList";
+import monsters from "../../dnd-data/monsters.json";
 import "./campaign.css";
 
 class Campaign extends Component {
    state = {
-      infoPanelStatus: "",
-      monsterIndex: "",
       encounter: []
    }
 
@@ -39,10 +38,14 @@ class Campaign extends Component {
       //    .catch(err => console.log(err));
    }
 
-   getMonsterInfo = (status, monsterIndex) => {
+   addMonsterToCombatants = (type, monsterIndex) => {
+      const alteredEncounter = this.state.encounter;
+      alteredEncounter.push(monsters[monsterIndex - 1]);
+
+      console.log("ALTERED ENCOUNTER: ", alteredEncounter);
+
       this.setState({
-         infoPanelStatus: status,
-         monsterIndex: monsterIndex
+         encounter: alteredEncounter
       })
    }
 
@@ -82,7 +85,7 @@ class Campaign extends Component {
                   <div id="info-display">
                      <Route
                         path="/monsters"
-                        component={() => <MonsterList getMonsterInfo={this.getMonsterInfo} />}
+                        component={() => <MonsterList addMonsterToCombatants={this.addMonsterToCombatants} />}
                      />
                      <Route
                         path="/encounters"

@@ -50,7 +50,7 @@ class CampaignMonsters extends Component {
                <MonsterListItem
                   name={monster.name}
                   index={monster.index}
-                  getMonsterInfo={this.props.getMonsterInfo}
+                  addMonsterToCombatants={this.props.addMonsterToCombatants}
                   key={i}
                />
             ))}
