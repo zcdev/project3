@@ -18,6 +18,10 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    // RIGHT HERE, what is the value of `campaignId`?
+    // it is "", an empty string
+    
+
     API.getUser()
       .then(user => {
         console.log(user)
@@ -47,7 +51,6 @@ class Home extends Component {
           })
           .catch(err => console.log(err));
       });
-
 
 
     // I dont think we need this
@@ -91,7 +94,7 @@ class Home extends Component {
             />
             <Route
               path="/setup"
-              component={Setup}
+              component={() => <Setup campaignId={this.state.campaignId}/>}
             />
           </div>
         </div>

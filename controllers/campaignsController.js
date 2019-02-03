@@ -41,6 +41,7 @@ module.exports = {
       .populate("encounters")
       .then(dbCampaign => res.json(dbCampaign.encounters))
       .catch(err => res.status(422).json(err));
+      console.log(res);
   },
   addEncounter: function (req, res) {
     db.Encounter
