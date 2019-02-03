@@ -15,11 +15,7 @@ class SetupEncounters extends Component {
     encounterName: ""
   };
 
-
   componentDidMount = () => {
-    // Initially campaignId is "". So how do u solve this?
-    // > move it to slack
-   
     API.getEncountersFromCampaign(this.props.campaignId)
       .then(res => {
         console.log(res)

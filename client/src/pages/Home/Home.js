@@ -18,10 +18,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    // RIGHT HERE, what is the value of `campaignId`?
-    // it is "", an empty string
     
-
     API.getUser()
       .then(user => {
         console.log(user)
