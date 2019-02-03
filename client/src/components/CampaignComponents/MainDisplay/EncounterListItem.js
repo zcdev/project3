@@ -3,15 +3,15 @@ import React from "react";
 function EncounterListItem(props) {
    return (
       <div
-         id={props.databaseId}
-         onClick={() => props.getEncounterInfo("encounter", props.encounter)}
-         className={props.id % 2 === 0 ? "light" : "dark"}
+         id={props.encounter._id}
+         // onClick={() => props.getEncounterInfo("encounter", props.encounter)}
+         className={props.id % 2 === 0 ? "encounter-list-item light" : "encounter-list-item dark"}
       >
          <div>
-            {props.name}
+            {props.encounter.name}
          </div>
          <ul>            
-            {props.monsters.map( (monster, i) => (
+            {props.encounter.monsters.map( (monster, i) => (
                <li key={i} >{monster.name}</li>
             ))}
          </ul>

@@ -27,10 +27,6 @@ class CampaignEncounters extends Component {
             <div>
                {this.state.encounters.map((encounter, i) => (
                   <EncounterListItem
-                     name={encounter.name}
-                     databaseId={encounter._id}
-                     monsters={encounter.monsters}
-                     // index={monster.index}
                      encounter={encounter}
                      getEncounterInfo={this.props.getEncounterInfo}
                      id={i}
