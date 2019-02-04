@@ -5,38 +5,31 @@ import EncounterList from "../../components/CampaignComponents/MainDisplay/Encou
 import CombatantItem from "../../components/CampaignComponents/CombatantItem";
 import monsters from "../../dnd-data/monsters.json";
 import "./campaign.css";
+import API from '../../utils/API';
 
 class Campaign extends Component {
    state = {
-      encounter: []
+      encounter: [],
+      campaignId: ""
    }
 
    componentDidMount() {
 
-      // for (var i = 0; i < monsters.length; i++) {
-      //    console.log(monsters[i].name);
-      // }
+      console.log(this.props.campaignId);
 
-      // const newCamp = {
-      //    username: "jacob"
-      // }
+      this.setState({
+         campaignId: this.props.campaignId
+      })
 
       // const newEncounter = {
-      //    name: "mySecondEncounter",
-      //    monsters: [{name: "monster 4"}, {name: "monster 5"}, {name: "monster 6"}]
+      //    name: "MySixthEncounter",
+      //    monsters: [monsters[299], monsters[99], monsters[200]]
       // }
 
-      // API.saveCampaign(newCamp)
-      //    .then(res => console.log("YOUR RESPONSE: ", res))
+      // API.addEncounterToCampaign(this.props.campaignId, newEncounter)
+      //    .then(res => console.log(res))
       //    .catch(err => console.log(err));
 
-      // API.addEncounterToCampaign("5c53af4354d1412aac87a2b0" , newEncounter)
-      //    .then(res => console.log("YOUR RESPONSE: ", res))
-      //    .catch(err => console.log(err));
-
-      // API.getEncountersFromCampaign("5c53af4354d1412aac87a2b0")
-      //    .then(res => console.log("YOUR ENCOUNTERS: ", res))
-      //    .catch(err => console.log(err));
    }
 
    addMonsterToCombatants = (monsterIndex) => {
