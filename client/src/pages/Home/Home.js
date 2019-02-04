@@ -6,6 +6,7 @@ import Encyclopedia from "../Encyclopedia";
 import Setup from "../Setup";
 import API from "../../utils/API"
 import "./home.css"
+// import Reallyhome from "../reallyhome/reallyhome";
 
 
 class Home extends Component {
@@ -81,6 +82,10 @@ class Home extends Component {
         <div>
           <Navbar />
           <div>
+          <Route
+              path="/"
+              component={Home}
+            />
             <Route
               path="/campaign"
               component={() => <Campaign campaignId={this.state.campaignId}/>}
