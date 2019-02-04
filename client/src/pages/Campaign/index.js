@@ -30,14 +30,14 @@ class Campaign extends Component {
       //    .then(res => console.log(res))
       //    .catch(err => console.log(err));
 
-      const newCharacter = {
-         name: "CharacterOne",
-         initiativeBonus: 3
-      }
+      // const newCharacter = {
+      //    name: "CharacterTwo",
+      //    initiativeBonus: 2
+      // }
 
-      API.addCharacterToCampaign(this.props.campaignId, newCharacter)
-         .then(res => console.log(res))
-         .catch(err => console.log(err));
+      // API.addCharacterToCampaign(this.props.campaignId, newCharacter)
+      //    .then(res => console.log(res))
+      //    .catch(err => console.log(err));
 
    }
 
