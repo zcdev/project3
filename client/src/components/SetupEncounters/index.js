@@ -3,12 +3,15 @@ import EncounterItem from "../EncounterItem";
 import EncounterNew from "../EncounterNew";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import axios from "axios";
+import EncounterMonsterList from "../SetupEncounters/EncounterMonsterList";
+import SelectedMonster from "../SetupEncounters/SelectedMonster";
+import monsters from "../../dnd-data/monsters.json";
 import API from "../../utils/API";
 
 class SetupEncounters extends Component {
   state = {
     encounters: [],
+    newEncounter: [],
     displayItem: null,
     show: false,
     newItem: true,
@@ -18,7 +21,7 @@ class SetupEncounters extends Component {
   componentDidMount = () => {
     API.getEncountersFromCampaign(this.props.campaignId)
       .then(res => {
-        console.log(res)
+        // console.log(res)
         this.setState({
           encounters: res.data
         })
@@ -48,10 +51,40 @@ class SetupEncounters extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    this.setState({
-      encounterName: ""
-    });
+    // this.setState({
+    //   encounterName: ""
+    // });
+
+    const newEncounter = {
+      name: this.state.encounterName,
+      monsters: this.state.newEncounter
+    }
+
+    API.addEncounterToCampaign(this.props.campaignId, newEncounter)
+      .then(res => {
+        // console.log(res)
+        API.getEncountersFromCampaign(this.props.campaignId)
+        .then(res => {
+          // console.log(res)
+          this.setState({
+            encounters: res.data
+          })
+        })
+      })
+      .catch(err => console.log(err));
   };
+
+  addMonsterToEncounter = monsterId => {
+
+    const alteredEncounter = this.state.newEncounter;
+    alteredEncounter.push(monsters[monsterId - 1])
+
+    console.log("ALTERED ENCOUNTER: ", alteredEncounter);
+
+    this.setState({
+      newEncounter: alteredEncounter
+    })
+  }
 
   render() {
     return (
@@ -84,16 +117,32 @@ class SetupEncounters extends Component {
                   <Modal.Title>New Encounter</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <form className="form">
-                    <input
-                      value={this.state.firstName}
-                      name="encounterName"
-                      onChange={this.handleInputChange}
-                      type="text"
-                      placeholder="Encounter Name"
-                    />
-                    <button onClick={this.handleFormSubmit}>Submit</button>
-                  </form>
+                  <div>
+                    <form className="form">
+                      <input
+                        value={this.state.firstName}
+                        name="encounterName"
+                        onChange={this.handleInputChange}
+                        type="text"
+                        placeholder="Encounter Name"
+                      />
+                      <button onClick={this.handleFormSubmit}>Submit</button>
+                    </form>
+                    <div className="row">
+                      <div className="col-6" id="monster-list">
+                        <EncounterMonsterList addMonsterToEncounter={this.addMonsterToEncounter}/>
+                      </div>
+                      <div className="col-6" id="selected-monsters">
+                        Encounter Monsters
+                        {this.state.newEncounter.map( (monster, i) => (
+                          <SelectedMonster
+                            monster={monster}
+                            key={i}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={this.handleClose}>

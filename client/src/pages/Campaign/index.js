@@ -6,7 +6,6 @@ import CharacterList from "../../components/CampaignComponents/MainDisplay/Chara
 import CombatantItem from "../../components/CampaignComponents/CombatantItem";
 import monsters from "../../dnd-data/monsters.json";
 import "./campaign.css";
-import API from '../../utils/API';
 
 class Campaign extends Component {
    state = {
