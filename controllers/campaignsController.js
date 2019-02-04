@@ -2,13 +2,13 @@ const db = require("../models");
 
 // All methods subject to change
 module.exports = {
-  findAll: function (req, res) {
-    db.Campaign
-      .find(req.query)
-      .sort({ date: -1 })
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+  // findAll: function (req, res) {
+  //   db.Campaign
+  //     .find(req.query)
+  //     .sort({ date: -1 })
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
   findByUsername: function (req, res) {
     db.Campaign
       .findOne({ username: req.params.userName })
@@ -22,19 +22,19 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  update: function (req, res) {
-    db.Campaign
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
-  remove: function (req, res) {
-    db.Campaign
-      .findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+  // update: function (req, res) {
+  //   db.Campaign
+  //     .findOneAndUpdate({ _id: req.params.id }, req.body)
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
+  // remove: function (req, res) {
+  //   db.Campaign
+  //     .findById({ _id: req.params.id })
+  //     .then(dbModel => dbModel.remove())
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
   getAllEncounters: function (req, res) {
     db.Campaign
       .findOne({ _id: req.params.id })
