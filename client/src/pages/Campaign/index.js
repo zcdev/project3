@@ -22,13 +22,22 @@ class Campaign extends Component {
       })
 
       // const newEncounter = {
-      //    name: "MySixthEncounter",
-      //    monsters: [monsters[299], monsters[99], monsters[200]]
+      //    name: "MyThirdEncounter",
+      //    monsters: [monsters[55], monsters[132], monsters[187]]
       // }
 
       // API.addEncounterToCampaign(this.props.campaignId, newEncounter)
       //    .then(res => console.log(res))
       //    .catch(err => console.log(err));
+
+      const newCharacter = {
+         name: "CharacterOne",
+         initiativeBonus: 3
+      }
+
+      API.addCharacterToCampaign(this.props.campaignId, newCharacter)
+         .then(res => console.log(res))
+         .catch(err => console.log(err));
 
    }
 
