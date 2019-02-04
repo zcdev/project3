@@ -11,6 +11,11 @@ router.route("/:id/encounters")
   .get(campaignsController.getAllEncounters)
   .post(campaignsController.addEncounter);
 
+  // Matches with "api/campaigns/:id/characters"
+router.route("/:id/characters")
+  .get(campaignsController.getAllCharacters)
+  .post(campaignsController.addCharacter);
+
 // Matches with "/api/campaigns/user/:userName"
 router.route("/user/:userName")
   .get(campaignsController.findByUsername)
