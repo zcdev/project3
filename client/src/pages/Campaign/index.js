@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import MonsterList from "../../components/CampaignComponents/MainDisplay/MonsterList";
 import EncounterList from "../../components/CampaignComponents/MainDisplay/EncounterList";
+import CharacterList from "../../components/CampaignComponents/MainDisplay/CharacterList";
 import CombatantItem from "../../components/CampaignComponents/CombatantItem";
 import monsters from "../../dnd-data/monsters.json";
 import "./campaign.css";
@@ -43,10 +44,10 @@ class Campaign extends Component {
 
    addMonsterToCombatants = (monsterIndex) => {
       const alteredEncounter = this.state.encounter;
-      
+
       let newMonster = monsters[monsterIndex - 1];
       newMonster.combatantType = "monster";
-      
+
       alteredEncounter.push(newMonster);
 
       console.log("ALTERED ENCOUNTER: ", alteredEncounter);
@@ -61,7 +62,7 @@ class Campaign extends Component {
       console.log("ENCOUNTER: ", encounter.monsters);
 
       const alteredEncounter = this.state.encounter;
-      
+
       encounter.monsters.forEach(monster => {
          monster.combatantType = "monster";
          alteredEncounter.push(monster);
@@ -104,14 +105,14 @@ class Campaign extends Component {
                         path="/encounters"
                         component={() => <EncounterList getEncounterInfo={this.getEncounterInfo} campaignId={this.props.campaignId} />}
                      />
-                     {/* <Route
-                           path="/characters"
-                           component={CampaignCharacters}
-                        /> */}
+                     <Route
+                        path="/characters"
+                        component={() => <CharacterList campaignId={this.props.campaignId} />}
+                     />
                   </div>
                   <div id="combatants-display">
-                     {this.state.encounter.map( (combatant, i) => (
-                        <CombatantItem 
+                     {this.state.encounter.map((combatant, i) => (
+                        <CombatantItem
                            combatant={combatant}
                            key={i}
                         />

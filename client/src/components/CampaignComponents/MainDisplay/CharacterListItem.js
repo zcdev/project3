@@ -8,13 +8,9 @@ function CharacterListItem(props) {
          className={props.id % 2 === 0 ? "character-list-item light" : "character-list-item dark"}
       >
          <div>
-            {props.character.name}
+            <p>Name: {props.character.name}</p>
+            <p>Initiative Bonus: {props.character.initiativeBonus}</p>
          </div>
-         <ul>            
-            {props.character.monsters.map( (monster, i) => (
-               <li key={i} >{monster.name}</li>
-            ))}
-         </ul>
       </div>
    );
 }
