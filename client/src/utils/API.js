@@ -8,10 +8,6 @@ export default {
   getCampaignByUser: function(username) {
     return axios.get("/api/campaigns/user/" + username);
   },
-  // // Deletes the campaign with the given id
-  // deleteCampaign: function(id) {
-  //   return axios.delete("/api/campaigns/" + id);
-  // },
   // Saves a campaign to the database
   saveCampaign: function(campaignData) {
     return axios.post("/api/campaigns", campaignData);
@@ -21,6 +17,12 @@ export default {
   },
   getEncountersFromCampaign: function(id) {
     return axios.get("/api/campaigns/" + id + "/encounters");
+  },
+  addCharacterToCampaign: function(id, characterData) {
+    return axios.post("/api/campaigns/" + id + "/characters", characterData);
+  },
+  getCharactersFromCampaign: function(id) {
+    return axios.get("/api/campaigns/" + id + "/characters");
   },
 
 // Authentication methods

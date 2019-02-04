@@ -12,10 +12,12 @@ const campaignSchema = new Schema({
          ref: "Encounter"
       }
    ],
-   players: {
-      type: Array,
-      default: []
-   },
+   characters: [
+      {
+         type: Schema.Types.ObjectId,
+         ref: "Character"
+      }
+   ],
    date: { type: Date, default: Date.now }
 });
 

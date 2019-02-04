@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import monsters from "../../dnd-data/monsters.json";
+import monsters from "../../../dnd-data/monsters.json";
 import MonsterListItem from "./MonsterListItem";
 import "./style.css";
 
@@ -35,7 +35,8 @@ class CampaignMonsters extends Component {
 
       return (
          <div id="campaign-monsters">
-            <div className="p-3">
+            <h4>Monsters</h4>
+            <div id="monster-search">
                <input
                   className="form-control"
                   value={this.state.searchString}
@@ -49,7 +50,7 @@ class CampaignMonsters extends Component {
                <MonsterListItem
                   name={monster.name}
                   index={monster.index}
-                  getMonsterInfo={this.props.getMonsterInfo}
+                  addMonsterToCombatants={this.props.addMonsterToCombatants}
                   key={i}
                />
             ))}
