@@ -5,13 +5,13 @@ function EncounterItem(props) {
   return (
     <div
       className="card"
-      onClick={() => props.handleDisplay && props.handleDisplay(props.id)}
+      onClick={() => props.handleDisplay && props.handleDisplay(props._id)}
     >
       <div className="content">
         <ul>
           <li>
             {props.name}
-            {console.log(props)}
+            {/* {console.log(props)} */}
           </li>
         </ul>
       </div>

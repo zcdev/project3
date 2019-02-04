@@ -13,8 +13,7 @@ function CombatantItem(props) {
    else if (props.combatant.combatantType === "character") {
       return (
          <div>
-            <p>Name: {props.combatant.name}</p>
-            <p>Initiative Bonus: {props.combatant.initiativeBonus}</p>
+            {props.combatant.name}
          </div>
       );
    }
