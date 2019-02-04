@@ -77,6 +77,7 @@ class Campaign extends Component {
       console.log("CHARACTER: ",  character);
 
       const alteredEncounter = this.state.encounter;
+      character.combatantType = "character"
       alteredEncounter.push(character);
 
       console.log("ALTERED ENCOUNTER: ", alteredEncounter);
@@ -124,12 +125,12 @@ class Campaign extends Component {
                      />
                   </div>
                   <div id="combatants-display">
-                     {/* {this.state.encounter.map((combatant, i) => (
+                     {this.state.encounter.map((combatant, i) => (
                         <CombatantItem
                            combatant={combatant}
                            key={i}
                         />
-                     ))} */}
+                     ))}
                   </div>
                </div>
             </div>

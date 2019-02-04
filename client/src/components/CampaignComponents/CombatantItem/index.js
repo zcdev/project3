@@ -9,6 +9,15 @@ function CombatantItem(props) {
          </div>
       );
    }
+
+   else if (props.combatant.combatantType === "character") {
+      return (
+         <div>
+            <p>Name: {props.combatant.name}</p>
+            <p>Initiative Bonus: {props.combatant.initiativeBonus}</p>
+         </div>
+      );
+   }
 }
 
 export default CombatantItem;
