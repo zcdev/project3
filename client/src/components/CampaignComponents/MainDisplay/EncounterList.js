@@ -28,7 +28,7 @@ class CampaignEncounters extends Component {
                {this.state.encounters.map((encounter, i) => (
                   <EncounterListItem
                      encounter={encounter}
-                     getEncounterInfo={this.props.getEncounterInfo}
+                     addEncounterToCombatants={this.props.addEncounterToCombatants}
                      id={i}
                      key={i}
                   />

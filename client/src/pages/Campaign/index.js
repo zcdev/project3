@@ -57,7 +57,7 @@ class Campaign extends Component {
       })
    }
 
-   getEncounterInfo = (status, encounter) => {
+   addEncounterToCombatants = (status, encounter) => {
 
       console.log("ENCOUNTER: ", encounter.monsters);
 
@@ -103,7 +103,7 @@ class Campaign extends Component {
                      />
                      <Route
                         path="/encounters"
-                        component={() => <EncounterList getEncounterInfo={this.getEncounterInfo} campaignId={this.props.campaignId} />}
+                        component={() => <EncounterList addEncounterToCombatants={this.addEncounterToCombatants} campaignId={this.props.campaignId} />}
                      />
                      <Route
                         path="/characters"
