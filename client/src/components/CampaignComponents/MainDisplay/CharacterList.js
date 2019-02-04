@@ -28,7 +28,7 @@ class CharacterList extends Component {
                {this.state.characters.map((character, i) => (
                   <CharacterListItem
                      character={character}
-                     // getEncounterInfo={this.props.getEncounterInfo}
+                     addCharacterToCombatants={this.props.addCharacterToCombatants}
                      id={i}
                      key={i}
                   />

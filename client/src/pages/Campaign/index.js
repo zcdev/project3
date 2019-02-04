@@ -42,7 +42,7 @@ class Campaign extends Component {
 
    }
 
-   addMonsterToCombatants = (monsterIndex) => {
+   addMonsterToCombatants = monsterIndex => {
       const alteredEncounter = this.state.encounter;
 
       let newMonster = monsters[monsterIndex - 1];
@@ -57,7 +57,7 @@ class Campaign extends Component {
       })
    }
 
-   addEncounterToCombatants = (status, encounter) => {
+   addEncounterToCombatants = encounter => {
 
       console.log("ENCOUNTER: ", encounter.monsters);
 
@@ -67,6 +67,19 @@ class Campaign extends Component {
          monster.combatantType = "monster";
          alteredEncounter.push(monster);
       })
+
+      this.setState({
+         encounter: alteredEncounter
+      })
+   }
+
+   addCharacterToCombatants = character => {
+      console.log("CHARACTER: ",  character);
+
+      const alteredEncounter = this.state.encounter;
+      alteredEncounter.push(character);
+
+      console.log("ALTERED ENCOUNTER: ", alteredEncounter);
 
       this.setState({
          encounter: alteredEncounter
@@ -107,16 +120,16 @@ class Campaign extends Component {
                      />
                      <Route
                         path="/characters"
-                        component={() => <CharacterList campaignId={this.props.campaignId} />}
+                        component={() => <CharacterList addCharacterToCombatants={this.addCharacterToCombatants} campaignId={this.props.campaignId} />}
                      />
                   </div>
                   <div id="combatants-display">
-                     {this.state.encounter.map((combatant, i) => (
+                     {/* {this.state.encounter.map((combatant, i) => (
                         <CombatantItem
                            combatant={combatant}
                            key={i}
                         />
-                     ))}
+                     ))} */}
                   </div>
                </div>
             </div>

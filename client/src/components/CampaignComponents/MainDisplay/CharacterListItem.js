@@ -4,7 +4,7 @@ function CharacterListItem(props) {
    return (
       <div
          id={props.character._id}
-         // onClick={() => props.getEncounterInfo("character", props.character)}
+         onClick={() => props.addCharacterToCombatants(props.character)}
          className={props.id % 2 === 0 ? "character-list-item light" : "character-list-item dark"}
       >
          <div>
