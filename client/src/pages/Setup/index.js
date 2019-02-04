@@ -4,7 +4,6 @@ import SetupEncounters from "../../components/SetupEncounters"
 
 class Setup extends Component {
    state = {
-
    }
 
    render() {
@@ -18,7 +17,7 @@ class Setup extends Component {
             <div id="setup-main">
                Setup Main!
                {/* Has two routes for SetupEncounters component*/}
-               <SetupEncounters />
+               <SetupEncounters campaignId={this.props.campaignId} />
             </div>
          </div>
       );

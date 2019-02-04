@@ -27,6 +27,7 @@ module.exports = {
       .populate("encounters")
       .then(dbCampaign => res.json(dbCampaign.encounters))
       .catch(err => res.status(422).json(err));
+      console.log(res);
   },
 
   // Adds one new encounter to a specified campaign
