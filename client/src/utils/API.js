@@ -25,6 +25,10 @@ export default {
     return axios.get("/api/campaigns/" + id + "/characters");
   },
 
+  // Encyclopedia API methods
+  // ===============================================
+  
+
 // Authentication methods
 // ===============================================
 
