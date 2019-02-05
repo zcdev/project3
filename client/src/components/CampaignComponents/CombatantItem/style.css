@@ -1,6 +1,7 @@
 .combatant-wrapper {
    display: flex;
    flex-direction: row;
+   justify-content: flex-end;
 }
 
 .combatant-item {
@@ -28,8 +29,8 @@
 }
 
 .myTurn {
-   background-color: red;
-   height: 100%;
+   background-color: rgb(212,61,66);
+   max-height: 55px;
    width: 3%;
 }
 

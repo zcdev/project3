@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import MainDisplay from "../../components/CampaignComponents/MainDisplay";
 import MonsterList from "../../components/CampaignComponents/MainDisplay/MonsterList";
 import EncounterList from "../../components/CampaignComponents/MainDisplay/EncounterList";
 import CharacterList from "../../components/CampaignComponents/MainDisplay/CharacterList";
@@ -14,7 +15,8 @@ class Campaign extends Component {
    state = {
       encounter: [],
       campaignId: "",
-      inCombat: false
+      inCombat: false,
+      mainDisplay: "monsters"
    }
 
    componentDidMount() {
@@ -41,6 +43,31 @@ class Campaign extends Component {
       //    .then(res => console.log(res))
       //    .catch(err => console.log(err));
 
+   }
+
+   alterMainDisplay = componentToDisplay => {
+      switch(componentToDisplay) {
+         case "monsters":
+            this.setState({
+               mainDisplay: "monsters"
+            });
+            break;
+         case "encounters":
+            this.setState({
+               mainDisplay: "encounters"
+            });
+            break;
+         case "characters":
+            this.setState({
+               mainDisplay: "characters"
+            });
+            break;
+         default:
+            this.setState({
+               mainDisplay: "monsters"
+            });
+            break;
+      }
    }
 
    addMonsterToCombatants = monsterIndex => {
@@ -178,34 +205,38 @@ class Campaign extends Component {
 
    render() {
       return (
-         <Router>
+         // <Router>
             <div id="campaign">
                <div id="campaign-sidebar">
                   <div id="campaign-nav">
-                     <div className="campaign-nav-btn light">
-                        <Link to="/monsters">Monsters</Link>
+                     <div
+                        className="campaign-nav-btn light"
+                        onClick={() => this.alterMainDisplay("monsters")}
+                     >
+                        Monsters
                      </div>
-                     <div className="campaign-nav-btn dark">
-                        <Link to="/encounters">Encounters</Link>
+                     <div
+                        className="campaign-nav-btn dark"
+                        onClick={() => this.alterMainDisplay("encounters")}
+                     >
+                        Encounters
                      </div>
-                     <div className="campaign-nav-btn light">
-                        <Link to="/characters">Characters</Link>
+                     <div
+                        className="campaign-nav-btn light"
+                        onClick={() => this.alterMainDisplay("characters")}
+                     >
+                        Characters
                      </div>
                   </div>
                </div>
                <div id="campaign-main">
                   <div id="info-display">
-                     <Route
-                        path="/monsters"
-                        component={() => <MonsterList addMonsterToCombatants={this.addMonsterToCombatants} />}
-                     />
-                     <Route
-                        path="/encounters"
-                        component={() => <EncounterList addEncounterToCombatants={this.addEncounterToCombatants} campaignId={this.props.campaignId} />}
-                     />
-                     <Route
-                        path="/characters"
-                        component={() => <CharacterList addCharacterToCombatants={this.addCharacterToCombatants} campaignId={this.props.campaignId} />}
+                     <MainDisplay 
+                        mainDisplay={this.state.mainDisplay}
+                        campaignId={this.state.campaignId}
+                        addMonsterToCombatants={this.addMonsterToCombatants}
+                        addEncounterToCombatants={this.addEncounterToCombatants}
+                        addCharacterToCombatants={this.addCharacterToCombatants}
                      />
                   </div>
                   <div id="combatants-display">
@@ -229,7 +260,7 @@ class Campaign extends Component {
                   </div>
                </div>
             </div>
-         </Router>
+         // </Router>
       );
    }
 }
