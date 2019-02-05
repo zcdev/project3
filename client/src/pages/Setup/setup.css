@@ -61,6 +61,10 @@
    margin: 1rem 1rem 0 0;
 }
 
+.red:first-child {
+   margin-top: 0;
+}
+
 #wrapper {
    margin: 1rem;
 }
