@@ -265,14 +265,14 @@ class Campaign extends Component {
                            key={i}
                         />
                      ))}
-                     <InitiativeButtons
-                        inCombat={this.state.inCombat}
-                        rollInitiative={this.rollInitiative}
-                        nextTurn={this.nextTurn}
-                        endCombat={this.endCombat}
-                        clearCombatants={this.clearCombatants}
-                     />
                   </div>
+                  <InitiativeButtons
+                     inCombat={this.state.inCombat}
+                     rollInitiative={this.rollInitiative}
+                     nextTurn={this.nextTurn}
+                     endCombat={this.endCombat}
+                     clearCombatants={this.clearCombatants}
+                  />
                </div>
             </div>
          </div>
