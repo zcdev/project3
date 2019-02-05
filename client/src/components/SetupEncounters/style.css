@@ -1,0 +1,72 @@
+/* Shared Stlyes */
+/* =================================== */
+
+.dark {
+    background-color: rgb(41, 44, 52);
+    color: white;
+ }
+ 
+ .light {
+    background-color: rgb(69, 73, 87);
+    color: white;
+ }
+ 
+ /* Monster Panel Stlyes */
+ /* =================================== */
+ 
+ #setup-monsters {
+    width: 100%;
+    font-weight: 300;
+ }
+ 
+ #setup-monsters h4 {
+    padding: 10px 0;
+    margin: 0;
+    text-align: center;
+    color: white;
+    background-color: rgb(212,61,66);
+ }
+ 
+ #monster-search {
+    padding: 15px;
+    background-color: rgb(41, 44, 52);
+ }
+ 
+ /* Encounter Panel Stlyes */
+ /* =================================== */
+ 
+ #setup-encounters h4 {
+    padding: 10px 0;
+    margin: 0;
+    text-align: center;
+    color: white;
+    background-color: rgb(212,61,66);
+ }
+ 
+ .encounter-list-item {
+    padding: 25px;
+ }
+ 
+ .encounter-list-item ul {
+    margin: 0;
+ }
+
+ .submit-btn {
+    margin-bottom: 1rem;
+ }
+
+#monster-list {
+   height: 200px;
+   overflow-y: scroll;
+   border-radius: 1%;
+   float: left;
+}
+
+#block {
+    padding: 0 1rem 1rem 1rem;
+    z-index: 2;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow-y: scroll;
+}
