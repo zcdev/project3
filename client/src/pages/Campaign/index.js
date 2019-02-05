@@ -86,10 +86,15 @@ class Campaign extends Component {
       turnOrder.sort(function (a, b) {
          let initOfA = a.initiativeValue;
          let initOfB = b.initiativeValue;
-         if (initOfA < initOfB) return -1;
-         if (initOfA > initOfB) return 1;
+         if (initOfA > initOfB) return -1;
+         if (initOfA < initOfB) return 1;
          return 0;
       });
+
+      // console.log("=================")
+      // turnOrder.forEach(combatant => {
+      //    console.log(`${combatant.name}: ${combatant.initiativeValue}`);
+      // })
       
       // Set new turn order to state, thus reorganizing the CombatantItems currently displayed to the page
       this.setState({
