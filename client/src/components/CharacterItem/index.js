@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-function EncounterItem(props) {
+function CharacterItem(props) {
   return (
     <div
       className="card red"
@@ -19,4 +19,4 @@ function EncounterItem(props) {
   );
 }
 
-export default EncounterItem;
+export default CharacterItem;
