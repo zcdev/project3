@@ -6,6 +6,7 @@ import CharacterList from "../../components/CampaignComponents/MainDisplay/Chara
 import CombatantItem from "../../components/CampaignComponents/CombatantItem";
 import monsters from "../../dnd-data/monsters.json";
 import "./campaign.css";
+import API from "../../utils/API";
 
 class Campaign extends Component {
    state = {
@@ -14,16 +15,14 @@ class Campaign extends Component {
    }
 
    componentDidMount() {
-
-      console.log(this.props.campaignId);
-
+      // console.log(this.props.campaignId);
       this.setState({
          campaignId: this.props.campaignId
       })
 
       // const newEncounter = {
-      //    name: "MyThirdEncounter",
-      //    monsters: [monsters[55], monsters[132], monsters[187]]
+      //    name: "MySecondEncounter",
+      //    monsters: [monsters[62], monsters[179], monsters[303]]
       // }
 
       // API.addEncounterToCampaign(this.props.campaignId, newEncounter)
@@ -32,7 +31,7 @@ class Campaign extends Component {
 
       // const newCharacter = {
       //    name: "CharacterTwo",
-      //    initiativeBonus: 2
+      //    dexterity: 2
       // }
 
       // API.addCharacterToCampaign(this.props.campaignId, newCharacter)
@@ -43,46 +42,57 @@ class Campaign extends Component {
 
    addMonsterToCombatants = monsterIndex => {
       const alteredEncounter = this.state.encounter;
-
       let newMonster = monsters[monsterIndex - 1];
       newMonster.combatantType = "monster";
-
       alteredEncounter.push(newMonster);
-
       console.log("ALTERED ENCOUNTER: ", alteredEncounter);
-
       this.setState({
          encounter: alteredEncounter
       })
    }
 
    addEncounterToCombatants = encounter => {
-
-      console.log("ENCOUNTER: ", encounter.monsters);
-
       const alteredEncounter = this.state.encounter;
-
       encounter.monsters.forEach(monster => {
          monster.combatantType = "monster";
          alteredEncounter.push(monster);
       })
-
       this.setState({
          encounter: alteredEncounter
       })
    }
 
    addCharacterToCombatants = character => {
-      console.log("CHARACTER: ",  character);
-
       const alteredEncounter = this.state.encounter;
       character.combatantType = "character"
       alteredEncounter.push(character);
-
-      console.log("ALTERED ENCOUNTER: ", alteredEncounter);
-
       this.setState({
          encounter: alteredEncounter
+      })
+   }
+
+   rollInitiative = () => {
+      // Get all current combatants
+      const turnOrder = this.state.encounter
+
+      // Roll initiative for each combatant (random number 1-20 plus its dexterity modifier)
+      turnOrder.forEach(combatant => {
+         combatant.initiativeValue = (Math.floor(Math.random() * 20) + 1) + getModifier(combatant.dexterity)
+         console.log(`${combatant.name}: ${combatant.initiativeValue}`);
+      })
+
+      // Sort combatants based on initiative rolled
+      turnOrder.sort(function (a, b) {
+         let initOfA = a.initiativeValue;
+         let initOfB = b.initiativeValue;
+         if (initOfA < initOfB) return -1;
+         if (initOfA > initOfB) return 1;
+         return 0;
+      });
+      
+      // Set new turn order to state, thus reorganizing the CombatantItems currently displayed to the page
+      this.setState({
+         encounter: turnOrder
       })
    }
 
@@ -91,20 +101,15 @@ class Campaign extends Component {
          <Router>
             <div id="campaign">
                <div id="campaign-sidebar">
-                  <div>
-                     <div id="campaign-nav">
-                        <div className="campaign-nav-btn light">
-                           <Link to="/monsters">Monsters</Link>
-                        </div>
-                        <div className="campaign-nav-btn dark">
-                           <Link to="/encounters">Encounters</Link>
-                        </div>
-                        <div className="campaign-nav-btn light">
-                           <Link to="/characters">Characters</Link>
-                        </div>
+                  <div id="campaign-nav">
+                     <div className="campaign-nav-btn light">
+                        <Link to="/monsters">Monsters</Link>
                      </div>
-                     <div>
-
+                     <div className="campaign-nav-btn dark">
+                        <Link to="/encounters">Encounters</Link>
+                     </div>
+                     <div className="campaign-nav-btn light">
+                        <Link to="/characters">Characters</Link>
                      </div>
                   </div>
                </div>
@@ -133,6 +138,7 @@ class Campaign extends Component {
                               key={i}
                            />
                         ))}
+                        <button className="btn btn-danger" onClick={this.rollInitiative}>Roll Initiative</button>
                      </div>
                   </div>
                </div>
@@ -143,3 +149,45 @@ class Campaign extends Component {
 }
 
 export default Campaign;
+
+function getModifier(abilityScore) {
+   
+   const check = abilityScore;
+   
+   switch(true) {
+      case (check === 1):
+         return -5;
+      case (2 <= check && check <= 3):
+         return -4;
+      case (4 <= check && check <= 5):
+         return -3;
+      case (6 <= check && check <= 7):
+         return -2;
+      case (8 <= check && check <= 9):
+         return -1;
+      case (10 <= check && check <= 11):
+         return 0;
+      case (12 <= check && check <= 13):
+         return 1;
+      case (14 <= check && check <= 15):
+         return 2;
+      case (16 <= check && check <= 17):
+         return 3;
+      case (18 <= check && check <= 19):
+         return 4;
+      case (20 <= check && check <= 21):
+         return 5;
+      case (22 <= check && check <= 23):
+         return 6;
+      case (24 <= check && check <= 25):
+         return 7;
+      case (26 <= check && check <= 27):
+         return 8;
+      case (28 <= check && check <= 29):
+         return 9;
+      case (check === 30):
+         return 10;
+      default:
+         return 0;
+   }
+}

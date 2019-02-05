@@ -6,7 +6,7 @@ const characterSchema = new Schema({
       type: String,
       required: true
    },
-   initiativeBonus: {
+   dexterity: {
       type: Number,
       required: true
    },
