@@ -95,7 +95,7 @@ class Campaign extends Component {
          // Add monster key so CombatantItem component knows to render monster
          monster.combatantType = "monster";
          // Add monster to current encounter array
-         alteredEncounter.push(monster);
+         alteredEncounter.push(_.cloneDeep(monster));
       })
       // Set state with the altered encounter
       this.setState({
