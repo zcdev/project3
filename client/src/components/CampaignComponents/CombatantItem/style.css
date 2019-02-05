@@ -1,0 +1,21 @@
+.combatant-item {
+   padding: 0 15px;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.combatant-health {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+}
+
+.hp-buttons {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   font-size: 1px;
+}

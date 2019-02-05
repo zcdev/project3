@@ -24,6 +24,7 @@
 }
 
 #info-display {
+   background-color: rgb(41, 44, 52);
    height: 100%;
    width: 42%;
    overflow-y: scroll;
@@ -32,12 +33,26 @@
 }
 
 #combatants-display {
-   background-color: rgb(212,61,66);
+   background-color: rgb(41, 44, 52);
+   color: white;
+   font-weight: 300;
    height: 100%;
    width: 55%;
    overflow-y: scroll;
    border-radius: 1%;
    float: right;
+}
+
+#combatants-display h4 {
+   padding: 10px 0;
+   margin: 0;
+   text-align: center;
+   color: white;
+   background-color: rgb(212, 61, 66);
+}
+
+#combatants-list {
+   padding: 25px 0;
 }
 
 .campaign-nav-btn {

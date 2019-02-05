@@ -5,7 +5,7 @@ function EncounterItem(props) {
   return (
     <div
       className="card"
-      onClick={() => props.handleDisplay && props.handleDisplay(props._id)}
+      onClick={() => props.handleDisplay && props.handleDisplay(props.id)}
     >
       <div className="content">
         <ul>

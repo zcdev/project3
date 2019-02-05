@@ -124,12 +124,16 @@ class Campaign extends Component {
                      />
                   </div>
                   <div id="combatants-display">
-                     {this.state.encounter.map((combatant, i) => (
-                        <CombatantItem
-                           combatant={combatant}
-                           key={i}
-                        />
-                     ))}
+                     <h4>Combatants</h4>
+                     <div id="combatants-list">
+                        {this.state.encounter.map((combatant, i) => (
+                           <CombatantItem
+                              combatant={combatant}
+                              id={i}
+                              key={i}
+                           />
+                        ))}
+                     </div>
                   </div>
                </div>
             </div>
