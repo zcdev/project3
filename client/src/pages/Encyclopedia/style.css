@@ -22,3 +22,39 @@
    overflow-y: scroll;
    width: 80vw;
 }
+
+#info-display {
+   height: 100%;
+   width: 42%;
+   overflow-y: scroll;
+   border-radius: 1%;
+   float: left;
+}
+
+#encyclopedia-display {
+   background-color: rgb(212,61,66);
+   height: 100%;
+   width: 55%;
+   overflow-y: scroll;
+   border-radius: 1%;
+   float: right;
+}
+
+.encyclopedia-nav-btn {
+   padding-left: 10px;
+   display: flex;
+   align-items: center;
+   height: 50px;
+}
+
+.encyclopedia-nav-btn a {
+   color: white;
+}
+
+.dark {
+   background-color: rgb(41, 44, 52);
+}
+
+.light {
+   background-color: rgb(69, 73, 87);
+}
