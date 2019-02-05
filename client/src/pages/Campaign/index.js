@@ -44,31 +44,45 @@ class Campaign extends Component {
    }
 
    addMonsterToCombatants = monsterIndex => {
+      // Get current encounter array
       const alteredEncounter = this.state.encounter;
+      // Make clone of object for the monster that was clicked
       let newMonster = _.cloneDeep(monsters[monsterIndex - 1]);
+      // Add monster key so CombatantItem component knows to render monster
       newMonster.combatantType = "monster";
+      // Add newMonster to the current encounter array
       alteredEncounter.push(newMonster);
       console.log("ALTERED ENCOUNTER: ", alteredEncounter);
+      // Set state with the altered encounter
       this.setState({
          encounter: alteredEncounter,
       })
    }
 
    addEncounterToCombatants = encounter => {
+      // Get current encounter array
       const alteredEncounter = this.state.encounter;
+      // For each monster in the pre-built encounter that was clicked:
       encounter.monsters.forEach(monster => {
+         // Add monster key so CombatantItem component knows to render monster
          monster.combatantType = "monster";
+         // Add monster to current encounter array
          alteredEncounter.push(monster);
       })
+      // Set state with the altered encounter
       this.setState({
          encounter: alteredEncounter
       })
    }
 
    addCharacterToCombatants = character => {
+      // Get current encounter array
       const alteredEncounter = this.state.encounter;
+      // Add character key so CombatantItem component knows to render character
       character.combatantType = "character"
+      // Add character to current encounter array
       alteredEncounter.push(character);
+      // Set state with the altered encounter
       this.setState({
          encounter: alteredEncounter
       })
@@ -99,12 +113,32 @@ class Campaign extends Component {
       //    console.log(`${combatant.name}: ${combatant.initiativeValue}`);
       // })
 
+      // Indicate that monster at index 0 has the first turn
       turnOrder[0].myTurn = true;
 
       // Set new turn order to state, thus reorganizing the CombatantItems currently displayed to the page
       this.setState({
          encounter: turnOrder,
          inCombat: true
+      });
+   }
+
+   endCombat = () => {
+      // Toggle all combatants 'myTurn' keys to false while inCombat is false
+      const currentCombatants = this.state.encounter
+      currentCombatants.forEach(combatant => {
+         combatant.myTurn = false;
+      });
+      // Toggle inCombat to false
+      this.setState({
+         inCombat: false
+      });
+   }
+
+   clearCombatants = () => {
+      // Clear all combatants in current encounter array
+      this.setState({
+         encounter: []
       });
    }
 
@@ -150,7 +184,12 @@ class Campaign extends Component {
                               key={i}
                            />
                         ))}
-                        <InitiativeButtons inCombat={this.state.inCombat} rollInitiative={this.rollInitiative}/>
+                        <InitiativeButtons
+                           inCombat={this.state.inCombat}
+                           endCombat={this.endCombat}
+                           rollInitiative={this.rollInitiative}
+                           clearCombatants={this.clearCombatants}
+                        />
                      </div>
                   </div>
                </div>
