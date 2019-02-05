@@ -80,7 +80,8 @@ class Home extends Component {
       <Router>
         <div>
           <Navbar />
-          <div>
+          <div className="homeDisplay">
+              <div>Handy DandDy</div>
             <Route
               path="/campaign"
               component={() => <Campaign campaignId={this.state.campaignId}/>}

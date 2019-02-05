@@ -24,6 +24,8 @@ app.use(bodyParser.json());
 // Serve up static assets
 // app.use(express.static("client/build"));
 
+app.use(express.static("public"));
+
 // Static assets for production
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
