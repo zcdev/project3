@@ -163,7 +163,7 @@ function MonsterDisplay(props) {
   //legendary_actions
 
   function legendaryActions() {
-    if (mon.actions) {
+    if (mon.legendary_actions) {
       return (
         <div>
           <h2><strong>Legendary Actions</strong></h2>
