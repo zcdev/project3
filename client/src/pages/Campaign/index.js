@@ -16,7 +16,8 @@ class Campaign extends Component {
       encounter: [],
       campaignId: "",
       inCombat: false,
-      mainDisplay: "monsters"
+      mainDisplay: "monsters",
+      currentCombatant: {}
    }
 
    componentDidMount() {
@@ -46,7 +47,7 @@ class Campaign extends Component {
    }
 
    alterMainDisplay = componentToDisplay => {
-      switch(componentToDisplay) {
+      switch (componentToDisplay) {
          case "monsters":
             this.setState({
                mainDisplay: "monsters"
@@ -133,7 +134,7 @@ class Campaign extends Component {
          if (initOfA > initOfB) return -1;
          if (initOfA < initOfB) return 1;
          return 0;
-      }); 
+      });
 
       // console.log("=================");
       // turnOrder.forEach(combatant => {
@@ -150,10 +151,13 @@ class Campaign extends Component {
       // Indicate that monster at index 0 has the first turn
       turnOrder[0].myTurn = true;
 
+      const firstCombatant = monsters[turnOrder[0].index - 1]
+
       // Set new turn order to state, thus reorganizing the CombatantItems currently displayed to the page
       this.setState({
          encounter: turnOrder,
-         inCombat: true
+         inCombat: true,
+         currentCombatant: firstCombatant
       });
    }
 
@@ -164,24 +168,35 @@ class Campaign extends Component {
       const currentTurnCombatant = alteredEncounter.find(combatant => combatant.myTurn === true);
       // Set that combatant's 'myTurn' key to false
       currentTurnCombatant.myTurn = false;
-      
+
       // If currentTurnCombatant is last combatant in the turn order:
       if (currentTurnCombatant.turnNumber === alteredEncounter.length) {
          // Set first combtatant's myTurn key to true
          alteredEncounter[0].myTurn = true;
 
-      // Otherwise:
+         const nextCombatant = monsters[alteredEncounter[0].index - 1];
+
+         // Set altered encounter to state so components will rerender accordingly
+         this.setState({
+            encounter: alteredEncounter,
+            currentCombatant: nextCombatant
+         })
+
+         // Otherwise:
       } else {
          // Find the combatant whose turn is next
          const nextTurnCombatant = alteredEncounter.find(combatant => combatant.turnNumber === currentTurnCombatant.turnNumber + 1);
          // Set that combatant's 'myTurn' ket to true
          nextTurnCombatant.myTurn = true;
+
+         const nextCombatant = monsters[nextTurnCombatant.index - 1];
+
+         // Set altered encounter to state so components will rerender accordingly
+         this.setState({
+            encounter: alteredEncounter,
+            currentCombatant: nextCombatant
+         })
       }
-      
-      // Set altered encounter to state so components will rerender accordingly
-      this.setState({
-         encounter: alteredEncounter
-      })
    }
 
    endCombat = () => {
@@ -205,63 +220,62 @@ class Campaign extends Component {
 
    render() {
       return (
-         // <Router>
-            <div id="campaign">
-               <div id="campaign-sidebar">
-                  <div id="campaign-nav">
-                     <div
-                        className="campaign-nav-btn light"
-                        onClick={() => this.alterMainDisplay("monsters")}
-                     >
-                        Monsters
+         <div id="campaign">
+            <div id="campaign-sidebar">
+               <div id="campaign-nav">
+                  <div
+                     className="campaign-nav-btn light"
+                     onClick={() => this.alterMainDisplay("monsters")}
+                  >
+                     Monsters
                      </div>
-                     <div
-                        className="campaign-nav-btn dark"
-                        onClick={() => this.alterMainDisplay("encounters")}
-                     >
-                        Encounters
+                  <div
+                     className="campaign-nav-btn dark"
+                     onClick={() => this.alterMainDisplay("encounters")}
+                  >
+                     Encounters
                      </div>
-                     <div
-                        className="campaign-nav-btn light"
-                        onClick={() => this.alterMainDisplay("characters")}
-                     >
-                        Characters
+                  <div
+                     className="campaign-nav-btn light"
+                     onClick={() => this.alterMainDisplay("characters")}
+                  >
+                     Characters
                      </div>
-                  </div>
                </div>
-               <div id="campaign-main">
-                  <div id="info-display">
-                     <MainDisplay 
-                        mainDisplay={this.state.mainDisplay}
-                        campaignId={this.state.campaignId}
-                        addMonsterToCombatants={this.addMonsterToCombatants}
-                        addEncounterToCombatants={this.addEncounterToCombatants}
-                        addCharacterToCombatants={this.addCharacterToCombatants}
-                        inCombat={this.state.inCombat}
-                     />
-                  </div>
-                  <div id="combatants-display">
-                     <h4>Combatants</h4>
-                     <div id="combatants-list">
-                        {this.state.encounter.map((combatant, i) => (
-                           <CombatantItem
-                              combatant={combatant}
-                              id={i}
-                              key={i}
-                           />
-                        ))}
-                        <InitiativeButtons
-                           inCombat={this.state.inCombat}
-                           rollInitiative={this.rollInitiative}
-                           nextTurn={this.nextTurn}
-                           endCombat={this.endCombat}
-                           clearCombatants={this.clearCombatants}
+            </div>
+            <div id="campaign-main">
+               <div id="info-display">
+                  <MainDisplay
+                     mainDisplay={this.state.mainDisplay}
+                     campaignId={this.state.campaignId}
+                     addMonsterToCombatants={this.addMonsterToCombatants}
+                     addEncounterToCombatants={this.addEncounterToCombatants}
+                     addCharacterToCombatants={this.addCharacterToCombatants}
+                     inCombat={this.state.inCombat}
+                     monster={this.state.currentCombatant}
+                  />
+               </div>
+               <div id="combatants-display">
+                  <h4>Combatants</h4>
+                  <div id="combatants-list">
+                     {this.state.encounter.map((combatant, i) => (
+                        <CombatantItem
+                           combatant={combatant}
+                           id={i}
+                           key={i}
                         />
-                     </div>
+                     ))}
+                     <InitiativeButtons
+                        inCombat={this.state.inCombat}
+                        rollInitiative={this.rollInitiative}
+                        nextTurn={this.nextTurn}
+                        endCombat={this.endCombat}
+                        clearCombatants={this.clearCombatants}
+                     />
                   </div>
                </div>
             </div>
-         // </Router>
+         </div>
       );
    }
 }
@@ -269,10 +283,10 @@ class Campaign extends Component {
 export default Campaign;
 
 function getModifier(abilityScore) {
-   
+
    const check = abilityScore;
-   
-   switch(true) {
+
+   switch (true) {
       case (check === 1):
          return -5;
       case (2 <= check && check <= 3):

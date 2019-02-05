@@ -25,6 +25,7 @@
 
 #info-display {
    background-color: rgb(41, 44, 52);
+   color: white;
    height: 100%;
    width: 42%;
    overflow-y: scroll;

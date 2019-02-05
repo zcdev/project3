@@ -2,6 +2,7 @@ import React from "react";
 import MonsterList from "../MainDisplay/MonsterList";
 import EncounterList from "../MainDisplay/EncounterList";
 import CharacterList from "../MainDisplay/CharacterList";
+import MonsterDisplay from "../../../pages/Encyclopedia/Monsters/MonsterDisplay";
 
 function MainDisplay (props) {
 
@@ -35,9 +36,10 @@ function MainDisplay (props) {
    } else {
       return(
          <div>
-            {console.log("monster stats!")}
+            {/* {console.log(props.monster)} */}
+            <MonsterDisplay monster={props.monster}/>
          </div>
-      )
+      );
    }
 
 }
