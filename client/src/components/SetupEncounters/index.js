@@ -92,7 +92,7 @@ class SetupEncounters extends Component {
 
   render() {
     return (
-      <div>
+      <div id="wrapper">
         <div id="cta">
           {this.state.encounters.map( (encounter, i) => (
             <EncounterItem
