@@ -1,12 +1,11 @@
 import React from "react";
-import SpecialAbility from "./SpecialAbility";
 
 function MonsterDisplay(props) {
 
   if (!props.monster)
     return (
       <div>
-        <h1><i>Many monsters creep while the world sleeps.</i></h1>
+        <h1><i>Take caution: Many monsters creep while the world sleeps.</i></h1>
       </div>
     );
 
@@ -25,27 +24,26 @@ function MonsterDisplay(props) {
         {displaySpecialAbilities()}
       </div>
     );
-    
+
   }
 
   function displaySpecialAbilities() {
-  if (props.monster.special_abilities) {
-    return (
-      <div>
-        <h3>Special Abilities</h3>
-        {props.monster.special_abilities.map(ability => (
-          <div>
-            <hr></hr>
-            <SpecialAbility
-              name={ability.name}
-              ability={ability.desc}
-            />
-          </div>
-        ))}
-      </div>
-    );
+    if (props.monster.special_abilities) {
+      return (
+        <div>
+          <h3>Special Abilities</h3>
+          {props.monster.special_abilities.map(ability => (
+            <div>
+              <hr></hr>
+                <p><strong>Name: </strong>{ability.name}</p>
+                <p><strong>Description: </strong>{ability.desc}</p>
+
+            </div>
+          ))}
+        </div>
+      );
+    }
   }
-}
 
 }
 
