@@ -1,6 +1,12 @@
+.combatant-wrapper {
+   display: flex;
+   flex-direction: row;
+}
+
 .combatant-item {
    padding: 0 15px;
    height: 55px;
+   width: 97%;
    display: flex;
    flex-direction: row;
    justify-content: space-between;
@@ -22,10 +28,9 @@
 }
 
 .myTurn {
-   display: block;
    background-color: red;
    height: 100%;
-   width: 10px;
+   width: 3%;
 }
 
 .notMyTurn {

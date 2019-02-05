@@ -113,6 +113,13 @@ class Campaign extends Component {
       //    console.log(`${combatant.name}: ${combatant.initiativeValue}`);
       // })
 
+      let turnCounter = 1;
+
+      turnOrder.forEach(combatant => {
+         combatant.turnNumber = turnCounter;
+         turnCounter++;
+      })
+
       // Indicate that monster at index 0 has the first turn
       turnOrder[0].myTurn = true;
 
@@ -121,6 +128,33 @@ class Campaign extends Component {
          encounter: turnOrder,
          inCombat: true
       });
+   }
+
+   nextTurn = () => {
+      // Get current encounter array
+      const alteredEncounter = this.state.encounter;
+      // Find combatant whose turn it is
+      const currentTurnCombatant = alteredEncounter.find(combatant => combatant.myTurn === true);
+      // Set that combatant's 'myTurn' key to false
+      currentTurnCombatant.myTurn = false;
+      
+      // If currentTurnCombatant is last combatant in the turn order:
+      if (currentTurnCombatant.turnNumber === alteredEncounter.length) {
+         // Set first combtatant's myTurn key to true
+         alteredEncounter[0].myTurn = true;
+
+      // Otherwise:
+      } else {
+         // Find the combatant whose turn is next
+         const nextTurnCombatant = alteredEncounter.find(combatant => combatant.turnNumber === currentTurnCombatant.turnNumber + 1);
+         // Set that combatant's 'myTurn' ket to true
+         nextTurnCombatant.myTurn = true;
+      }
+      
+      // Set altered encounter to state so components will rerender accordingly
+      this.setState({
+         encounter: alteredEncounter
+      })
    }
 
    endCombat = () => {
@@ -186,8 +220,9 @@ class Campaign extends Component {
                         ))}
                         <InitiativeButtons
                            inCombat={this.state.inCombat}
-                           endCombat={this.endCombat}
                            rollInitiative={this.rollInitiative}
+                           nextTurn={this.nextTurn}
+                           endCombat={this.endCombat}
                            clearCombatants={this.clearCombatants}
                         />
                      </div>

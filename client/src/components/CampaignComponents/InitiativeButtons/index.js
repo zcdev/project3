@@ -15,7 +15,7 @@ function InitiativeButtons (props) {
          <div>
             <button className="btn btn-danger" onClick={() => props.endCombat()}>End Combat</button>
 
-            <button className="btn btn-danger" onClick={() => console.log("Next Turn!")}>Next Turn</button>
+            <button className="btn btn-danger" onClick={() => props.nextTurn()}>Next Turn</button>
          </div>         
       );
    }
