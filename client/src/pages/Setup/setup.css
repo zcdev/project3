@@ -1,5 +1,5 @@
 #setup-sidebar {
-   background-color: white;
+   background-color: rgb(41, 44, 52);
    position: fixed;
    z-index: 2;
    left: 0;
@@ -13,7 +13,7 @@
 
 #setup-main {
    background-color: rgb(235, 235, 235);
-   padding: 50px;
+   padding: 30px;
    position: fixed;
    z-index: 2;
    right: 0;
@@ -21,16 +21,55 @@
    bottom: 0;
    overflow-y: scroll;
    width: 80vw;
+}
 
-  height: 100vh;
+#setup {
+   width: 70%;
+   float: right;
+}
+
+#setup-display {
+   background-color: rgb(212,61,66);
+   height: 100%;
+   width: 55%;
+   overflow-y: scroll;
+   border-radius: 1%;
+   float: right;
+}
+
+.setup-nav-btn {
+   padding-left: 10px;
+   display: flex;
+   align-items: center;
+   height: 50px;
+}
+
+.setup-nav-btn a {
+   color: white;
+}
+
+.dark {
+   background-color: rgb(41, 44, 52);
+}
+
+.light {
+   background-color: rgb(69, 73, 87);
 }
 
 #cta {
-   width: 50%;
    float: left;
+   margin: 1rem 1rem 0 0;
+}
+
+.red:first-child {
+   margin-top: 0;
+}
+
+#wrapper {
+   margin: 1rem;
 }
 
 #render {
-   width: 50%;
+
    float: left;
 }

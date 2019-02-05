@@ -4,7 +4,7 @@ function EncounterDisplay(props) {
    
    if (props.encounter.name && props.encounter.monsters) {
       return (
-         <div>
+         <div className="card grey">
             {/* {console.log(props)} */}
             <h4>{props.encounter.name}</h4>
             <hr></hr>
@@ -15,7 +15,7 @@ function EncounterDisplay(props) {
       );
    } else {
       return (
-         <div>Select and encounter to display.</div>
+         <div className="card grey">Select an encounter to display or create a new encounter.</div>
       );
    }
 }

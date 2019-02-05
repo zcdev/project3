@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import EncounterItem from "../EncounterItem";
-import EncounterNew from "../EncounterNew";
+// import EncounterNew from "../EncounterNew";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { Input } from "../Form";
 import EncounterMonsterList from "../SetupEncounters/EncounterMonsterList";
 import SelectedMonster from "../SetupEncounters/SelectedMonster";
 import EncounterDisplay from "../EncounterDisplay";
@@ -91,19 +92,19 @@ class SetupEncounters extends Component {
 
   render() {
     return (
-      <div>
+      <div id="wrapper">
         <div id="cta">
           {this.state.encounters.map( (encounter, i) => (
             <EncounterItem
               id={encounter._id}
               // key={encounter.id}
               name={encounter.name}
-              image={encounter.image}
+              // image={encounter.image}
               handleDisplay={this.handleDisplay}
               key={i}
             />
           ))}
-          <Button onClick={this.handleShow}>New</Button>
+          <Button variant="primary" onClick={this.handleShow}>New</Button>
         </div>
         <div id="render">
           <EncounterDisplay
@@ -116,22 +117,14 @@ class SetupEncounters extends Component {
               </Modal.Header>
               <Modal.Body>
                 <div>
-                  <form className="form">
-                    <input
-                      value={this.state.firstName}
-                      name="encounterName"
-                      onChange={this.handleInputChange}
-                      type="text"
-                      placeholder="Encounter Name"
-                    />
-                    <button onClick={this.handleFormSubmit}>Submit</button>
-                  </form>
                   <div className="row">
-                    <div className="col-6" id="monster-list">
+                    <div id="block">
+                    <div id="monster-list">
                       <EncounterMonsterList addMonsterToEncounter={this.addMonsterToEncounter} />
                     </div>
-                    <div className="col-6" id="selected-monsters">
-                      Encounter Monsters
+                    </div>
+                    <div id="selected-monsters">
+                      <h5>Encounter Monsters:</h5>
                         {this.state.newEncounter.map((monster, i) => (
                         <SelectedMonster
                           monster={monster}
@@ -141,14 +134,20 @@ class SetupEncounters extends Component {
                     </div>
                   </div>
                 </div>
+                <form className="form">
+                    <label>Encounter Name:</label>
+                    <Input className="form-control"
+                      value={this.state.firstName}
+                      name="encounterName"
+                      onChange={this.handleInputChange}
+                      type="text"
+                      placeholder="Encounter Name"
+                    />
+                    <Button className="submit-btn" variant="primary" onClick={this.handleFormSubmit}>Submit</Button>
+                  </form>
               </Modal.Body>
               <Modal.Footer>
-                <Button variant="secondary" onClick={this.handleClose}>
-                  Close
-                  </Button>
-                <Button variant="primary" onClick={this.handleClose}>
-                  Save
-                  </Button>
+                <Button variant="secondary" onClick={this.handleClose}>Close</Button>
               </Modal.Footer>
             </Modal>
           </div>
