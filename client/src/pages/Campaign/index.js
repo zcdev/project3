@@ -12,7 +12,8 @@ import API from "../../utils/API";
 class Campaign extends Component {
    state = {
       encounter: [],
-      campaignId: ""
+      campaignId: "",
+      inCombat: false
    }
 
    componentDidMount() {
@@ -98,7 +99,8 @@ class Campaign extends Component {
       
       // Set new turn order to state, thus reorganizing the CombatantItems currently displayed to the page
       this.setState({
-         encounter: turnOrder
+         encounter: turnOrder,
+         inCombat: true
       })
    }
 
@@ -144,7 +146,7 @@ class Campaign extends Component {
                               key={i}
                            />
                         ))}
-                        <InitiativeButtons rollInitiative={this.rollInitiative}/>
+                        <InitiativeButtons inCombat={this.state.inCombat} rollInitiative={this.rollInitiative}/>
                      </div>
                   </div>
                </div>
