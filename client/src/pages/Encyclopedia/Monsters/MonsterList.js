@@ -50,7 +50,7 @@ class EncyclopediaMonsters extends Component {
               <MonsterListItem
                  name={monster.name}
                  index={monster.index}
-                 addMonsterToCombatants={this.props.addMonsterToCombatants}
+                 printMonsterStats={this.props.printMonsterStats}
                  key={i}
               />
            ))}

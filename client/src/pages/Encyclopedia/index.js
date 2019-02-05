@@ -15,7 +15,12 @@ class Encyclopedia extends Component {
 
 
    }
-
+   printMonsterStats = index => {
+      console.log(this.state.currentMonster);
+      this.setState({
+        currentMonster: monsters[index - 1]
+      })
+    }
 
 
    render() {
