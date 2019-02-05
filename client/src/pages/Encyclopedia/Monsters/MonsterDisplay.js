@@ -19,6 +19,71 @@ function MonsterDisplay(props) {
 
   }
 
+//1 NAME
+// size - type, subtype , alignment
+
+//========
+
+// armor_class (& Type ???)
+// hit_points & hit_dice    
+// speed
+
+//========
+ //TABLE
+        //strength       dexterity     constitution
+        //save throw     save throw    save throw
+        //intelligence   wisdom        charisma
+        //save throw     save throw    save throw
+
+//========
+
+// Skills perception, stealth
+//damage_vulnerabilities
+//damage_resistance
+//damage_immunities
+//condition_immunities
+//senses
+//languages
+//challenge_rating (and XP calculation)
+
+if(props.VALUE === ""){
+  //do nothing
+}
+
+//========
+
+//special abilities
+
+//========
+
+//ACTIONS
+//actions
+
+//========
+
+//Legendary Actions
+//legendary_actions
+
+//
+
+
+
+  function displayBattleStats(){
+    if (props.monster){
+      return(
+        console.log('battle stats')
+        
+       
+        //saving throws
+        //skills
+        //damage immunities
+        //senses
+        //languages
+       
+      )
+    }
+  }
+
   function displayActions() {
     if (props.monster.actions) {
       return (
