@@ -8,7 +8,7 @@ function CharacterDisplay(props) {
             {/* {console.log(props)} */}
             <h4>{props.character.name}</h4>
             <hr></hr>
-               <p>{props.character.initiativeBonus}</p>
+            <p>initiative Bonus: {props.character.initiativeBonus}</p>
          </div>
       );
    } else {

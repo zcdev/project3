@@ -1,0 +1,39 @@
+.combatant-wrapper {
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-end;
+}
+
+.combatant-item {
+   padding: 0 15px;
+   height: 55px;
+   width: 97%;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.combatant-health {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+}
+
+.hp-buttons {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   font-size: 1px;
+}
+
+.myTurn {
+   background-color: rgb(212,61,66);
+   max-height: 55px;
+   width: 3%;
+}
+
+.notMyTurn {
+   display: none;
+}
