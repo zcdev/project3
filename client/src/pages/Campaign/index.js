@@ -4,6 +4,7 @@ import MonsterList from "../../components/CampaignComponents/MainDisplay/Monster
 import EncounterList from "../../components/CampaignComponents/MainDisplay/EncounterList";
 import CharacterList from "../../components/CampaignComponents/MainDisplay/CharacterList";
 import CombatantItem from "../../components/CampaignComponents/CombatantItem";
+import InitiativeButtons from "../../components/CampaignComponents/InitiativeButtons";
 import monsters from "../../dnd-data/monsters.json";
 import "./campaign.css";
 import API from "../../utils/API";
@@ -138,7 +139,7 @@ class Campaign extends Component {
                               key={i}
                            />
                         ))}
-                        <button className="btn btn-danger" onClick={this.rollInitiative}>Roll Initiative</button>
+                        <InitiativeButtons rollInitiative={this.rollInitiative}/>
                      </div>
                   </div>
                </div>
