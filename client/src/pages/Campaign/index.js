@@ -79,7 +79,8 @@ class Campaign extends Component {
 
       // Roll initiative for each combatant (random number 1-20 plus its dexterity modifier)
       turnOrder.forEach(combatant => {
-         combatant.initiativeValue = (Math.floor(Math.random() * 20) + 1) + getModifier(combatant.dexterity)
+         combatant.initiativeValue = (Math.floor(Math.random() * 20) + 1) + getModifier(combatant.dexterity);
+         combatant.myTurn = false;
          console.log(`${combatant.name}: ${combatant.initiativeValue}`);
       })
 
@@ -92,7 +93,8 @@ class Campaign extends Component {
          return 0;
       });
 
-      // console.log("=================")
+      console.log("=================")
+      console.log(turnOrder);
       // turnOrder.forEach(combatant => {
       //    console.log(`${combatant.name}: ${combatant.initiativeValue}`);
       // })
