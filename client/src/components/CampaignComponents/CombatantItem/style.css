@@ -1,5 +1,6 @@
 .combatant-item {
    padding: 0 15px;
+   height: 55px;
    display: flex;
    flex-direction: row;
    justify-content: space-between;
@@ -18,4 +19,15 @@
    justify-content: center;
    align-items: center;
    font-size: 1px;
+}
+
+.myTurn {
+   display: block;
+   background-color: red;
+   height: 100%;
+   width: 10px;
+}
+
+.notMyTurn {
+   display: none;
 }

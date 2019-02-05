@@ -6,6 +6,7 @@ import CharacterList from "../../components/CampaignComponents/MainDisplay/Chara
 import CombatantItem from "../../components/CampaignComponents/CombatantItem";
 import InitiativeButtons from "../../components/CampaignComponents/InitiativeButtons";
 import monsters from "../../dnd-data/monsters.json";
+import _ from "lodash";
 import "./campaign.css";
 import API from "../../utils/API";
 
@@ -24,7 +25,7 @@ class Campaign extends Component {
 
       // const newEncounter = {
       //    name: "MySecondEncounter",
-      //    monsters: [monsters[62], monsters[179], monsters[303]]
+      //    monsters: [monsters[62], monsters[62], monsters[62]]
       // }
 
       // API.addEncounterToCampaign(this.props.campaignId, newEncounter)
@@ -44,12 +45,12 @@ class Campaign extends Component {
 
    addMonsterToCombatants = monsterIndex => {
       const alteredEncounter = this.state.encounter;
-      let newMonster = monsters[monsterIndex - 1];
+      let newMonster = _.cloneDeep(monsters[monsterIndex - 1]);
       newMonster.combatantType = "monster";
       alteredEncounter.push(newMonster);
       console.log("ALTERED ENCOUNTER: ", alteredEncounter);
       this.setState({
-         encounter: alteredEncounter
+         encounter: alteredEncounter,
       })
    }
 
@@ -75,7 +76,7 @@ class Campaign extends Component {
 
    rollInitiative = () => {
       // Get all current combatants
-      const turnOrder = this.state.encounter
+      const turnOrder = this.state.encounter;
 
       // Roll initiative for each combatant (random number 1-20 plus its dexterity modifier)
       turnOrder.forEach(combatant => {
@@ -91,19 +92,20 @@ class Campaign extends Component {
          if (initOfA > initOfB) return -1;
          if (initOfA < initOfB) return 1;
          return 0;
-      });
+      }); 
 
-      console.log("=================")
-      console.log(turnOrder);
+      // console.log("=================");
       // turnOrder.forEach(combatant => {
       //    console.log(`${combatant.name}: ${combatant.initiativeValue}`);
       // })
-      
+
+      turnOrder[0].myTurn = true;
+
       // Set new turn order to state, thus reorganizing the CombatantItems currently displayed to the page
       this.setState({
          encounter: turnOrder,
          inCombat: true
-      })
+      });
    }
 
    render() {

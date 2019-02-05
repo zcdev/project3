@@ -5,7 +5,10 @@ function CombatantItem(props) {
 
    if (props.combatant.combatantType === "monster") {
       return (
-         <div className={props.id % 2 === 0 ? "combatant-item light" : "combatant-item dark"}>
+         <div 
+            className={props.id % 2 === 0 ? "combatant-item light" : "combatant-item dark"}
+         >
+            <div className={props.combatant.myTurn ? "myTurn" : "notMyTurn"}></div>
             <div className="combatant-name">
                {props.combatant.name}
             </div>
