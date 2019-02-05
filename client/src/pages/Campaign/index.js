@@ -237,6 +237,7 @@ class Campaign extends Component {
                         addMonsterToCombatants={this.addMonsterToCombatants}
                         addEncounterToCombatants={this.addEncounterToCombatants}
                         addCharacterToCombatants={this.addCharacterToCombatants}
+                        inCombat={this.state.inCombat}
                      />
                   </div>
                   <div id="combatants-display">
