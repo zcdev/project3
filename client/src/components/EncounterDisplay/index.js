@@ -15,7 +15,7 @@ function EncounterDisplay(props) {
       );
    } else {
       return (
-         <div className="card grey">Select an encounter to display.</div>
+         <div className="card grey">Select an encounter to display or create a new encounter.</div>
       );
    }
 }

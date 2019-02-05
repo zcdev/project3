@@ -13,7 +13,7 @@ function CharacterDisplay(props) {
       );
    } else {
       return (
-         <div className="card grey">Select a character to display.</div>
+         <div className="card grey">Select a character to display or create a new character.</div>
       );
    }
 }

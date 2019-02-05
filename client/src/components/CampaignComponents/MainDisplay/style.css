@@ -24,7 +24,7 @@
    margin: 0;
    text-align: center;
    color: white;
-   background-color: rgb(212,61,66);
+   background-color: rgb(212, 61, 66);
 }
 
 #monster-search {
@@ -40,7 +40,7 @@
    margin: 0;
    text-align: center;
    color: white;
-   background-color: rgb(212,61,66);
+   background-color: rgb(212, 61, 66);
 }
 
 .encounter-list-item {
@@ -48,5 +48,24 @@
 }
 
 .encounter-list-item ul {
+   margin: 0;
+}
+
+/* Character Panel Stlyes */
+/* =================================== */
+
+#campaign-characters h4 {
+   padding: 10px 0;
+   margin: 0;
+   text-align: center;
+   color: white;
+   background-color: rgb(212, 61, 66);
+}
+
+.character-list-item {
+   padding: 25px;
+}
+
+.character-list-item p {
    margin: 0;
 }

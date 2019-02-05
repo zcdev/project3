@@ -102,7 +102,7 @@ class SetupCharacters extends Component {
 
   render() {
     return (
-      <div>
+      <div id="wrapper">
         <div id="cta">
           {this.state.characters.map( (character, i) => (
             <CharacterItem
