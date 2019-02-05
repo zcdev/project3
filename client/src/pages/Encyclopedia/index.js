@@ -19,15 +19,19 @@ class Encyclopedia extends Component {
    }
    printMonsterStats = index => {
       console.log(this.state.currentMonster);
+      const newMonster = monsters[index - 1];
+      newMonster.itemType = "monster";
       this.setState({
-        currentMonster: monsters[index - 1]
+        currentMonster: newMonster
       })
     }
     
     printSpellStats = index => {
       console.log(this.state.currentSpell);
+      const newSpell = spells[index - 1]
+      newSpell.itemType = "spell"
       this.setState({
-        currentSpell: spells[index - 1]
+        currentSpell: newSpell
       })
     }
   
@@ -62,8 +66,18 @@ class Encyclopedia extends Component {
                      </div>
                      
                      <div id="encyclopedia-display">
-                     <MonsterDisplay monster={this.state.currentMonster} />
-                     <SpellDisplay spell={this.state.currentSpell} />
+                     <Route
+                        path="/encyclopedia"
+                        component={() => <div><h2> Select a category, fair traveller.</h2></div>}
+                        />
+                     <Route
+                        path="/monsters"
+                        component={() => <MonsterDisplay monster={this.state.currentMonster} />}
+                      />
+                      <Route
+                        path="/spells"
+                        component={() =>  <SpellDisplay spell={this.state.currentSpell} />}
+                     />
                      </div>
                   </div>
                </div>

@@ -59,7 +59,7 @@ function SpellDisplay(props) {
 
    return (
       <div>
-         <h1>Select the spell you would like to display</h1>
+         <h1><i>Cast with caution: magical deeds have magical consequences.</i></h1>
       </div>
    );
 }
