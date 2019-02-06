@@ -136,7 +136,7 @@ class SetupCharacters extends Component {
                       type="text"
                       placeholder="Character Name"
                     />
-                    <label>Character Number:</label>
+                    <label>Dex Mod:</label>
                     <Input className="form-control"
                       value={this.state.newCharacter}
                       name="newCharacter"
