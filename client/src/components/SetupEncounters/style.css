@@ -3,12 +3,12 @@
 
 .dark {
     background-color: rgb(41, 44, 52);
-    color: white;
+    color: antiquewhite;
  }
  
  .light {
     background-color: rgb(69, 73, 87);
-    color: white;
+    color: antiquewhite;
  }
  
  /* Monster Panel Stlyes */
@@ -23,7 +23,7 @@
     padding: 10px 0;
     margin: 0;
     text-align: center;
-    color: white;
+    color: antiquewhite;
     background-color: rgb(227, 12, 26);
  }
  
@@ -39,7 +39,7 @@
     padding: 10px 0;
     margin: 0;
     text-align: center;
-    color: white;
+    color: antiquewhite;
     background-color: rgb(227, 12, 26);
  }
  

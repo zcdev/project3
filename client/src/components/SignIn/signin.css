@@ -3,5 +3,9 @@
     background: transparent;
     border: none;
     border-bottom: 2px solid black;
+    
 }
 
+.user-name::placeholder{
+    color: antiquewhite;
+}
