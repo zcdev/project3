@@ -55,6 +55,11 @@
    right: 50px;
 }
 
+.initiative-buttons .btn {
+   background-color: rgb(227, 12, 26);
+   margin: 0 10px;
+}
+
 #combatants-display h4 {
    padding: 10px 0;
    margin: 0;

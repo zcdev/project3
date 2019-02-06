@@ -117,48 +117,51 @@ class Campaign extends Component {
    }
 
    rollInitiative = () => {
-      // Get all current combatants
-      const turnOrder = this.state.encounter;
-
-      // Roll initiative for each combatant (random number 1-20 plus its dexterity modifier)
-      turnOrder.forEach(combatant => {
-         combatant.initiativeValue = (Math.floor(Math.random() * 20) + 1) + getModifier(combatant.dexterity);
-         combatant.myTurn = false;
-         console.log(`${combatant.name}: ${combatant.initiativeValue}`);
-      })
-
-      // Sort combatants based on initiative rolled
-      turnOrder.sort(function (a, b) {
-         let initOfA = a.initiativeValue;
-         let initOfB = b.initiativeValue;
-         if (initOfA > initOfB) return -1;
-         if (initOfA < initOfB) return 1;
-         return 0;
-      });
-
-      // console.log("=================");
-      // turnOrder.forEach(combatant => {
-      //    console.log(`${combatant.name}: ${combatant.initiativeValue}`);
-      // })
-
-      let turnCounter = 1;
-
-      turnOrder.forEach(combatant => {
-         combatant.turnNumber = turnCounter;
-         turnCounter++;
-      })
-
-      // Indicate that monster at index 0 has the first turn
-      turnOrder[0].myTurn = true;
-
-      const firstCombatant = monsters[turnOrder[0].index - 1]
-
-      // Set new turn order to state, thus reorganizing the CombatantItems currently displayed to the page
-      this.setState({
-         encounter: turnOrder,
-         inCombat: true,
-         currentCombatant: firstCombatant
-      });
+      // Only execute if a combatant has been added to the encounter
+      if (this.state.encounter.length > 0) {
+         // Get all current combatants
+         const turnOrder = this.state.encounter;
+   
+         // Roll initiative for each combatant (random number 1-20 plus its dexterity modifier)
+         turnOrder.forEach(combatant => {
+            combatant.initiativeValue = (Math.floor(Math.random() * 20) + 1) + getModifier(combatant.dexterity);
+            combatant.myTurn = false;
+            console.log(`${combatant.name}: ${combatant.initiativeValue}`);
+         })
+   
+         // Sort combatants based on initiative rolled
+         turnOrder.sort(function (a, b) {
+            let initOfA = a.initiativeValue;
+            let initOfB = b.initiativeValue;
+            if (initOfA > initOfB) return -1;
+            if (initOfA < initOfB) return 1;
+            return 0;
+         });
+   
+         // console.log("=================");
+         // turnOrder.forEach(combatant => {
+         //    console.log(`${combatant.name}: ${combatant.initiativeValue}`);
+         // })
+   
+         let turnCounter = 1;
+   
+         turnOrder.forEach(combatant => {
+            combatant.turnNumber = turnCounter;
+            turnCounter++;
+         })
+   
+         // Indicate that monster at index 0 has the first turn
+         turnOrder[0].myTurn = true;
+   
+         const firstCombatant = monsters[turnOrder[0].index - 1]
+   
+         // Set new turn order to state, thus reorganizing the CombatantItems currently displayed to the page
+         this.setState({
+            encounter: turnOrder,
+            inCombat: true,
+            currentCombatant: firstCombatant
+         });
+      }
    }
 
    nextTurn = () => {
