@@ -56,6 +56,7 @@ class SignIn extends Component {
               onChange={this.handleInputChange}
               type="text"
               placeholder="Username"
+              
             />
           </div>
           <div>
