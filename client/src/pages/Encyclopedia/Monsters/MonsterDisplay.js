@@ -7,7 +7,7 @@ function MonsterDisplay(props) {
   if (!mon)
     return (
       <div>
-        <h1><i>Take caution: Many monsters creep while the world sleeps.</i></h1>
+        <h1><em>Take caution: Many monsters creep while the world sleeps.</em></h1>
       </div>
     );
 
@@ -26,14 +26,15 @@ function MonsterDisplay(props) {
   }
 
   //1 NAME
-  // size - type, subtype , alignment
+  // size - type, alignment
+  // TO ADD subtype
 
   function nameInfo() {
     if (mon) {
       return (
         <div>
-          <h1>{mon.name}</h1>
-          <p><i>{mon.size} {mon.type}, {mon.alignment}</i></p>
+          <h1><strong>{mon.name}</strong></h1>
+          <p><em>{mon.size} {mon.type}, {mon.alignment}</em></p>
           <hr></hr>
         </div>
       )
@@ -88,7 +89,9 @@ function MonsterDisplay(props) {
 
   //========
 
-  // Skills perception, stealth
+  // Skills 
+
+
   //damage_vulnerabilities
   //damage_resistance
   //damage_immunities
@@ -97,20 +100,42 @@ function MonsterDisplay(props) {
   //languages
   //challenge_rating (and XP calculation)
 
-  function skills (){
-    if (mon.history || mon.perception || mon.stealth) {
+  function skills() {
+
+    const monsterSkills = ["acrobatics", "arcana", "athletics", "deception", "history", "insight", "intimidation", "investigation", "medicine", "nature", "perception", "performance", "persuasion", "religion", "stealth", "survival"]
+
+    // const monstVariables = [acrobatics, arcana, athletics, deception, history, insight, intimidation, investigation, medicine, nature, perception, performance, persuasion, religion, stealth, survival]
+
+    let skillString = ""
+
+    for (let i = 0; i < monsterSkills.length; i++) {
+      let temp = monsterSkills[i]
+      if (mon[monsterSkills[i]]) {
+        skillString += monsterSkills[i].charAt(0).toUpperCase() + monsterSkills[i].substring(1) + " +" + mon[monsterSkills[i]] + ",  "
+      }
+    }
+    skillString = skillString.substring(0, skillString.length - 2)
+    console.log("skillstring, " + skillString)
+
+    if (skillString) {
       return (
         <div>
-      <p>Skills: History {mon.history} Perception {mon.perception} Stealth {mon.stealth}</p>
-      </div>
+          <p><strong>Skills:</strong> <em>{skillString}</em></p>
+        </div>
       )
     }
-
   }
 
-  // if(props.VALUE === ""){
-  //   //do nothing
-  // }
+
+  //damage_vulnerabilities
+  //damage_resistance
+  //damage_immunities
+  //condition_immunities
+  //senses
+  //languages
+  //challenge_rating (and XP calculation)
+
+
 
   //========
 
@@ -186,4 +211,4 @@ function MonsterDisplay(props) {
 
 
 
-  export default MonsterDisplay;
+export default MonsterDisplay;
