@@ -2,7 +2,7 @@ import React from "react";
 import MonsterList from "../MainDisplay/MonsterList";
 import EncounterList from "../MainDisplay/EncounterList";
 import CharacterList from "../MainDisplay/CharacterList";
-import MonsterDisplay from "../../../pages/Encyclopedia/Monsters/MonsterDisplay";
+import StatDisplay from "./StatDisplay";
 
 function MainDisplay (props) {
 
@@ -36,8 +36,7 @@ function MainDisplay (props) {
    } else {
       return(
          <div>
-            {/* {console.log(props.monster)} */}
-            <MonsterDisplay monster={props.monster}/>
+            <StatDisplay monster={props.monster}/>
          </div>
       );
    }

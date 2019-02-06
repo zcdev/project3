@@ -211,6 +211,25 @@ class Campaign extends Component {
       });
    }
 
+   changeCombatantHealth = (turnNumber, upOrDown) => {
+      const alteredEncounter = this.state.encounter;      
+
+      if (upOrDown === "increment") {
+         const currentTurnCombatant = alteredEncounter.find(combatant => combatant.turnNumber === turnNumber);
+         currentTurnCombatant.hit_points = currentTurnCombatant.hit_points + 1;
+
+      } else {
+         const currentTurnCombatant = alteredEncounter.find(combatant => combatant.turnNumber === turnNumber);
+         if (currentTurnCombatant.hit_points > 0) {
+            currentTurnCombatant.hit_points = currentTurnCombatant.hit_points - 1;
+         }
+      }
+
+      this.setState({
+         encounter: alteredEncounter
+      })
+   }
+
    clearCombatants = () => {
       // Clear all combatants in current encounter array
       this.setState({
@@ -261,6 +280,7 @@ class Campaign extends Component {
                      {this.state.encounter.map((combatant, i) => (
                         <CombatantItem
                            combatant={combatant}
+                           changeCombatantHealth={this.changeCombatantHealth}
                            id={i}
                            key={i}
                         />
