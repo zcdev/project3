@@ -2,13 +2,13 @@ import React from "react";
 
 function CharacterDisplay(props) {
    
-   if (props.character.name && props.character.initiativeBonus) {
+   if (props.character.name && props.character.dexterity) {
       return (
          <div className="card grey">
             {/* {console.log(props)} */}
             <h4>{props.character.name}</h4>
             <hr></hr>
-            <p>initiative Bonus: {props.character.initiativeBonus}</p>
+            <p>Dex Mod: {props.character.dexterity}</p>
          </div>
       );
    } else {
