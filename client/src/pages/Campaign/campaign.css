@@ -57,7 +57,17 @@
 
 .initiative-buttons .btn {
    background-color: rgb(227, 12, 26);
-   margin: 0 10px;
+   color: antiquewhite;
+   margin: 0 0 0 20px;
+}
+
+.initiative-buttons .btn:hover {
+   background-color: rgb(174, 12, 23);
+   color: antiquewhite;
+}
+
+.initiative-buttons .btn:focus {
+   outline: none;
 }
 
 #combatants-display h4 {
