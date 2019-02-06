@@ -4,7 +4,7 @@ function InitiativeButtons (props) {
    
    if (props.inCombat === false) {
       return (
-         <div>
+         <div className="initiative-buttons">
             <button className="btn btn-danger" onClick={() => props.clearCombatants()}>Clear Combatants</button>
 
             <button className="btn btn-danger" onClick={() => props.rollInitiative()}>Roll Initiative</button>
@@ -12,7 +12,7 @@ function InitiativeButtons (props) {
       );
    } else {
       return (
-         <div>
+         <div className="initiative-buttons">
             <button className="btn btn-danger" onClick={() => props.endCombat()}>End Combat</button>
 
             <button className="btn btn-danger" onClick={() => props.nextTurn()}>Next Turn</button>

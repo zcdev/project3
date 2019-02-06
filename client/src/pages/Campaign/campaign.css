@@ -25,6 +25,7 @@
 
 #info-display {
    background-color: rgb(41, 44, 52);
+   color: white;
    height: 100%;
    width: 42%;
    overflow-y: scroll;
@@ -38,9 +39,20 @@
    font-weight: 300;
    height: 100%;
    width: 55%;
-   overflow-y: scroll;
    border-radius: 1%;
+   overflow-y: scroll;
    float: right;
+}
+
+#combatants-list {
+   overflow-y: scroll;
+   height: 80%;
+}
+
+.initiative-buttons {
+   position: absolute;
+   bottom: 50px;
+   right: 50px;
 }
 
 #combatants-display h4 {
@@ -50,9 +62,6 @@
    color: white;
    background-color: rgb(227, 12, 26);
 }
-
-/* #combatants-list {
-} */
 
 .campaign-nav-btn {
    padding-left: 10px;
