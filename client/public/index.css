@@ -4,6 +4,27 @@
          url('DnDC.ttf') format('truetype');
   }
 
+  @font-face {
+    font-family: 'Anglodavek';
+    src: local('Anglodavek'), local('Anglodavek'),
+         url('Anglodavek.otf') format('opentype');
+  }
+
+  @font-face {
+    font-family: 'Dalelands_Uncial';
+    src: local('Dalelands_Uncial'), local('Dalelands_Uncial'),
+         url('Dalelands_Uncial.otf') format('opentype');
+  }
+
+  @font-face {
+    font-family: 'Pixel_Takhisis';
+    src: local('Pixel_Takhisis'), local('Pixel_Takhisis'),
+         url('Pixel_Takhisis.otf') format('opentype');
+  }
+
+
+  
+
 #title {
     font-family: 'DnDC';
     color: #fff;
