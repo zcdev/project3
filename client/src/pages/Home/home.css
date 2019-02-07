@@ -1,8 +1,9 @@
 .homeDisplay {
     background-color: rgba(227, 12, 26);
+    min-height: 100vh;
     height: 100vh;
     width: 100%;
-    background-image: url(/assets/images/dnd.png);
+    background-image: url(/assets/images/dnd.jpg);
     background-repeat: no-repeat;
     background-position: 64% 31%;
     /* background-attachment: fixed; */
@@ -10,11 +11,16 @@
     background-size: cover;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
     -ms-flex-pack: center;
     justify-content: center;
     -ms-flex-align: center;
-    align-items: center;
-    
+    align-items: center;   
+}
+
+#title {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    font-family: 'DnDC';
+    color: antiquewhite;
 }

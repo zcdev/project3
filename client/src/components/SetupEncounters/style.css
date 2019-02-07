@@ -3,12 +3,12 @@
 
 .dark {
     background-color: rgb(41, 44, 52);
-    color: white;
+    color: antiquewhite;
  }
  
  .light {
     background-color: rgb(69, 73, 87);
-    color: white;
+    color: antiquewhite;
  }
  
  /* Monster Panel Stlyes */
@@ -23,8 +23,8 @@
     padding: 10px 0;
     margin: 0;
     text-align: center;
-    color: white;
-    background-color: rgb(212,61,66);
+    color: antiquewhite;
+    background-color: rgb(227, 12, 26);
  }
  
  #monster-search {
@@ -39,8 +39,8 @@
     padding: 10px 0;
     margin: 0;
     text-align: center;
-    color: white;
-    background-color: rgb(212,61,66);
+    color: antiquewhite;
+    background-color: rgb(227, 12, 26);
  }
  
  .encounter-list-item {
@@ -56,10 +56,9 @@
  }
 
 #monster-list {
-   height: 200px;
-   overflow-y: scroll;
    border-radius: 1%;
    float: left;
+   overflow: hidden;
 }
 
 #block {
@@ -68,5 +67,15 @@
     right: 0;
     top: 0;
     bottom: 0;
-    overflow-y: scroll;
+    height: 350px;
+}
+
+.search-results-encounter {
+   overflow-y: scroll;
+   height: 220px;
+}
+
+.btn, .btn:hover, .btn:active, .btn:focus, .btn:visited {
+   background-color: rgb(227, 12, 26);
+   color: antiquewhite;
 }

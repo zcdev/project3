@@ -1,0 +1,14 @@
+.mern-form-btn {
+    border-radius: 10px;
+    background: #473149;
+    border: none;
+    color: antiquewhite;
+    padding: 4px 7px;
+}
+
+.mern-form-btn:hover {
+    background: antiquewhite;
+    color: #473149;
+    cursor: pointer;
+}
+

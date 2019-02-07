@@ -46,6 +46,7 @@ class EncounterMonsterList extends Component {
                   placeholder="Search for a monster"
                />
             </div>
+            <div className="search-results-encounter">
             {searchMonsters.map((monster, i) => (
                <EncounterMonsterListItem
                   name={monster.name}
@@ -54,6 +55,7 @@ class EncounterMonsterList extends Component {
                   key={i}
                />
             ))}
+            </div>
          </div>
       );
    }

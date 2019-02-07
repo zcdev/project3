@@ -3,12 +3,12 @@
 
 .dark {
    background-color: rgb(41, 44, 52);
-   color: white;
+   color: antiquewhite;
 }
 
 .light {
    background-color: rgb(69, 73, 87);
-   color: white;
+   color: antiquewhite;
 }
 
 /* Monster Panel Stlyes */
@@ -23,14 +23,34 @@
    padding: 10px 0;
    margin: 0;
    text-align: center;
-   color: white;
-   background-color: rgb(212, 61, 66);
+   color: antiquewhite;
+   background-color: rgb(227, 12, 26);
 }
-
+.search-results {
+   max-height: 520px;
+   height: 100%;
+   overflow-y: scroll;
+   height: 77%;
+}
 #monster-search {
    padding: 15px;
    background-color: rgb(41, 44, 52);
 }
+
+.monster-name {
+   transition: all 100ms;
+   cursor: pointer;
+}
+
+.monster-name:hover {
+   color: rgb(227, 12, 26);
+}
+
+/* #c-monster-list {
+   overflow-y: scroll;
+   min-width: 100%;
+   height: 50%;
+} */
 
 /* Encounter Panel Stlyes */
 /* =================================== */
@@ -39,8 +59,8 @@
    padding: 10px 0;
    margin: 0;
    text-align: center;
-   color: white;
-   background-color: rgb(212, 61, 66);
+   color: antiquewhite;
+   background-color: rgb(227, 12, 26);
 }
 
 .encounter-list-item {
@@ -58,8 +78,8 @@
    padding: 10px 0;
    margin: 0;
    text-align: center;
-   color: white;
-   background-color: rgb(212, 61, 66);
+   color: antiquewhite;
+   background-color: rgb(227, 12, 26);
 }
 
 .character-list-item {
