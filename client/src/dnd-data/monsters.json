@@ -98,7 +98,7 @@
 	"damage_resistances": "",
 	"damage_immunities": "",
 	"condition_immunities": "",
-	"senses": "passive Perception 12",
+	"senses": "Passive Perception 12",
 	"languages": "any one language (usually Common)",
 	"challenge_rating": 0.25,
 	"special_abilities": [{
