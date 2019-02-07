@@ -34,9 +34,9 @@ class EncyclopediaMonsters extends Component {
      });
 
      return (
-        <div id="campaign-monsters">
+        <div id="encyclopedia-monsters">
            <h4>Monsters</h4>
-           <div id="monster-search">
+           <div id="encyclopedia-search">
               <input
                  className="form-control"
                  value={this.state.searchString}
