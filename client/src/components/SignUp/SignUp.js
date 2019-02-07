@@ -63,7 +63,7 @@ class SignUp extends Component {
       <div>
         <form>
           <Input
-            className="form-control"
+            className="form-control input user-name"
             value={this.state.userName}
             onChange={this.handleInputChange}
             name="userName"
@@ -77,7 +77,7 @@ class SignUp extends Component {
             placeholder="email"
           /> */}
           <Input
-            className="form-control"
+            className="form-control input user-name"
             value={this.state.password}
             onChange={this.handleInputChange}
             name="password"
@@ -85,7 +85,7 @@ class SignUp extends Component {
             type="password"
           />
           <Input
-            className="form-control"
+            className="form-control input user-name"
             value={this.state.password2}
             onChange={this.handleInputChange}
             name="password2"

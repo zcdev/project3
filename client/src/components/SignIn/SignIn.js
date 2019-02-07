@@ -50,17 +50,18 @@ class SignIn extends Component {
         <form>
           <div>
             <Input
-              className="form-control"
+              className="form-control input user-name"
               value={this.state.userName}
               name="userName"
               onChange={this.handleInputChange}
               type="text"
               placeholder="Username"
+              
             />
           </div>
           <div>
             <Input
-              className="form-control"
+              className="form-control input user-name"
               value={this.state.password}
               name="password"
               onChange={this.handleInputChange}

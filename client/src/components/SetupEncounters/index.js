@@ -58,7 +58,7 @@ class SetupEncounters extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-
+    this.setState({ show: false });
     const newEncounter = {
       name: this.state.encounterName,
       monsters: this.state.newEncounter
@@ -104,7 +104,7 @@ class SetupEncounters extends Component {
               key={i}
             />
           ))}
-          <Button variant="primary" onClick={this.handleShow}>New</Button>
+          <Button className="submit-btn" variant="danger" onClick={this.handleShow}>New</Button>
         </div>
         <div id="render">
           <EncounterDisplay
@@ -143,12 +143,9 @@ class SetupEncounters extends Component {
                       type="text"
                       placeholder="Encounter Name"
                     />
-                    <Button className="submit-btn" variant="primary" onClick={this.handleFormSubmit}>Submit</Button>
+                    <Button className="submit-btn" variant="danger" onClick={this.handleFormSubmit}>Submit</Button>
                   </form>
               </Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={this.handleClose}>Close</Button>
-              </Modal.Footer>
             </Modal>
           </div>
         </div>

@@ -7,7 +7,7 @@ function Monster(props) {
          className={props.index % 2 === 0 ? "dark" : "light"} 
          onClick={() => props.addMonsterToCombatants(props.index)}
       >
-         <p className="m-0 pl-3">{props.name}</p>
+         <p className="m-0 pl-3 monster-name">{props.name}</p>
       </div>
    );
 }

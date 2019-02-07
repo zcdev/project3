@@ -10,11 +10,19 @@
    width: 97%;
    display: flex;
    flex-direction: row;
-   justify-content: space-between;
    align-items: center;
 }
 
+.combatant-name {
+   width: 60%;
+}
+
+.combatant-ac {
+   width:20%;
+}
+
 .combatant-health {
+   width: 20%;
    display: flex;
    flex-direction: row;
    align-items: center;
@@ -26,10 +34,25 @@
    justify-content: center;
    align-items: center;
    font-size: 1px;
+   cursor: pointer;
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none; 
+   -moz-user-select: none; 
+   -ms-user-select: none; 
+   user-select: none;
+}
+         
+.hp-buttons i {
+   transition: all 300ms;
+}
+
+.hp-buttons i:hover {
+   color: rgb(227, 12, 26);
 }
 
 .myTurn {
-   background-color: rgb(212,61,66);
+   background-color: rgb(227, 12, 26);
    max-height: 55px;
    width: 3%;
 }

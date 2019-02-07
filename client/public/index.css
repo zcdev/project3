@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'DnDC';
+    src: local('DnDC'), local('DnDC'),
+         url('DnDC.ttf') format('truetype');
+  }
+
+#title {
+    font-family: 'DnDC';
+    color: #fff;
+    font-size: 8rem;
+}

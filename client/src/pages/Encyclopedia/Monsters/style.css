@@ -3,12 +3,12 @@
 
 .dark {
   background-color: rgb(41, 44, 52);
-  color: white;
+  color: antiquewhite;
 }
 
 .light {
   background-color: rgb(69, 73, 87);
-  color: white;
+  color: antiquewhite;
 }
 
 /* Monster Panel Styles */
@@ -23,8 +23,8 @@
   padding: 10px 0;
   margin: 0;
   text-align: center;
-  color: white;
-  background-color: rgb(212,61,66);
+  color: antiquewhite;
+  background-color: rgb(227, 12, 26);
 }
 
 #monster-search {
@@ -39,8 +39,8 @@
   padding: 10px 0;
   margin: 0;
   text-align: center;
-  color: white;
-  background-color: rgb(212,61,66);
+  color: antiquewhite;
+  background-color: rgb(227, 12, 26);
 }
 
 .encounter-list-item {

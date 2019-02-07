@@ -1,5 +1,5 @@
 #encyclopedia-sidebar {
-   background-color: white;
+   background-color: antiquewhite;
    position: fixed;
    z-index: 2;
    left: 0;
@@ -12,7 +12,7 @@
 }
 
 #encyclopedia-main {
-   background-color: rgb(235, 235, 235);
+   background-color:antiquewhite;
    padding: 50px;
    position: fixed;
    z-index: 2;
@@ -26,13 +26,13 @@
 #info-display {
    height: 100%;
    width: 42%;
-   overflow-y: scroll;
+   /* overflow-y: scroll; */
    border-radius: 1%;
    float: left;
 }
 
 #encyclopedia-display {
-   background-color: rgb(212,61,66);
+   background-color: rgb(227, 12, 26);
    height: 100%;
    width: 55%;
    overflow-y: scroll;
@@ -48,7 +48,7 @@
 }
 
 .encyclopedia-nav-btn a {
-   color: white;
+   color: antiquewhite;
 }
 
 .dark {

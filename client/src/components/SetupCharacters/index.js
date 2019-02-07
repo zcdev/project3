@@ -68,10 +68,10 @@ class SetupCharacters extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-
+    this.setState({ show: false });
     const newCharacter = {
       name: this.state.characterName,
-      initiativeBonus: this.state.newCharacter
+      dexterity: this.state.newCharacter
     }
 
     API.addCharacterToCampaign(this.props.campaignId, newCharacter)
@@ -114,7 +114,7 @@ class SetupCharacters extends Component {
               key={i}
             />
           ))}
-            <Button variant="primary" onClick={this.handleShow}>New</Button>
+            <Button className="submit-btn" variant="danger" onClick={this.handleShow}>New</Button>
         </div>
         <div id="render">
           <CharacterDisplay
@@ -136,7 +136,7 @@ class SetupCharacters extends Component {
                       type="text"
                       placeholder="Character Name"
                     />
-                    <label>Character Number:</label>
+                    <label>Dexterity:</label>
                     <Input className="form-control"
                       value={this.state.newCharacter}
                       name="newCharacter"
@@ -144,27 +144,10 @@ class SetupCharacters extends Component {
                       type="number"
                       placeholder="Character Number"
                     />
-                    <Button onClick={this.handleFormSubmit}>Submit</Button>
+                    <Button className="submit-btn" variant="danger" onClick={this.handleFormSubmit}>Submit</Button>
                   </form>
-                  <div className="row">
-{/*                     <div className="col-6" id="monster-list">
-                      <EncounterMonsterList addMonsterToEncounter={this.addMonsterToEncounter} />
-                    </div>
-                    <div className="col-6" id="selected-monsters">
-                      Encounter Monsters
-                       {this.state.newEncounter.map((monster, i) => (
-                        <SelectedMonster
-                          monster={monster}
-                          key={i}
-                        />
-                      ))}
-                    </div> */}
-                  </div>
                 </div>
               </Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={this.handleClose}>Close</Button>
-              </Modal.Footer>
             </Modal>
           </div>
         </div>

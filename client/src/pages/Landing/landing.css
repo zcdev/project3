@@ -1,10 +1,14 @@
 #form-container {
   margin: 0;
-  background-color: rgb(154, 154, 154);
+  /* background-color: rgb(154, 154, 154); */
+  background: url(/assets/images/demon.jpg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #signin-form {
@@ -26,4 +30,7 @@
   justify-content: center;
   align-items: center;
 }
-
+#signin-form a {
+  color:  goldenrod;
+  margin-top: 10px;
+}
