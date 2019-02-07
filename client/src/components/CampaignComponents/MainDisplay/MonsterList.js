@@ -46,14 +46,16 @@ class CampaignMonsters extends Component {
                   placeholder="Search for a monster"
                />
             </div>
-            {searchMonsters.map((monster, i) => (
-               <MonsterListItem
-                  name={monster.name}
-                  index={monster.index}
-                  addMonsterToCombatants={this.props.addMonsterToCombatants}
-                  key={i}
-               />
-            ))}
+            {/* <div id="c-monster-list"> */}
+               {searchMonsters.map((monster, i) => (
+                  <MonsterListItem
+                     name={monster.name}
+                     index={monster.index}
+                     addMonsterToCombatants={this.props.addMonsterToCombatants}
+                     key={i}
+                  />
+               ))}
+            {/* </div> */}
          </div>
       );
    }

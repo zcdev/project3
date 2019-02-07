@@ -86,8 +86,13 @@
    cursor: pointer;
 }
 
-.campaign-nav-btn a {
+.campaign-nav-btn span {
    color: antiquewhite;
+   transition: all 300ms;
+}
+
+.campaign-nav-btn span:hover {
+   color: rgb(227, 12, 26);
 }
 
 .dark {

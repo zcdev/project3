@@ -249,20 +249,20 @@ class Campaign extends Component {
                      className="campaign-nav-btn light"
                      onClick={() => this.alterMainDisplay("monsters")}
                   >
-                     Monsters
-                     </div>
+                     <span>Monsters</span>
+                  </div>
                   <div
                      className="campaign-nav-btn dark"
                      onClick={() => this.alterMainDisplay("encounters")}
                   >
-                     Encounters
-                     </div>
+                     <span>Encounters</span>
+                  </div>
                   <div
                      className="campaign-nav-btn light"
                      onClick={() => this.alterMainDisplay("characters")}
                   >
-                     Characters
-                     </div>
+                     <span>Characters</span>
+                  </div>
                </div>
             </div>
             <div id="campaign-main">

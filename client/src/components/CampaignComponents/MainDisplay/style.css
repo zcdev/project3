@@ -32,6 +32,21 @@
    background-color: rgb(41, 44, 52);
 }
 
+.monster-name {
+   transition: all 100ms;
+   cursor: pointer;
+}
+
+.monster-name:hover {
+   color: rgb(227, 12, 26);
+}
+
+/* #c-monster-list {
+   overflow-y: scroll;
+   min-width: 100%;
+   height: 50%;
+} */
+
 /* Encounter Panel Stlyes */
 /* =================================== */
 
