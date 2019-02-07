@@ -11,15 +11,15 @@
   color: white;
 }
 
-/* Monster Panel Stlyes */
+/* Spell Panel Styles */
 /* =================================== */
 
-#campaign-monsters {
+#Encyclopedia-spells {
   width: 100%;
   font-weight: 300;
 }
 
-#campaign-monsters h4 {
+#campaign-spells h4 {
   padding: 10px 0;
   margin: 0;
   text-align: center;
@@ -27,14 +27,14 @@
   background-color: rgb(212,61,66);
 }
 
-#monster-search {
+#spell-search {
   padding: 15px;
   background-color: rgb(41, 44, 52);
 }
 
 /* Encounter Panel Stlyes */
 /* =================================== */
-
+/* 
 #campaign-encounters h4 {
   padding: 10px 0;
   margin: 0;
@@ -45,7 +45,7 @@
 
 .encounter-list-item {
   padding: 25px;
-}
+} */
 
 .encounter-list-item ul {
   margin: 0;

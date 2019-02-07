@@ -11,15 +11,15 @@
   color: white;
 }
 
-/* Monster Panel Stlyes */
+/* Monster Panel Styles */
 /* =================================== */
 
-#campaign-monsters {
+#encyclopedia-monsters {
   width: 100%;
   font-weight: 300;
 }
 
-#campaign-monsters h4 {
+#encyclopedia-monsters h4 {
   padding: 10px 0;
   margin: 0;
   text-align: center;
@@ -34,7 +34,7 @@
 
 /* Encounter Panel Stlyes */
 /* =================================== */
-
+/* 
 #campaign-encounters h4 {
   padding: 10px 0;
   margin: 0;
@@ -49,7 +49,7 @@
 
 .encounter-list-item ul {
   margin: 0;
-}
+} */
 
 td {
   padding: 5px;
