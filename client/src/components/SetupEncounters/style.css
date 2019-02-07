@@ -56,10 +56,9 @@
  }
 
 #monster-list {
-   height: 200px;
-   overflow-y: scroll;
    border-radius: 1%;
    float: left;
+   overflow: hidden;
 }
 
 #block {
@@ -68,5 +67,10 @@
     right: 0;
     top: 0;
     bottom: 0;
-    overflow-y: scroll;
+    height: 350px;
+}
+
+.search-results-encounter {
+   overflow-y: scroll;
+   height: 220px;
 }

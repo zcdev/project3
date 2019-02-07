@@ -30,7 +30,7 @@
    max-height: 520px;
    height: 100%;
    overflow-y: scroll;
-
+   height: 77%;
 }
 #monster-search {
    padding: 15px;
