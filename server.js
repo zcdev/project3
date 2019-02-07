@@ -12,8 +12,6 @@ const passport = require('passport')
 const app = express();
 //const passportSetup = require("./config/passport");
 const PORT = process.env.PORT || 3002;
-
-const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
 // Middleware
