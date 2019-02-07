@@ -22,9 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Serve up static assets
-// app.use(express.static("client/build"));
-
-app.use(express.static("public"));
+app.use(express.static("client/build"));
 
 // Static assets for production
 if (process.env.NODE_ENV === "production") {
