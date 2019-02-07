@@ -291,9 +291,9 @@ function languages() {
 }
 
 //challenge_rating (and XP calculation)
-function challenge() {
+// function challenge() {
 
-}
+// }
 
 //damage_vulnerabilities
 //damage_resistance
