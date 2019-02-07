@@ -8,9 +8,9 @@ const flash = require('express-flash-messages')
 const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
+  //, LocalStrategy = require('passport-local').Strategy;
 const app = express();
-const passportSetup = require("./config/passport");
+//const passportSetup = require("./config/passport");
 const PORT = process.env.PORT || 3002;
 
 
@@ -22,7 +22,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Serve up static assets
-app.use(express.static("client/build"));
+// app.use(express.static("client/build"));
+
+app.use(express.static("public"));
 
 // Static assets for production
 if (process.env.NODE_ENV === "production") {
