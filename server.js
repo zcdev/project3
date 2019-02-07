@@ -47,7 +47,7 @@ app.use(session({
   },
   store: new MongoStore({url: "mongodb://heroku_wld6sqwx:812t582cufh8hdlhta5ofdf1s@ds225375.mlab.com:25375/heroku_wld6sqwx"})
 }));
-
+//
 // Connect to Mongoose
 mongoose.Promise = Promise;
 mongoose.connect(process.env.MONGODB_URI || "mongodb://heroku_wld6sqwx:812t582cufh8hdlhta5ofdf1s@ds225375.mlab.com:25375/heroku_wld6sqwx");
