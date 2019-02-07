@@ -5973,7 +5973,6 @@
 	"senses": "darkvision 30 ft., passive Perception 11",
 	"languages": "",
 	"challenge_rating": 0,
-	"actions": "none",
 	"special_abilities": [{
 		"name": "Amphibious",
 		"desc": "The frog can breathe air and water",
@@ -12821,7 +12820,6 @@
 	"intelligence": 1,
 	"wisdom": 10,
 	"charisma": 2,
-	"actions": "none",
 	"damage_vulnerabilities": "",
 	"damage_resistances": "",
 	"damage_immunities": "",
