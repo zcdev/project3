@@ -77,3 +77,8 @@
 
    float: left;
 }
+
+.btn, .btn:hover, .btn:active, .btn:focus, .btn:visited {
+   background-color: rgb(227, 12, 26);
+   color: antiquewhite;
+}
