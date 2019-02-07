@@ -1,5 +1,5 @@
 #encyclopedia-sidebar {
-   background-color: antiquewhite;
+   background-color: rgb(41, 44, 52);
    position: fixed;
    z-index: 2;
    left: 0;
@@ -8,7 +8,7 @@
    overflow-y: scroll;
    width: 20vw;
    font-weight: 300;
-   padding-top: 100px;
+   padding-top: 75px;
 }
 
 #encyclopedia-main {
@@ -26,7 +26,6 @@
 #info-display {
    height: 100%;
    width: 42%;
-   /* overflow-y: scroll; */
    border-radius: 1%;
    float: left;
 }

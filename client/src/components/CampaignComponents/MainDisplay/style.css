@@ -69,6 +69,18 @@
 
 .encounter-list-item ul {
    margin: 0;
+   padding-left: 10px;
+}
+
+.encounter-list-item hr {
+   background-color: antiquewhite;
+   margin: 10px 0;
+}
+
+.encounter-name {
+   /* font-weight: bold; */
+   /* text-decoration: underline; */
+   font-size: 20px;
 }
 
 /* Character Panel Stlyes */
