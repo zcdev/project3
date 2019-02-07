@@ -16,11 +16,6 @@ const PORT = process.env.PORT || 3002;
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
-app.use(session({
-    secret: 'foo',
-    store: new MongoStore(options)
-}));
-
 // Middleware
 // ==================================================
 
@@ -51,7 +46,8 @@ app.use(session({
   cookie: {
     expires: 2592000000,
     httpOnly: false
-  }
+  },
+  store: new MongoStore(options)
 }));
 
 // Connect to Mongoose
