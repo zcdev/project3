@@ -1,6 +1,6 @@
 .homeDisplay {
     background-color: rgba(227, 12, 26);
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     background-image: url(/assets/images/dnd.jpg);
     background-repeat: no-repeat;
