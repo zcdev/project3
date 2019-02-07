@@ -26,7 +26,12 @@
    color: antiquewhite;
    background-color: rgb(227, 12, 26);
 }
+.search-results {
+   max-height: 520px;
+   height: 100%;
+   overflow-y: scroll;
 
+}
 #monster-search {
    padding: 15px;
    background-color: rgb(41, 44, 52);
