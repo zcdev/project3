@@ -49,25 +49,6 @@ class Home extends Component {
           .catch(err => console.log(err));
       });
 
-
-    // I dont think we need this
-    // ============================================
-    // const home = this
-
-    // async function setUserInfo() {
-    //   const cookie = document.cookie.split(";");
-    //   console.log("cookie", cookie)
-    //   let userName = cookie[0];
-    //   userName = userName.split("=");
-    //   userName = userName[1];
-    //   console.log("userName:", userName);
-    //   home.setState({
-    //     userName: userName
-    //   })
-    // }
-    // setUserInfo()
-    // ============================================
-
   }
 
   logout = () => {
@@ -79,9 +60,8 @@ class Home extends Component {
     return (
       <Router>
         <div>
-          <Navbar />
+          <Navbar logout={this.logout}/>
           <div className="homeDisplay">
-              <div id="title">Handy DandDy</div>
             <Route
               path="/campaign"
               component={() => <Campaign campaignId={this.state.campaignId}/>}
