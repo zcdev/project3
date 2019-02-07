@@ -17,7 +17,10 @@ function MonsterDisplay(props) {
         {nameInfo()}
         {armorHP()}
         {table()}
+        {saveThrows()}
         {skills()}
+        {senseLanguageChallenge()}
+        {languages()}
         {specialAbilities()}
         {actions()}
         {legendaryActions()}
@@ -72,14 +75,14 @@ function MonsterDisplay(props) {
       return (
         <div>
           <tr>
-            <td >STR {mon.strength}</td>
-            <td >DEX {mon.dexterity}</td>
-            <td >CON {mon.constitution}</td>
+            <td > STR {mon.strength} </td>
+            <td > DEX {mon.dexterity} </td>
+            <td > CON {mon.constitution} </td>
           </tr>
           <tr>
-            <td >INT {mon.intelligence}</td>
-            <td >WIS {mon.wisdom}</td>
-            <td >CHA {mon.charisma}</td>
+            <td > INT {mon.intelligence} </td>
+            <td > WIS {mon.wisdom} </td>
+            <td > CHA {mon.charisma} </td>
           </tr>
           <hr></hr>
         </div>
@@ -88,34 +91,55 @@ function MonsterDisplay(props) {
   }
 
   //========
+ 
+  // Saving Throes
+
+  function saveThrows() {
+    const throwTypes = ["strength_save", "dexterity_save", "constitution_save", "intelligence_save", "wisdom_save", "charisma_save"]
+
+    let throwString = ""
+
+    for (let i = 0; i < throwTypes.length; i++) {
+      if (mon[throwTypes[i]]) {
+        throwString += throwTypes[i].charAt(0).toUpperCase() + 
+        throwTypes[i].substring(1).replace("_save", "") + 
+        " +" + 
+        mon[throwTypes[i]] + 
+        ",  "
+      }
+    }
+    
+    throwString = throwString.substring(0, (throwString.length-3));
+
+    if (throwString) {
+      return (
+        <div>
+          <p><strong>Saving Throws:</strong> <em>{throwString}</em></p>
+        </div>
+      )
+    }
+
+  }
+
 
   // Skills 
-
-
-  //damage_vulnerabilities
-  //damage_resistance
-  //damage_immunities
-  //condition_immunities
-  //senses
-  //languages
-  //challenge_rating (and XP calculation)
-
+  
   function skills() {
 
     const monsterSkills = ["acrobatics", "arcana", "athletics", "deception", "history", "insight", "intimidation", "investigation", "medicine", "nature", "perception", "performance", "persuasion", "religion", "stealth", "survival"]
 
-    // const monstVariables = [acrobatics, arcana, athletics, deception, history, insight, intimidation, investigation, medicine, nature, perception, performance, persuasion, religion, stealth, survival]
-
     let skillString = ""
 
     for (let i = 0; i < monsterSkills.length; i++) {
-      let temp = monsterSkills[i]
       if (mon[monsterSkills[i]]) {
-        skillString += monsterSkills[i].charAt(0).toUpperCase() + monsterSkills[i].substring(1) + " +" + mon[monsterSkills[i]] + ",  "
+        skillString += monsterSkills[i].charAt(0).toUpperCase() + 
+        monsterSkills[i].substring(1) + 
+        " +" + 
+        mon[monsterSkills[i]] + 
+        ",  "
       }
     }
-    skillString = skillString.substring(0, skillString.length - 2)
-    console.log("skillstring, " + skillString)
+    skillString = skillString.substring(0, skillString.length - 3)
 
     if (skillString) {
       return (
@@ -126,13 +150,71 @@ function MonsterDisplay(props) {
     }
   }
 
+  //senses
+  function senseLanguageChallenge(){
+    let challengeRatingXP ={
+      .125:25,
+      .25:50,
+      .5:100,
+      1:200,
+      2:450,
+      3:700,
+      4:1100,
+      5: 1800,
+      6: 2300,
+      7: 2900,
+      8: 3900,
+      9: 5000,
+      10: 5900,
+      11: 7200,
+      12: 8400,
+      13: 10000,
+      14: 11500,
+      15: 13000,
+      16: 15000,
+      17: 18000,
+      18: 20000,
+      19: 22000,
+      20: 25000,
+      21: 33000,
+      22: 41000,
+      23: 50000,
+      24: 62000,
+      30: 155000,
+    }
+
+  if (mon.senses) {
+    return (
+      <div>
+        <p><strong>Senses:</strong> <em>{mon.senses}</em></p>
+        <p><strong>Languages:</strong> <em>{mon.languages}</em></p>
+        <p><strong>Challenge:</strong> <em>{mon.challenge_rating} ({challengeRatingXP[mon.challenge_rating]} XP) </em></p>
+      </div>
+    )
+  }
+}
+
+  //languages
+  function languages (){
+    if (mon.languages) {
+      return (
+        <div>
+          
+        </div>
+      )
+    }
+  }
+
+//challenge_rating (and XP calculation)
+function challenge() {
+
+}
 
   //damage_vulnerabilities
   //damage_resistance
   //damage_immunities
   //condition_immunities
-  //senses
-  //languages
+
   //challenge_rating (and XP calculation)
 
 
@@ -151,7 +233,6 @@ function MonsterDisplay(props) {
               <hr></hr>
               <p><strong>Name: </strong>{ability.name}</p>
               <p><strong>Description: </strong>{ability.desc}</p>
-
             </div>
           ))}
         </div>
