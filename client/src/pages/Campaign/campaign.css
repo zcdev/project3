@@ -30,7 +30,7 @@
    width: 42%;
    border-radius: 1%;
    float: left;
-   overflow: hidden
+   overflow-y: scroll;
 }
 
 #combatants-display {

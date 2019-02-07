@@ -35,42 +35,6 @@ class CampaignMonsters extends Component {
       }
     });
 
-<<<<<<< HEAD
-   render() {
-
-      const searchMonsters = monsters.filter(monster => {
-         if (monster.name.substring(0, this.state.searchString.length).toLowerCase() === this.state.searchString.toLowerCase()) {
-            return true;
-         }
-      });
-
-      return (
-         <div id="campaign-monsters">
-            <h4>Monsters</h4>
-            <div id="monster-search">
-               <input
-                  className="form-control"
-                  value={this.state.searchString}
-                  name="searchString"
-                  onChange={this.handleInputChange}
-                  type="text"
-                  placeholder="Search for a monster"
-               />
-            </div>
-            {/* <div id="c-monster-list"> */}
-               {searchMonsters.map((monster, i) => (
-                  <MonsterListItem
-                     name={monster.name}
-                     index={monster.index}
-                     addMonsterToCombatants={this.props.addMonsterToCombatants}
-                     key={i}
-                  />
-               ))}
-            {/* </div> */}
-         </div>
-      );
-   }
-=======
     return (
       <div id="campaign-monsters">
         <h4>Monsters</h4>
@@ -97,7 +61,6 @@ class CampaignMonsters extends Component {
       </div>
     );
   }
->>>>>>> f8c1d0875d3abbc34060ab123c53f1ba993399c4
 }
 
 export default CampaignMonsters;
