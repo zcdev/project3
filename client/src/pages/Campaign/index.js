@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import MainDisplay from "../../components/CampaignComponents/MainDisplay";
-// import MonsterList from "../../components/CampaignComponents/MainDisplay/MonsterList";
-// import EncounterList from "../../components/CampaignComponents/MainDisplay/EncounterList";
-// import CharacterList from "../../components/CampaignComponents/MainDisplay/CharacterList";
 import CombatantItem from "../../components/CampaignComponents/CombatantItem";
 import InitiativeButtons from "../../components/CampaignComponents/InitiativeButtons";
 import monsters from "../../dnd-data/monsters.json";
 import _ from "lodash";
 import "./campaign.css";
-// import API from "../../utils/API";
 
 class Campaign extends Component {
    state = {
@@ -25,25 +20,6 @@ class Campaign extends Component {
       this.setState({
          campaignId: this.props.campaignId
       })
-
-      // const newEncounter = {
-      //    name: "MySecondEncounter",
-      //    monsters: [monsters[62], monsters[62], monsters[62]]
-      // }
-
-      // API.addEncounterToCampaign(this.props.campaignId, newEncounter)
-      //    .then(res => console.log(res))
-      //    .catch(err => console.log(err));
-
-      // const newCharacter = {
-      //    name: "CharacterTwo",
-      //    dexterity: 2
-      // }
-
-      // API.addCharacterToCampaign(this.props.campaignId, newCharacter)
-      //    .then(res => console.log(res))
-      //    .catch(err => console.log(err));
-
    }
 
    alterMainDisplay = componentToDisplay => {

@@ -3,9 +3,30 @@
    z-index: 3;
    top: 0;
    left: 0;
-   background-color: rgb(227,12,26);
+   background-color: rgba(227, 12, 26, 0);
    width: 20vw;
-   height: 100px;
+   color: antiquewhite;
+   border-bottom-right-radius: 5px;
+}
+
+#navbar-heading {
+   font-family: "DnDC";
+   font-size: 50px;
+   height: 50px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+#navbar-heading i {
+   margin-top: 5px;
+   font-size: 28px;
+}
+
+.navbar-button {
+   padding-left: 10px;
+   opacity: 0;
+   height: 0;
 }
 
 #navbar a {
