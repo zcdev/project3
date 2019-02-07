@@ -13,6 +13,13 @@ const app = express();
 //const passportSetup = require("./config/passport");
 const PORT = process.env.PORT || 3002;
 
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+
+app.use(session({
+    secret: 'foo',
+    store: new MongoStore(options)
+}));
 
 // Middleware
 // ==================================================
