@@ -6,7 +6,7 @@ const LocalStrategy = require("passport-local");
 // const FacebookStrategy = require("passport-facebook");
 // const MeetupStrategy = require('passport-meetup').Strategy;
 const keys = require("../keys.js");
-const User = require("../models/user.js");
+const db = require("../models");
 //middleware to encrypt passwords
 const bCrypt = require("bcrypt-nodejs");
 
@@ -25,7 +25,7 @@ passport.serializeUser(function(user, done) {
 // used to deserialize the user
 passport.deserializeUser(function(id, done) {
     console.log("deserialize" + id);
-    User.findById(id).then(function(user) {
+    db.User.findById(id).then(function(user) {
         if (user) {
             console.log("deserialize", user)
             done(null, user);
