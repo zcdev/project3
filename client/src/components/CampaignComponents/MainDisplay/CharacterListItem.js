@@ -9,7 +9,7 @@ function CharacterListItem(props) {
       >
          <div>
             <p>Name: {props.character.name}</p>
-            <p>Dex Mod: {props.character.dexterity}</p>
+            <p>Dexterity: {props.character.dexterity}</p>
          </div>
       </div>
    );
