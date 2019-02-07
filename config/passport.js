@@ -43,7 +43,7 @@ passport.use('local-signup', new LocalStrategy({
     },
     function(req, userName, password, done) {
         process.nextTick(function() {
-            User.find({
+            db.User.find({
                 userName: userName
             }).then(function(user) {
                 if (user.length > 0) {
@@ -58,7 +58,7 @@ passport.use('local-signup', new LocalStrategy({
                         password: userPassword,
                         authMethod: "local"
                     }
-                    User.create(newUser).then(function(dbUser, created) {
+                    db.User.create(newUser).then(function(dbUser, created) {
                         if (!dbUser) {
                             return done(null, false);
                         } else {
@@ -84,7 +84,7 @@ passport.use('local-signin', new LocalStrategy({
             return bCrypt.compareSync(password, userpass);
         }
 
-        User.find({
+        db.User.find({
                 userName: userName
         }).then(function(user) {
             console.log("user", user[0])
