@@ -32,25 +32,24 @@
   background-color: rgb(41, 44, 52);
 }
 
-/* Encounter Panel Stlyes */
-/* =================================== */
-/* 
-#campaign-encounters h4 {
-  padding: 10px 0;
-  margin: 0;
-  text-align: center;
-  color: antiquewhite;
-  background-color: rgb(227, 12, 26);
-}
-
-.encounter-list-item {
-  padding: 25px;
-}
-
-.encounter-list-item ul {
-  margin: 0;
-} */
 
 td {
   padding: 5px;
 }
+
+#monsterName {
+  padding: 10px;
+  font-family: 'Pixel_Takhisis';
+  font-size: 2rem;
+  color: antiquewhite
+}
+
+#sizeTypeAlign {
+  font-family: 'Pixel_Takhisis';
+  color: antiquewhite
+}
+
+#battleStats {
+  font-family: 'Anglodavek';
+}
+

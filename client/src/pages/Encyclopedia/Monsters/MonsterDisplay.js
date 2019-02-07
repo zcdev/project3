@@ -40,7 +40,7 @@ function MonsterDisplay(props) {
   if (!mon)
     return (
       <div>
-        <h1><em>Take caution: Many monsters creep while the world sleeps.</em></h1>
+        <h1 id="monster-name"><em>Take caution: Many monsters creep while the world sleeps.</em></h1>
       </div>
     );
 
@@ -52,7 +52,6 @@ function MonsterDisplay(props) {
         {saveThrows()}
         {skills()}
         {senseLanguageChallenge()}
-        {languages()}
         {mapDisplay("Special Abilities", mon.special_abilities)}
         {mapDisplay("Actions", mon.actions)}
         {mapDisplay("Legendary Actions", mon.legendary_actions)}
@@ -62,7 +61,6 @@ function MonsterDisplay(props) {
 
   //1 NAME
   // size - type, alignment
-  // TO ADD subtype
     //========
 
   // armor_class (& Type ???)
@@ -80,34 +78,28 @@ function MonsterDisplay(props) {
       return (
 
         <div>
-          <h1><strong>{mon.name}</strong></h1>
-          <p><em>{mon.size} {mon.type + subTypeString}, {mon.alignment}</em></p>
+          <h1 id="monsterName"><strong>{mon.name}</strong></h1>
+          <p id="sizeTypeAlign"><em>{mon.size} {mon.type + subTypeString}, {mon.alignment}</em></p>
           <hr></hr>
-          <p><strong>Armor Class:</strong> {mon.armor_class}</p>
-          <p><strong>Hit Points:</strong> {mon.hit_points + "  "} 
+          <p id="battleStats"><strong>Armor Class:</strong> {mon.armor_class}</p>
+          <p id="battleStats"><strong>Hit Points:</strong> {mon.hit_points + "  "} 
           ({mon.hit_dice + 
           " + " +
             abilityScoreModifier[mon.constitution] * mon.hit_dice.split("d", 1)})
             </p>
-          <p><strong>Speed:</strong> {mon.speed}</p>
+            <p id="battleStats"><strong>Speed:</strong> {mon.speed}</p>
           <hr></hr>
         </div>
       )
     }
   }
 
-
-
   //========
   //TABLE
   //strength       dexterity     constitution
-  //save throw     save throw    save throw
   //intelligence   wisdom        charisma
-  //save throw     save throw    save throw
-
 
   function table() {
-
    
     if (mon) {
       return (
@@ -141,9 +133,7 @@ function MonsterDisplay(props) {
   }
 
 
-
 //========
-
 // Saving Throes
 
 function saveThrows() {
@@ -170,12 +160,9 @@ function saveThrows() {
       </div>
     )
   }
-
 }
 
-
 // Skills 
-
 function skills() {
 
   const monsterSkills = ["acrobatics", "arcana", "athletics", "deception", "history", "insight", "intimidation", "investigation", "medicine", "nature", "perception", "performance", "persuasion", "religion", "stealth", "survival"]
@@ -201,9 +188,7 @@ function skills() {
     )
   }
 }
-
-
-
+ 
 //senses
 function senseLanguageChallenge() {
   const challengeRatingXP = {
@@ -247,31 +232,6 @@ function senseLanguageChallenge() {
     )
   }
 }
-
-//languages
-function languages() {
-  if (mon.languages) {
-    return (
-      <div>
-
-      </div>
-    )
-  }
-}
-
-//challenge_rating (and XP calculation)
-function challenge() {
-
-}
-
-//damage_vulnerabilities
-//damage_resistance
-//damage_immunities
-//condition_immunities
-
-//challenge_rating (and XP calculation)
-
-
 
 //========
 
