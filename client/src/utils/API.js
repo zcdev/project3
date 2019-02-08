@@ -51,7 +51,7 @@ export default {
   },
   // Authenticate user signin
   getUser: function(userData){
-    return axios("/auth/signin",
+    return axios("/auth/user",
     {
       method: "post",
       data: userData,
