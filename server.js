@@ -8,11 +8,11 @@ const flash = require('express-flash-messages')
 const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
+  //, LocalStrategy = require('passport-local').Strategy;
 const app = express();
-const passportSetup = require("./config/passport");
+//const passportSetup = require("./config/passport");
 const PORT = process.env.PORT || 3002;
-
+const MongoStore = require('connect-mongo')(session);
 
 // Middleware
 // ==================================================
@@ -44,9 +44,10 @@ app.use(session({
   cookie: {
     expires: 2592000000,
     httpOnly: false
-  }
+  },
+  store: new MongoStore({url: "mongodb://heroku_wld6sqwx:812t582cufh8hdlhta5ofdf1s@ds225375.mlab.com:25375/heroku_wld6sqwx"})
 }));
-
+//
 // Connect to Mongoose
 mongoose.Promise = Promise;
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dm-screen");
@@ -60,7 +61,7 @@ app.use(passport.session());
 // enable CORS so that browsers don't block requests.
 app.use((req, res, next) => {
   //access-control-allow-origin http://localhost:3000
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Origin', 'https://handy-dnd.herokuapp.com');
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
