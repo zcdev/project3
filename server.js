@@ -8,11 +8,6 @@ const flash = require('express-flash-messages')
 const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require('passport');
-// Init passport authentication 
-app.use(passport.initialize());
-
-// Persistent login sessions. Session expires after 6 months, or when deleted by user.
-app.use(passport.session());
 
   //, LocalStrategy = require('passport-local').Strategy;
 const app = express();
@@ -40,6 +35,12 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(flash())
 // app.use(expressValidator(middlewareOptions)); - is this needed?
+
+// Init passport authentication 
+app.use(passport.initialize());
+
+// Persistent login sessions. Session expires after 6 months, or when deleted by user.
+app.use(passport.session());
 
 mongoose.connect('mongodb://heroku_wld6sqwx:812t582cufh8hdlhta5ofdf1s@ds225375.mlab.com:25375/heroku_wld6sqwx');
 const db = mongoose.connection;
