@@ -45,10 +45,11 @@ app.use(session({
     httpOnly: false
   }
 }));
-//
+
 // Connect to Mongoose
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://heroku_wld6sqwx:812t582cufh8hdlhta5ofdf1s@ds225375.mlab.com:25375/heroku_wld6sqwx";
 mongoose.Promise = Promise;
-mongoose.connect(process.env.MONGODB_URI || "mongodb://heroku_wld6sqwx:812t582cufh8hdlhta5ofdf1s@ds225375.mlab.com:25375/heroku_wld6sqwx");
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useCreateIndex: true });
 
 // Init passport authentication 
 app.use(passport.initialize());
