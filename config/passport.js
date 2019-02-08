@@ -6,7 +6,7 @@ const LocalStrategy = require("passport-local");
 // const FacebookStrategy = require("passport-facebook");
 // const MeetupStrategy = require('passport-meetup').Strategy;
 const keys = require("../keys.js");
-const db = require("../models/user.js");
+const User = require("../models/user.js");
 //middleware to encrypt passwords
 const bCrypt = require("bcrypt-nodejs");
 
@@ -25,7 +25,7 @@ passport.serializeUser(function(user, done) {
 // used to deserialize the user
 passport.deserializeUser(function(id, done) {
     console.log("deserialize" + id);
-    db.User.findById(id).then(function(user) {
+    User.findById(id).then(function(user) {
         if (user) {
             console.log("deserialize", user)
             done(null, user);
@@ -43,7 +43,7 @@ passport.use('local-signup', new LocalStrategy({
     },
     function(req, userName, password, done) {
         process.nextTick(function() {
-            db.User.find({
+            User.find({
                 userName: userName
             }).then(function(user) {
                 if (user.length > 0) {
@@ -58,7 +58,7 @@ passport.use('local-signup', new LocalStrategy({
                         password: userPassword,
                         authMethod: "local"
                     }
-                    db.User.create(newUser).then(function(dbUser, created) {
+                    User.create(newUser).then(function(dbUser, created) {
                         if (!dbUser) {
                             return done(null, false);
                         } else {
@@ -84,7 +84,7 @@ passport.use('local-signin', new LocalStrategy({
             return bCrypt.compareSync(password, userpass);
         }
 
-        db.User.find({
+        User.find({
                 userName: userName
         }).then(function(user) {
             console.log("user", user[0])

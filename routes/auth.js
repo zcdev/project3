@@ -4,7 +4,7 @@ const path = require("path");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const GoogleStrategy = require("passport-google-oauth20");
-const db = require("../models/user.js");
+const User = require("../models/user.js");
 
 // Route to authenticate user after signin/signup
 // =========================================================
@@ -15,7 +15,7 @@ router.get("/user", (req, res) => {
     // call db and find user by currenUser which is user id
     // get username
     console.log("ID of user attemping login: ", currentUser)
-    db.User.findOne({ _id: currentUser })
+    User.findOne({ _id: currentUser })
       .then(dbUser => {
 
         const user = {
