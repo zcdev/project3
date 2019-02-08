@@ -35,23 +35,25 @@ app.use(cookieParser());
 app.use(flash())
 // app.use(expressValidator(middlewareOptions)); - is this needed?
 
+mongoose.connect('mongodb://heroku_wld6sqwx:812t582cufh8hdlhta5ofdf1s@ds225375.mlab.com:25375/heroku_wld6sqwx');
+const db = mongoose.connection;
+
 // Express session
 app.use(session({
   secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: false,
+  resave: true,
+  saveUninitialized: true,
   cookie: {
     expires: 2592000000,
     httpOnly: false
   },
-  store: new MongoStore({ url: 'mongodb://heroku_wld6sqwx:812t582cufh8hdlhta5ofdf1s@ds225375.mlab.com:25375/heroku_wld6sqwx' })
+  store: new MongoStore({ mongooseConnection: db })
 }));
 
 
 // Connect to Mongoose
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://heroku_wld6sqwx:812t582cufh8hdlhta5ofdf1s@ds225375.mlab.com:25375/heroku_wld6sqwx";
+
 mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useCreateIndex: true });
 
 // Init passport authentication 
 app.use(passport.initialize());
