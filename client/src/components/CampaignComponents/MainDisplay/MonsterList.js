@@ -33,6 +33,7 @@ class CampaignMonsters extends Component {
       ) {
         return true;
       }
+      return null
     });
 
     return (

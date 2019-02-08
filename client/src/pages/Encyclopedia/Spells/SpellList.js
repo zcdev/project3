@@ -31,6 +31,7 @@ class EncyclopediaSpells extends Component {
         if (spell.name.substring(0, this.state.searchString.length).toLowerCase() === this.state.searchString.toLowerCase()) {
            return true;
         }
+        return null
      });
 
      return (
