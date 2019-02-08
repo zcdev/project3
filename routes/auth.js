@@ -4,7 +4,7 @@ const path = require("path");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const GoogleStrategy = require("passport-google-oauth20");
-const db = require("../models");
+const db = require("../../models");
 
 // Route to authenticate user after signin/signup
 // =========================================================
