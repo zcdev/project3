@@ -34,12 +34,7 @@ export default {
 
   //Post new user
   createUser: function(userData) {
-    return axios("auth/signup", 
-    {
-     method: "post",
-     data: userData,
-     withCredentials: true
-    })
+    return axios.post("/api/user/signup", userData)
   },
   // Authenticate user signup
   authenticateUser: function(userData) {
@@ -55,12 +50,7 @@ export default {
     return axios("/auth/logout")
   },
   // Authenticate user signin
-  getUser: function(userData){
-    return axios("/auth/signin",
-    {
-      method: "post",
-      data: userData,
-      withCredentials: true
-    })
+  getUser: function(){
+    return axios.get("/auth/user");
   }
 };

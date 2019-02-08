@@ -51,7 +51,8 @@ app.use(session({
   proxy: true,
   cookie: {
     expires: 2592000000,
-    secure: false
+    secure: false,
+    httpOnly: false
   },
   store: new MongoStore({ mongooseConnection: db })
 }));
