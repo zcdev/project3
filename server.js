@@ -42,6 +42,8 @@ app.use(passport.initialize());
 // Persistent login sessions. Session expires after 6 months, or when deleted by user.
 app.use(passport.session());
 
+app.enable('trust proxy'); 
+
 mongoose.connect('mongodb://heroku_wld6sqwx:812t582cufh8hdlhta5ofdf1s@ds225375.mlab.com:25375/heroku_wld6sqwx');
 const db = mongoose.connection;
 
@@ -50,6 +52,7 @@ app.use(session({
   secret: 'keyboard cat',
   resave: true,
   saveUninitialized: true,
+  proxy: true,
   cookie: {
     expires: 2592000000,
     httpOnly: false
