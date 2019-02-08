@@ -8,6 +8,11 @@ const flash = require('express-flash-messages')
 const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require('passport');
+// Init passport authentication 
+app.use(passport.initialize());
+
+// Persistent login sessions. Session expires after 6 months, or when deleted by user.
+app.use(passport.session());
 
   //, LocalStrategy = require('passport-local').Strategy;
 const app = express();
@@ -55,12 +60,6 @@ app.use(session({
 // Connect to Mongoose
 
 mongoose.Promise = Promise;
-
-// Init passport authentication 
-app.use(passport.initialize());
-
-// Persistent login sessions. Session expires after 6 months, or when deleted by user.
-app.use(passport.session());
 
 // enable CORS so that browsers don't block requests.
 app.use((req, res, next) => {
