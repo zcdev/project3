@@ -36,7 +36,7 @@ app.use(cookieParser());
 app.use(flash())
 // app.use(expressValidator(middlewareOptions)); - is this needed?
 
-app.enable('trust proxy'); 
+app.set('trust proxy', 1); 
 // Connect to Mongoose
 
 mongoose.Promise = Promise;
@@ -51,7 +51,7 @@ app.use(session({
   proxy: true,
   cookie: {
     expires: 2592000000,
-    secure: process.env.ENV === "Production"
+    secure: false
   },
   store: new MongoStore({ mongooseConnection: db })
 }));
