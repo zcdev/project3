@@ -59,9 +59,9 @@ router.post("/signup", (req, res, next) => {
         console.log("auth error")
         return next(err);
       }
-      res.cookie("userName", req.user.userName);
+      res.cookie("userName", req.body.userName);
       // res.cookie("email", req.body.email)
-      res.cookie("user_id", req.user.id);
+      res.cookie("user_id", req.body.id);
       console.log("confirm")
       return res.redirect("/");
 

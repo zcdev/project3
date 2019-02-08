@@ -7,7 +7,8 @@ const cookieParser = require("cookie-parser");
 const flash = require('express-flash-messages')
 const mongoose = require("mongoose");
 const session = require("express-session");
-const passport = require('passport')
+const passport = require('passport');
+
   //, LocalStrategy = require('passport-local').Strategy;
 const app = express();
 //const passportSetup = require("./config/passport");
