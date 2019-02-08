@@ -43,7 +43,7 @@ router.get("/user", (req, res) => {
 // Route for local signup authentication
 // =========================================================
 router.post("/signup", (req, res, next) => {
-  passport.authenticate("local-signup", (err, user, info) => {
+  passport.authenticate("local", (err, user, info) => {
     if (err) {
       console.log(err)
       return next(err);
@@ -75,7 +75,7 @@ router.post("/signup", (req, res, next) => {
 // =========================================================
 router.post("/signin", (req, res, next) => {
 
-  passport.authenticate("local-signin", (err, user, info) => {
+  passport.authenticate("local", (err, user, info) => {
     if (err) {
       console.log("41", err)
       return next(err);
