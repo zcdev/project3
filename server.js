@@ -7,12 +7,12 @@ const cookieParser = require("cookie-parser");
 const flash = require('express-flash-messages')
 const mongoose = require("mongoose");
 const session = require("express-session");
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
+const passport = require('passport')
+  //, LocalStrategy = require('passport-local').Strategy;
 const app = express();
-require('./config/passport')(passport);
+//const passportSetup = require("./config/passport");
 const PORT = process.env.PORT || 3002;
-//const MongoStore = require('connect-mongo')(session);
+const MongoStore = require('connect-mongo')(session);
 
 // Middleware
 // ==================================================
@@ -43,8 +43,10 @@ app.use(session({
   cookie: {
     expires: 2592000000,
     httpOnly: false
-  }
+  },
+  store: new MongoStore({ url: 'mongodb://heroku_wld6sqwx:812t582cufh8hdlhta5ofdf1s@ds225375.mlab.com:25375/heroku_wld6sqwx' })
 }));
+
 
 // Connect to Mongoose
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://heroku_wld6sqwx:812t582cufh8hdlhta5ofdf1s@ds225375.mlab.com:25375/heroku_wld6sqwx";
