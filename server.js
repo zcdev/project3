@@ -36,12 +36,6 @@ app.use(cookieParser());
 app.use(flash())
 // app.use(expressValidator(middlewareOptions)); - is this needed?
 
-// Init passport authentication 
-app.use(passport.initialize());
-
-// Persistent login sessions. Session expires after 6 months, or when deleted by user.
-app.use(passport.session());
-
 app.enable('trust proxy'); 
 // Connect to Mongoose
 
@@ -57,12 +51,16 @@ app.use(session({
   proxy: true,
   cookie: {
     expires: 2592000000,
-    httpOnly: false
+    secure: process.env.ENV === "Production"
   },
   store: new MongoStore({ mongooseConnection: db })
 }));
 
+// Init passport authentication 
+app.use(passport.initialize());
 
+// Persistent login sessions. Session expires after 6 months, or when deleted by user.
+app.use(passport.session());
 
 
 // enable CORS so that browsers don't block requests.
