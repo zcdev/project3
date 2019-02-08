@@ -49,7 +49,7 @@ app.use(session({
 
 // Connect to Mongoose
 mongoose.Promise = Promise;
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dm-screen");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://heroku_wld6sqwx:812t582cufh8hdlhta5ofdf1s@ds225375.mlab.com:25375/heroku_wld6sqwx");
 
 // Init passport authentication 
 app.use(passport.initialize());
