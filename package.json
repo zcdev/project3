@@ -11,7 +11,7 @@
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"yarn client\"",
     "client": "cd client && yarn start",
-    "install": "cd client && npm install",
+    "install": "cd client && yarn install",
     "build": "cd client && yarn build",
     "heroku-postbuild": "yarn build"
   },
