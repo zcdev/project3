@@ -6,7 +6,7 @@ const LocalStrategy = require("passport-local");
 // const FacebookStrategy = require("passport-facebook");
 // const MeetupStrategy = require('passport-meetup').Strategy;
 const keys = require("../keys.js");
-const db = require("../models");
+const db = require("../models/user.js");
 //middleware to encrypt passwords
 const bCrypt = require("bcrypt-nodejs");
 
