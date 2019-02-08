@@ -24,12 +24,11 @@ app.use(bodyParser.json());
 // Serve up static assets
 // app.use(express.static("client/build"));
 
-app.use(express.static("public"));
+
 
 // Static assets for production
-if (process.env.NODE_ENV === "production") {
+
   app.use(express.static("client/build"));
-}
 
 // Cookie parser
 app.use(cookieParser());
@@ -49,7 +48,7 @@ app.use(session({
 //
 // Connect to Mongoose
 mongoose.Promise = Promise;
-mongoose.connect(process.env.MONGOLAB_URI || "mongodb://heroku_wld6sqwx:812t582cufh8hdlhta5ofdf1s@ds225375.mlab.com:25375/heroku_wld6sqwx");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://heroku_wld6sqwx:812t582cufh8hdlhta5ofdf1s@ds225375.mlab.com:25375/heroku_wld6sqwx");
 
 // Init passport authentication 
 app.use(passport.initialize());
