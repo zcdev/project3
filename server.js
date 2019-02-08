@@ -12,7 +12,7 @@ const passport = require('passport')
 const app = express();
 //const passportSetup = require("./config/passport");
 const PORT = process.env.PORT || 3002;
-const MongoStore = require('connect-mongo')(session);
+//const MongoStore = require('connect-mongo')(session);
 
 // Middleware
 // ==================================================
@@ -44,8 +44,7 @@ app.use(session({
   cookie: {
     expires: 2592000000,
     httpOnly: false
-  },
-  store: new MongoStore({url: "mongodb://heroku_wld6sqwx:812t582cufh8hdlhta5ofdf1s@ds225375.mlab.com:25375/heroku_wld6sqwx"})
+  }
 }));
 //
 // Connect to Mongoose
