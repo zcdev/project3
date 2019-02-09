@@ -49,7 +49,7 @@ app.use(session({
 
 // Connect to Mongoose
 mongoose.Promise = Promise;
-mongoose.connect(process.env.MONGODB_URI || "mongodb://heroku_n5v16qw5:4ii9aboqrdu3lh7p1chvkg5is2@ds129045.mlab.com:29045/heroku_n5v16qw5");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://heroku_wld6sqwx:812t582cufh8hdlhta5ofdf1s@ds225375.mlab.com:25375/heroku_wld6sqwx");
 
 // Init passport authentication 
 app.use(passport.initialize());
@@ -60,7 +60,7 @@ app.use(passport.session());
 // enable CORS so that browsers don't block requests.
 app.use((req, res, next) => {
   //access-control-allow-origin http://localhost:3000
-  res.header('Access-Control-Allow-Origin', 'https://project3-test.herokuapp.com');
+  res.header('Access-Control-Allow-Origin', 'https://handy-dnd.herokuapp.com');
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
