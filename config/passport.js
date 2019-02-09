@@ -36,7 +36,7 @@ passport.deserializeUser(function(id, done) {
 });
 
 //passport config for local signup
-passport.use('local', new LocalStrategy({
+passport.use('local-signup', new LocalStrategy({
         usernameField: 'userName',
         passwordField: 'password',
         passReqToCallback: true
@@ -73,7 +73,7 @@ passport.use('local', new LocalStrategy({
 ));
 
 //passport config for local signin
-passport.use('local', new LocalStrategy({
+passport.use('local-signin', new LocalStrategy({
         usernameField: 'userName',
         passwordField: 'password',
         passReqToCallback: true // allows us to pass back the entire request to the callback
