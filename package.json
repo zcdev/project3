@@ -2,19 +2,20 @@
   "name": "mern-passport",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
     "install": "cd client && yarn install",
-    "build": "cd client && yarn build",
-    "heroku-postbuild": "cd client && yarn install --only=dev && yarn install && yarn build"
-},    "engines": {
-  "node": "10.11.0"
-},
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^4.1.0",
+    "concurrently": "^3.6.0",
     "nodemon": "^1.11.0"
   },
   "dependencies": {
@@ -23,7 +24,6 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
     "bootstrap": "^4.2.1",
-    "connect-mongo": "^2.0.3",
     "cookie-parser": "^1.4.3",
     "dotenv": "^6.0.0",
     "express": "^4.15.4",

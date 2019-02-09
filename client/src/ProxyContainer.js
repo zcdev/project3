@@ -13,8 +13,8 @@ class ProxyContainer extends Component {
     // email: ""
   }
 
-  async componentDidMount() {
-    await API.getUser()
+  componentWillMount() {
+    API.getUser()
       .then(user => {
         console.log(user)
         this.setState({
