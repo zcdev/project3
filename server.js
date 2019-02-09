@@ -57,6 +57,10 @@ app.use(session({
   store: new MongoStore({ mongooseConnection: db })
 }));
 
+// Connect to Mongoose
+mongoose.Promise = Promise;
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dm-screen");
+
 // Init passport authentication 
 app.use(passport.initialize());
 
