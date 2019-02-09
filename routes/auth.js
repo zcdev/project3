@@ -1,10 +1,11 @@
+require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 const path = require("path");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const GoogleStrategy = require("passport-google-oauth20");
-const User = require("../models/user.js");
+const db = require("../models");
 
 // Route to authenticate user after signin/signup
 // =========================================================
@@ -15,7 +16,7 @@ router.get("/user", (req, res) => {
     // call db and find user by currenUser which is user id
     // get username
     console.log("ID of user attemping login: ", currentUser)
-    User.findOne({ _id: currentUser })
+    db.User.findOne({ _id: currentUser })
       .then(dbUser => {
 
         const user = {
@@ -42,7 +43,7 @@ router.get("/user", (req, res) => {
 // Route for local signup authentication
 // =========================================================
 router.post("/signup", (req, res, next) => {
-  passport.authenticate("local-signup", (err, user, info) => {
+  passport.authenticate("local", (err, user, info) => {
     if (err) {
       console.log(err)
       return next(err);
@@ -74,7 +75,7 @@ router.post("/signup", (req, res, next) => {
 // =========================================================
 router.post("/signin", (req, res, next) => {
 
-  passport.authenticate("local-signin", (err, user, info) => {
+  passport.authenticate("local", (err, user, info) => {
     if (err) {
       console.log("41", err)
       return next(err);
