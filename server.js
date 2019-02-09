@@ -13,7 +13,7 @@ const passport = require('passport');
 const app = express();
 //const passportSetup = require("./config/passport");
 const PORT = process.env.PORT || 3002;
-const MongoStore = require('connect-mongo')(session);
+//const MongoStore = require('connect-mongo')(session);
 
 // Middleware
 // ==================================================
@@ -41,20 +41,17 @@ app.set('trust proxy', 1);
 
 mongoose.Promise = Promise;
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://heroku_wld6sqwx:812t582cufh8hdlhta5ofdf1s@ds225375.mlab.com:25375/heroku_wld6sqwx');
-const db = mongoose.connection;
+//const db = mongoose.connection;
 
 // Express session
 app.use(session({
   secret: 'keyboard cat',
-  resave: true,
-  saveUninitialized: true,
-  proxy: true,
+  resave: false,
+  saveUninitialized: false,
   cookie: {
     expires: 2592000000,
-    secure: false,
     httpOnly: false
-  },
-  store: new MongoStore({ mongooseConnection: db })
+  }
 }));
 
 // Init passport authentication 
